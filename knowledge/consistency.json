@@ -1,0 +1,833 @@
+{
+  "schema_version": "consistency/v1",
+  "batch": "pv-consistency-2026-11-13",
+  "note": "跨文档一致性对照表：只覆盖 4 条规则引用的 17 个条款与 5 条事实。relation/effect 是人工判读结果；validate 只保证引文可定位、标签自洽，不保证语义正确。判据见 reviews/34。",
+  "claims": [
+    {
+      "claim_id": "O-K-001",
+      "key": "classification.four_types",
+      "label": "分布式光伏四类划分",
+      "relation": "same_text",
+      "temporal": {
+        "kind": "none",
+        "at": null,
+        "note": ""
+      },
+      "canonical": "PV-NAT-2025-007-ATTACH#clause=第四条",
+      "statements": [
+        {
+          "source_id": "PV-NAT-2025-007-ATTACH",
+          "locator_id": "PV-NAT-2025-007-ATTACH#clause=第四条",
+          "kind": "clause",
+          "value": "第四条",
+          "quote": "分布式光伏发电分为自然人户用、非自然人户用、一般工商业和大型工商业四种类型",
+          "evidence_level": "normative",
+          "effect": "same"
+        },
+        {
+          "source_id": "PV-ZJ-2026-015",
+          "locator_id": "PV-ZJ-2026-015#clause=第三条",
+          "kind": "clause",
+          "value": "第三条",
+          "quote": "分布式光伏发电分为自然人户用、非自然人户用、一般工商业和大型工商业四种类型",
+          "evidence_level": "normative",
+          "effect": "same",
+          "note": "与国家第四条逐字一致"
+        },
+        {
+          "source_id": "PV-FAQ-20250411",
+          "locator_id": "PV-FAQ-20250411#qa=Q5",
+          "kind": "qa",
+          "value": "Q5",
+          "quote": "一般工商业和大型工商业分布式光伏的主要区别是接入电压等级不同",
+          "evidence_level": "official_qa",
+          "effect": "same",
+          "note": "问答层归纳的区分要素，与条文分类一致"
+        },
+        {
+          "source_id": "PV-EXPLAIN-20250123",
+          "locator_id": "PV-EXPLAIN-20250123#section=三(一)",
+          "kind": "section",
+          "value": "三(一)",
+          "quote": "细分为自然人户用、非自然人户用、一般工商业、大型工商业四种类型",
+          "evidence_level": "official_explanation",
+          "effect": "same",
+          "note": "解读层复述"
+        }
+      ],
+      "rule_refs": [
+        "O-R-001"
+      ],
+      "fact_refs": [
+        "O-F-001"
+      ],
+      "refines_edges": [],
+      "risk": "none",
+      "note": "四类名称与划分标准在国家第四条、浙江第三条、问答与解读四处一致；浙江第三条另加一句分布式光伏定义，不影响分类。"
+    },
+    {
+      "claim_id": "O-K-002",
+      "key": "classification.general_industrial_limit",
+      "label": "一般工商业 10kV(20kV)、≤6MW 上限",
+      "relation": "same_text",
+      "temporal": {
+        "kind": "none",
+        "at": null,
+        "note": ""
+      },
+      "canonical": "PV-NAT-2025-007-ATTACH#clause=第四条",
+      "statements": [
+        {
+          "source_id": "PV-NAT-2025-007-ATTACH",
+          "locator_id": "PV-NAT-2025-007-ATTACH#clause=第四条",
+          "kind": "clause",
+          "value": "第四条",
+          "quote": "总装机容量原则上不超过6兆瓦",
+          "evidence_level": "normative",
+          "effect": "same"
+        },
+        {
+          "source_id": "PV-ZJ-2026-015",
+          "locator_id": "PV-ZJ-2026-015#clause=第三条",
+          "kind": "clause",
+          "value": "第三条",
+          "quote": "总装机容量原则上不超过6兆瓦",
+          "evidence_level": "normative",
+          "effect": "same"
+        },
+        {
+          "source_id": "PV-FAQ-20250411",
+          "locator_id": "PV-FAQ-20250411#qa=Q5",
+          "kind": "qa",
+          "value": "Q5",
+          "quote": "一般工商业分布式光伏总装机容量原则上不超过6兆瓦",
+          "evidence_level": "official_qa",
+          "effect": "same"
+        },
+        {
+          "source_id": "PV-FAQ-20250411",
+          "locator_id": "PV-FAQ-20250411#qa=Q6",
+          "kind": "qa",
+          "value": "Q6",
+          "quote": "不属于一般工商业分布式光伏",
+          "evidence_level": "official_qa",
+          "effect": "same",
+          "note": "8MW/10kV 的举例判定，与上限一致"
+        }
+      ],
+      "rule_refs": [
+        "O-R-001"
+      ],
+      "fact_refs": [
+        "O-F-001"
+      ],
+      "refines_edges": [],
+      "risk": "none",
+      "note": "四处口径一致：电压不超过 10kV(20kV)、容量原则上不超过 6MW。问答 Q6 用 8MW 例子确认超限即不属于一般工商业。"
+    },
+    {
+      "claim_id": "O-K-003",
+      "key": "classification.large_110kv_66kv",
+      "label": "大型工商业 110kV(66kV)/≤50MW 与浙江删去 66kV",
+      "relation": "refined",
+      "temporal": {
+        "kind": "none",
+        "at": null,
+        "note": ""
+      },
+      "canonical": "PV-NAT-2025-007-ATTACH#clause=第四条",
+      "statements": [
+        {
+          "source_id": "PV-NAT-2025-007-ATTACH",
+          "locator_id": "PV-NAT-2025-007-ATTACH#clause=第四条",
+          "kind": "clause",
+          "value": "第四条",
+          "quote": "电压等级为110千伏（66千伏）、总装机容量原则上不超过50兆瓦",
+          "evidence_level": "normative",
+          "effect": "same"
+        },
+        {
+          "source_id": "PV-FAQ-20250411",
+          "locator_id": "PV-FAQ-20250411#qa=Q5",
+          "kind": "qa",
+          "value": "Q5",
+          "quote": "与公共电网连接点电压等级为110 千伏（66 千伏）",
+          "evidence_level": "official_qa",
+          "effect": "same",
+          "note": "问答保留 66kV 表述"
+        },
+        {
+          "source_id": "PV-ZJ-2026-015",
+          "locator_id": "PV-ZJ-2026-015#clause=第三条",
+          "kind": "clause",
+          "value": "第三条",
+          "quote": "连接点电压等级为110千伏、总装机容量原则上不超过50兆瓦",
+          "evidence_level": "normative",
+          "effect": "provincial_narrower",
+          "note": "浙江只写 110kV，删去国家办法的（66kV）括注；66kV 项目在本省不再落入大型工商业列举，按第四条末句转集中式备案"
+        }
+      ],
+      "rule_refs": [
+        "O-R-001"
+      ],
+      "fact_refs": [],
+      "refines_edges": [],
+      "risk": "none",
+      "note": "浙江第三条与国家第四条逐字比对，唯一实质差异是删去 66kV；原 refines 边 O-REL-014 判为纯复述后已删（reviews/20），此处以 claim 记录该结论。O-R-001 已有 zhejiang_66kv_centralized 分支覆盖该后果。"
+    },
+    {
+      "claim_id": "O-K-004",
+      "key": "grid.household_three_modes",
+      "label": "户用可选三种上网模式",
+      "relation": "same_text",
+      "temporal": {
+        "kind": "none",
+        "at": null,
+        "note": ""
+      },
+      "canonical": "PV-NAT-2025-007-ATTACH#clause=第五条",
+      "statements": [
+        {
+          "source_id": "PV-NAT-2025-007-ATTACH",
+          "locator_id": "PV-NAT-2025-007-ATTACH#clause=第五条",
+          "kind": "clause",
+          "value": "第五条",
+          "quote": "可选择全额上网、全部自发自用或者自发自用余电上网",
+          "evidence_level": "normative",
+          "effect": "same"
+        },
+        {
+          "source_id": "PV-ZJ-2026-015",
+          "locator_id": "PV-ZJ-2026-015#clause=第四条",
+          "kind": "clause",
+          "value": "第四条",
+          "quote": "可选择全额上网、全部自发自用或者自发自用余电上网",
+          "evidence_level": "normative",
+          "effect": "same"
+        },
+        {
+          "source_id": "PV-EXPLAIN-20250123",
+          "locator_id": "PV-EXPLAIN-20250123#section=三(一)",
+          "kind": "section",
+          "value": "三(一)",
+          "quote": "自然人户用、非自然人户用可选择三种模式的任一种",
+          "evidence_level": "official_explanation",
+          "effect": "same"
+        }
+      ],
+      "rule_refs": [
+        "O-R-002"
+      ],
+      "fact_refs": [
+        "O-F-004"
+      ],
+      "refines_edges": [],
+      "risk": "none",
+      "note": "国家第五条、浙江第四条、解读三(一)对户用的三选一口径一致。"
+    },
+    {
+      "claim_id": "O-K-005",
+      "key": "grid.general_ratio_provincial",
+      "label": "一般工商业余电上网比例由省级确定",
+      "relation": "refined",
+      "temporal": {
+        "kind": "none",
+        "at": null,
+        "note": ""
+      },
+      "canonical": "PV-NAT-2025-007-ATTACH#clause=第五条",
+      "statements": [
+        {
+          "source_id": "PV-NAT-2025-007-ATTACH",
+          "locator_id": "PV-NAT-2025-007-ATTACH#clause=第五条",
+          "kind": "clause",
+          "value": "第五条",
+          "quote": "由各省级能源主管部门结合实际确定",
+          "evidence_level": "normative",
+          "effect": "same"
+        },
+        {
+          "source_id": "PV-ZJ-2026-015",
+          "locator_id": "PV-ZJ-2026-015#clause=第四条",
+          "kind": "clause",
+          "value": "第四条",
+          "quote": "年自发自用电量占发电量的比例不作要求",
+          "evidence_level": "normative",
+          "effect": "provincial_broader",
+          "note": "浙江行使裁量：不作要求"
+        },
+        {
+          "source_id": "PV-GD-2025-002",
+          "locator_id": "PV-GD-2025-002#section=二",
+          "kind": "section",
+          "value": "二",
+          "quote": "年自发自用电量占发电量的比例不低于30%",
+          "evidence_level": "normative",
+          "effect": "provincial_narrower",
+          "note": "广东仅对农业建（构）筑物类一般工商业要求 ≥30%，其他一般工商业暂不强制"
+        }
+      ],
+      "rule_refs": [
+        "O-R-002",
+        "O-R-004"
+      ],
+      "fact_refs": [
+        "O-F-004"
+      ],
+      "refines_edges": [
+        "O-REL-006",
+        "O-REL-009"
+      ],
+      "risk": "none",
+      "note": "国家把比例交给省级确定，两省裁量方向不同（浙江不设、广东 30%），属授权范围内差异，不是冲突。"
+    },
+    {
+      "claim_id": "O-K-006",
+      "key": "grid.large_spot_market_prerequisite",
+      "label": "大型工商业余电上网以现货市场连续运行为前提",
+      "relation": "refined",
+      "temporal": {
+        "kind": "none",
+        "at": null,
+        "note": ""
+      },
+      "canonical": "PV-NAT-2025-007-ATTACH#clause=第五条",
+      "statements": [
+        {
+          "source_id": "PV-NAT-2025-007-ATTACH",
+          "locator_id": "PV-NAT-2025-007-ATTACH#clause=第五条",
+          "kind": "clause",
+          "value": "第五条",
+          "quote": "在电力现货市场连续运行地区，大型工商业分布式光伏可采用自发自用余电上网模式",
+          "evidence_level": "normative",
+          "effect": "same"
+        },
+        {
+          "source_id": "PV-EXPLAIN-20250123",
+          "locator_id": "PV-EXPLAIN-20250123#section=三(一)",
+          "kind": "section",
+          "value": "三(一)",
+          "quote": "大型工商业原则上选择全部自发自用模式",
+          "evidence_level": "official_explanation",
+          "effect": "same"
+        },
+        {
+          "source_id": "PV-ZJ-2026-015",
+          "locator_id": "PV-ZJ-2026-015#clause=第四条",
+          "kind": "clause",
+          "value": "第四条",
+          "quote": "大型工商业分布式光伏可选择全部自发自用或者自发自用余电上网",
+          "evidence_level": "normative",
+          "effect": "provincial_broader",
+          "note": "浙江未设「现货市场连续运行地区」前置条件"
+        }
+      ],
+      "rule_refs": [
+        "O-R-002"
+      ],
+      "fact_refs": [],
+      "refines_edges": [
+        "O-REL-006"
+      ],
+      "risk": "none",
+      "note": "已由 O-R-002 的 zhejiang_large_industrial_two_modes 分支承接（2026-11-14，reviews/37）：province=zhejiang 且大型工商业、policy_as_of>=2026-08-03 时直接给两模式，不再要求现货地区；细则生效前与省名/日期缺失时不命中，仍按国家口径判或返回 insufficient。原登记见 reviews/34 R-1、reviews/36 R-1。"
+    },
+    {
+      "claim_id": "O-K-007",
+      "key": "siting.same_parcel_red_line",
+      "label": "自发自用须在同一用地红线内",
+      "relation": "same_text",
+      "temporal": {
+        "kind": "none",
+        "at": null,
+        "note": ""
+      },
+      "canonical": "PV-NAT-2025-007-ATTACH#clause=第四条",
+      "statements": [
+        {
+          "source_id": "PV-NAT-2025-007-ATTACH",
+          "locator_id": "PV-NAT-2025-007-ATTACH#clause=第四条",
+          "kind": "clause",
+          "value": "第四条",
+          "quote": "建筑物及其附属场所应当位于同一用地红线范围内",
+          "evidence_level": "normative",
+          "effect": "same"
+        },
+        {
+          "source_id": "PV-NAT-2025-007-ATTACH",
+          "locator_id": "PV-NAT-2025-007-ATTACH#clause=第五条",
+          "kind": "clause",
+          "value": "第五条",
+          "quote": "用户和分布式光伏发电项目应位于同一用地红线范围内",
+          "evidence_level": "normative",
+          "effect": "same"
+        },
+        {
+          "source_id": "PV-ZJ-2026-015",
+          "locator_id": "PV-ZJ-2026-015#clause=第三条",
+          "kind": "clause",
+          "value": "第三条",
+          "quote": "所依托建筑物及其附属场所应当位于同一用地红线范围内",
+          "evidence_level": "normative",
+          "effect": "same"
+        },
+        {
+          "source_id": "PV-GD-2025-002",
+          "locator_id": "PV-GD-2025-002#section=一",
+          "kind": "section",
+          "value": "一",
+          "quote": "与建筑物在同一用地红线范围内的高速公路边坡",
+          "evidence_level": "normative",
+          "effect": "same",
+          "note": "广东把红线要求用于道路/边坡场景"
+        }
+      ],
+      "rule_refs": [],
+      "fact_refs": [],
+      "refines_edges": [],
+      "risk": "none",
+      "note": "红线要求在国家第四条（分类）、第五条（自发自用）、浙江第三条、广东第一节四处一致。"
+    },
+    {
+      "claim_id": "O-K-008",
+      "key": "grandfathering.legacy_policy",
+      "label": "发布前已备案且 2025-05-01 前并网按原政策",
+      "relation": "same_text",
+      "temporal": {
+        "kind": "none",
+        "at": null,
+        "note": ""
+      },
+      "canonical": "PV-NAT-2025-007-ATTACH#clause=第四十三条",
+      "statements": [
+        {
+          "source_id": "PV-NAT-2025-007-ATTACH",
+          "locator_id": "PV-NAT-2025-007-ATTACH#clause=第四十三条",
+          "kind": "clause",
+          "value": "第四十三条",
+          "quote": "对于本办法发布之日前已备案且于2025年5月1日前并网投产",
+          "evidence_level": "normative",
+          "effect": "same"
+        },
+        {
+          "source_id": "PV-EXPLAIN-20250123",
+          "locator_id": "PV-EXPLAIN-20250123#section=四(一)",
+          "kind": "section",
+          "value": "四(一)",
+          "quote": "对于在本办法印发前已备案项目给予充足的衔接过渡期",
+          "evidence_level": "official_explanation",
+          "effect": "same",
+          "note": "解读用「印发前」，与「发布之日前」措辞不同，实质同指新老划断"
+        },
+        {
+          "source_id": "PV-FAQ-20250411",
+          "locator_id": "PV-FAQ-20250411#qa=Q73",
+          "kind": "qa",
+          "value": "Q73",
+          "quote": "在发布之日后进行备案变更",
+          "evidence_level": "official_qa",
+          "effect": "same",
+          "note": "发布后做备案变更、仍于 5-1 前并网投产的，仍按原政策"
+        }
+      ],
+      "rule_refs": [
+        "O-R-003"
+      ],
+      "fact_refs": [],
+      "refines_edges": [],
+      "risk": "none",
+      "note": "三处口径一致：发布前已备案 + 2025-05-01 前并网投产 → 原政策。解读的「印发前」与条文的「发布之日前」措辞不一致，记在 note 里备查。"
+    },
+    {
+      "claim_id": "O-K-009",
+      "key": "grandfathering.publication_date",
+      "label": "「发布之日」= 2025-01-23 全社会公布日",
+      "relation": "refined",
+      "temporal": {
+        "kind": "none",
+        "at": null,
+        "note": ""
+      },
+      "canonical": "PV-NAT-2025-007-ATTACH#clause=第四十三条",
+      "statements": [
+        {
+          "source_id": "PV-NAT-2025-007-ATTACH",
+          "locator_id": "PV-NAT-2025-007-ATTACH#clause=第四十三条",
+          "kind": "clause",
+          "value": "第四十三条",
+          "quote": "本办法发布之日前已备案",
+          "evidence_level": "normative",
+          "effect": "same"
+        },
+        {
+          "source_id": "PV-GD-2025-002",
+          "locator_id": "PV-GD-2025-002#section=二",
+          "kind": "section",
+          "value": "二",
+          "quote": "《办法》发布之日（2025年1月23日，下同）",
+          "evidence_level": "normative",
+          "effect": "same",
+          "note": "广东细则直接写明日期"
+        },
+        {
+          "source_id": "PV-FAQ-20250411",
+          "locator_id": "PV-FAQ-20250411#qa=Q71",
+          "kind": "qa",
+          "value": "Q71",
+          "quote": "指《管理办法》对全社会公布日期",
+          "evidence_level": "official_qa",
+          "effect": "interpretive",
+          "note": "条文只写「发布之日」，日期由问答明确为 2025-01-23 而非制定日 01-17；1-23 当日备案也算"
+        }
+      ],
+      "rule_refs": [
+        "O-R-003"
+      ],
+      "fact_refs": [
+        "O-F-002"
+      ],
+      "refines_edges": [],
+      "risk": "none",
+      "note": "条文本身没有给日期，日期口径来自问答与广东细则；O-R-003 依赖 O-F-002。"
+    },
+    {
+      "claim_id": "O-K-010",
+      "key": "grandfathering.full_capacity",
+      "label": "「2025-05-01 前并网」按全容量口径",
+      "relation": "refined",
+      "temporal": {
+        "kind": "none",
+        "at": null,
+        "note": ""
+      },
+      "canonical": "PV-NAT-2025-007-ATTACH#clause=第四十三条",
+      "statements": [
+        {
+          "source_id": "PV-NAT-2025-007-ATTACH",
+          "locator_id": "PV-NAT-2025-007-ATTACH#clause=第四十三条",
+          "kind": "clause",
+          "value": "第四十三条",
+          "quote": "2025年5月1日前并网投产",
+          "evidence_level": "normative",
+          "effect": "same"
+        },
+        {
+          "source_id": "PV-FAQ-20250411",
+          "locator_id": "PV-FAQ-20250411#qa=Q72",
+          "kind": "qa",
+          "value": "Q72",
+          "quote": "并网是指分布式光伏发电项目全容量并网",
+          "evidence_level": "official_qa",
+          "effect": "interpretive",
+          "note": "条文只写「并网投产」，问答明确为全容量并网；部分容量并网不适用原政策"
+        }
+      ],
+      "rule_refs": [
+        "O-R-003"
+      ],
+      "fact_refs": [
+        "O-F-003"
+      ],
+      "refines_edges": [],
+      "risk": "none",
+      "note": "条文没有「全容量」字样，属解释层补充；这是 O-R-003 partial_capacity_not_legacy 分支的依据。"
+    },
+    {
+      "claim_id": "O-K-011",
+      "key": "capacity.ac_side",
+      "label": "容量按交流侧计算",
+      "relation": "single_source",
+      "temporal": {
+        "kind": "none",
+        "at": null,
+        "note": ""
+      },
+      "canonical": "PV-NAT-2025-007-ATTACH#clause=第十三条",
+      "statements": [
+        {
+          "source_id": "PV-NAT-2025-007-ATTACH",
+          "locator_id": "PV-NAT-2025-007-ATTACH#clause=第十三条",
+          "kind": "clause",
+          "value": "第十三条",
+          "quote": "分布式光伏发电项目的容量为交流侧容量",
+          "evidence_level": "normative",
+          "effect": "same"
+        }
+      ],
+      "rule_refs": [
+        "O-R-001"
+      ],
+      "fact_refs": [
+        "O-F-005"
+      ],
+      "refines_edges": [],
+      "risk": "none",
+      "note": "全库只有国家第十三条给出容量口径；浙江第五条用「交流侧装机容量」但未定义，广东未写。改这条会影响 O-R-001 的 6MW 阈值判断。"
+    },
+    {
+      "claim_id": "O-K-012",
+      "key": "classification.agricultural_structures",
+      "label": "设施农业项目归类：广东 30% 条件 vs 浙江按容量",
+      "relation": "refined",
+      "temporal": {
+        "kind": "none",
+        "at": null,
+        "note": ""
+      },
+      "canonical": "PV-GD-2025-002#section=一",
+      "statements": [
+        {
+          "source_id": "PV-GD-2025-002",
+          "locator_id": "PV-GD-2025-002#section=一",
+          "kind": "section",
+          "value": "一",
+          "quote": "且满足年自发自用电量占发电量比例不低于30%的条件",
+          "evidence_level": "normative",
+          "effect": "same",
+          "note": "广东：≤10kV(20kV)、≤6MW 且年自用比例 ≥30% 才归一般工商业"
+        },
+        {
+          "source_id": "PV-ZJ-2026-015",
+          "locator_id": "PV-ZJ-2026-015#clause=第五条",
+          "kind": "clause",
+          "value": "第五条",
+          "quote": "交流侧装机容量低于6兆瓦的按照一般工商业分布式光伏项目管理",
+          "evidence_level": "normative",
+          "effect": "provincial_broader",
+          "note": "浙江只按交流侧容量 6MW 分界，不要求自用比例"
+        }
+      ],
+      "rule_refs": [
+        "O-R-001"
+      ],
+      "fact_refs": [],
+      "refines_edges": [
+        "O-REL-005",
+        "O-REL-007"
+      ],
+      "risk": "none",
+      "note": "省级差异：广东对设施农业类一般工商业附加 30% 比例门槛，浙江不设。两省规则分别落在 O-R-001 的 guangdong_agricultural_structure_general_industrial 与 zhejiang_facility_agriculture_general_industrial 分支。"
+    },
+    {
+      "claim_id": "O-K-013",
+      "key": "classification.gd_rural_public_buildings",
+      "label": "广东：农村公共建筑归非自然人户用",
+      "relation": "single_source",
+      "temporal": {
+        "kind": "none",
+        "at": null,
+        "note": ""
+      },
+      "canonical": "PV-GD-2025-002#section=一",
+      "statements": [
+        {
+          "source_id": "PV-GD-2025-002",
+          "locator_id": "PV-GD-2025-002#section=一",
+          "kind": "section",
+          "value": "一",
+          "quote": "归于非自然人户用分布式光伏发电项目管理",
+          "evidence_level": "normative",
+          "effect": "same",
+          "note": "≤10kV(20kV)、≤6MW 的村集体办公用房/文化中心/卫生所等"
+        }
+      ],
+      "rule_refs": [
+        "O-R-001"
+      ],
+      "fact_refs": [],
+      "refines_edges": [
+        "O-REL-007"
+      ],
+      "risk": "none",
+      "note": "影响：O-R-001 没有这条扩围时，广东农村公共建筑项目会按国家第四条归到一般工商业（公共机构类）而不是非自然人户用。O-R-001 已实现该分支（2026-11-14），并经 reviews/40 独立复验通过（阻断 0），本缺口关闭。跨文件“同一红线”是否随“归于管理”继承仍属待裁决口径（reviews/40 D1），不改变本分支按广东原文不核红线的实现。"
+    },
+    {
+      "claim_id": "O-K-014",
+      "key": "classification.gd_factory_reference",
+      "label": "广东：2 回 10kV 或全部自发自用可参照大型工商业",
+      "relation": "single_source",
+      "temporal": {
+        "kind": "none",
+        "at": null,
+        "note": ""
+      },
+      "canonical": "PV-GD-2025-002#section=一",
+      "statements": [
+        {
+          "source_id": "PV-GD-2025-002",
+          "locator_id": "PV-GD-2025-002#section=一",
+          "kind": "section",
+          "value": "一",
+          "quote": "可参照大型工商业分布式光伏发电项目管理",
+          "evidence_level": "normative",
+          "effect": "same",
+          "note": "2 回及以上 10kV、每回≤6MW、总≤50MW；或全部自发自用且不超既有线路电压"
+        }
+      ],
+      "rule_refs": [
+        "O-R-001"
+      ],
+      "fact_refs": [],
+      "refines_edges": [
+        "O-REL-007"
+      ],
+      "risk": "none",
+      "note": "影响：O-R-001 已实现 A（2 回及以上 10kV、每回≤6MW、总≤50MW）与 B（全部自发自用且并网电压不高于既有线路）两支（2026-11-14），经 reviews/42 独立复验、reviews/43 N1 窄复核通过（阻断 0），本缺口关闭。reviews/42 登记的 N2（新 number 字段无 min/整数校验）与 N3（旧案例 expected 未锁 case_id、conclusions 为子集断言）仍作非阻断项保留。"
+    },
+    {
+      "claim_id": "O-K-015",
+      "key": "classification.zj_over_limit",
+      "label": "浙江：超第三条容量/电压按集中式备案管理",
+      "relation": "single_source",
+      "temporal": {
+        "kind": "none",
+        "at": null,
+        "note": ""
+      },
+      "canonical": "PV-ZJ-2026-015#clause=第四条",
+      "statements": [
+        {
+          "source_id": "PV-ZJ-2026-015",
+          "locator_id": "PV-ZJ-2026-015#clause=第四条",
+          "kind": "clause",
+          "value": "第四条",
+          "quote": "按集中式光伏电站备案和管理",
+          "evidence_level": "normative",
+          "effect": "same",
+          "note": "超出第三条的非自然人户用/一般工商业/大型工商业"
+        }
+      ],
+      "rule_refs": [
+        "O-R-001"
+      ],
+      "fact_refs": [],
+      "refines_edges": [],
+      "risk": "rule_uncovered",
+      "note": "影响：O-R-001 对 66kV 只输出 unclassified 并提示按集中式备案，集中式规则未建；超容量情形也没有分支。本轮只登记（R-4）。"
+    },
+    {
+      "claim_id": "O-K-016",
+      "key": "classification.zj_off_redline_roads",
+      "label": "浙江：红线外道路/边坡项目按集中式管理",
+      "relation": "single_source",
+      "temporal": {
+        "kind": "none",
+        "at": null,
+        "note": ""
+      },
+      "canonical": "PV-ZJ-2026-015#clause=第五条",
+      "statements": [
+        {
+          "source_id": "PV-ZJ-2026-015",
+          "locator_id": "PV-ZJ-2026-015#clause=第五条",
+          "kind": "clause",
+          "value": "第五条",
+          "quote": "其他情况按集中式光伏电站管理",
+          "evidence_level": "normative",
+          "effect": "same",
+          "note": "红线内道路/边坡按工商业分布式；红线外按集中式"
+        }
+      ],
+      "rule_refs": [
+        "O-R-001"
+      ],
+      "fact_refs": [],
+      "refines_edges": [],
+      "risk": "rule_uncovered",
+      "note": "影响：O-R-001 没有道路/边坡分支，红线外项目会被当作普通工商业或落 unclassified。本轮只登记（R-4）。"
+    },
+    {
+      "claim_id": "O-K-017",
+      "key": "temporal.gd_trial_period",
+      "label": "广东实施意见试行期至 2028-02-09",
+      "relation": "single_source",
+      "temporal": {
+        "kind": "expiring",
+        "at": "2028-02-09",
+        "note": "原文：2026-02-10 起试行、试行期 2 年；按起算日满两年计，最后有效日 2028-02-09"
+      },
+      "canonical": "PV-GD-2025-002#section=六",
+      "statements": [
+        {
+          "source_id": "PV-GD-2025-002",
+          "locator_id": "PV-GD-2025-002#section=六",
+          "kind": "section",
+          "value": "六",
+          "quote": "本实施意见自2026年2月10日起试行，试行期2年",
+          "evidence_level": "normative",
+          "effect": "same"
+        }
+      ],
+      "rule_refs": [
+        "O-R-004"
+      ],
+      "fact_refs": [],
+      "refines_edges": [],
+      "risk": "none",
+      "note": "O-R-004 的 temporal_scope 取粤浙并集到 2030-01-16，广东部分靠每条 case 的 date_lte 与 gd_policy_expired 兜住（knowledge/rules.json:1697-1708）；表里显式标出 2028-02-09，避免读者以为广东规则能用到 2030。"
+    },
+    {
+      "claim_id": "O-K-018",
+      "key": "temporal.zj_validity",
+      "label": "浙江细则有效期至 2030-01-16",
+      "relation": "single_source",
+      "temporal": {
+        "kind": "expiring",
+        "at": "2030-01-16",
+        "note": "2026-08-03 起施行"
+      },
+      "canonical": "PV-ZJ-2026-015#clause=第五十五条",
+      "statements": [
+        {
+          "source_id": "PV-ZJ-2026-015",
+          "locator_id": "PV-ZJ-2026-015#clause=第五十五条",
+          "kind": "clause",
+          "value": "第五十五条",
+          "quote": "本细则自2026年8月3日起施行，有效期至2030年1月16日",
+          "evidence_level": "normative",
+          "effect": "same"
+        }
+      ],
+      "rule_refs": [
+        "O-R-004"
+      ],
+      "fact_refs": [],
+      "refines_edges": [],
+      "risk": "none",
+      "note": "浙江有效期即 O-R-004 的 effective_to；与国家第五年届满日 2030-01-23 相差 7 天，表内两条时点并列。"
+    },
+    {
+      "claim_id": "O-K-019",
+      "key": "temporal.national_five_years",
+      "label": "国家办法有效期五年（2030-01-23 届满）",
+      "relation": "single_source",
+      "temporal": {
+        "kind": "expiring",
+        "at": "2030-01-23",
+        "note": "原文只写“自发布之日起施行，有效期五年”；发布日按 FAQ Q71 为 2025-01-23。按《民法典》第201条“期间自起算日次日起算”，五年届满于 2030-01-23（最后有效日，失效自次日）；用户 2026-11-14 裁决采用“届满当日”口径，原记 2030-01-22 已改"
+      },
+      "canonical": "PV-NAT-2025-007-ATTACH#clause=第四十三条",
+      "statements": [
+        {
+          "source_id": "PV-NAT-2025-007-ATTACH",
+          "locator_id": "PV-NAT-2025-007-ATTACH#clause=第四十三条",
+          "kind": "clause",
+          "value": "第四十三条",
+          "quote": "本办法自发布之日起施行，有效期五年",
+          "evidence_level": "normative",
+          "effect": "same"
+        }
+      ],
+      "rule_refs": [
+        "O-R-001",
+        "O-R-002",
+        "O-R-003",
+        "O-R-004"
+      ],
+      "fact_refs": [],
+      "refines_edges": [],
+      "risk": "expiry_unmodeled",
+      "note": "影响：4 条规则的 effective_to 全为 null，等于永不过期；2030-01-23 届满后（自 01-24 起）国家办法失效，规则仍会给出结论。本轮只登记（R-2）。"
+    }
+  ]
+}

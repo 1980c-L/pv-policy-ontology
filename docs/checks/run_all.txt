@@ -1,0 +1,684 @@
+
+===== validate (exit=0, 1.6s) =====
+== 计数 ==
+  sources    10
+  locators   443
+  entities   7
+  facts      5
+  rules      4
+  relations  13
+  constraints 4
+  claims     19
+  cases      67
+  refs       50
+  normative_refs 40
+  relation_refs 24
+  constraint_refs 12
+  constraint_normative_refs 4
+  claim_refs 42
+  claim_normative_refs 31
+
+RESULT: PASS（无硬错误）
+
+===== assess (exit=0, 0.2s) =====
+[PASS] A-insufficient-missing-connection-type: insufficient
+[PASS] B-supported-natural-household: supported
+[PASS] C-insufficient-spot-market-unknown: insufficient
+[PASS] D-legacy-false-filed-after-publication: supported
+[PASS] E-out-of-scope-policy-as-of-before-effective: out_of_scope
+[PASS] F-general-industrial-10kv-5mw: supported
+[PASS] G-non-natural-household-10kv-6mw: supported
+[PASS] H-large-110kv-50mw-full-self: supported
+[PASS] I-date-boundary-legacy-true: supported
+[PASS] J-date-boundary-legacy-false: supported
+[PASS] K-partial-capacity-not-legacy: supported
+[PASS] L-unclassified-end-to-end: insufficient
+[PASS] M-gd-agri-ratio-met: supported
+[PASS] N-gd-agri-ratio-not-met: supported
+[PASS] O-gd-agri-exempted: supported
+[PASS] P-gd-agri-ratio-missing: insufficient
+[PASS] Q-gd-agri-awaiting-exemption-dates: insufficient
+[PASS] R-zj-ratio-no-requirement: supported
+[PASS] S-zj-agri-5mw-no-requirement: supported
+[PASS] T-zj-industrial-no-requirement: supported
+[PASS] U-zj-before-effective-date: supported
+[PASS] V-gd-after-trial-expiry: supported
+[PASS] W-zj-66kv-centralized: insufficient
+[PASS] W-zj-66kv-no-date: insufficient
+[PASS] W-zj-66kv-project-null-date: insufficient
+[PASS] W-zj-66kv-no-province: insufficient
+[PASS] X-zj-large-industrial-two-modes: supported
+[PASS] Y-zj-large-before-detail-date: supported
+[PASS] Z-zj-large-no-policy-date: insufficient
+[PASS] AA-zj-large-no-date-spot-false: insufficient
+[PASS] AB-zj-large-no-province-spot-false: insufficient
+[PASS] AC-large-other-province-spot-false: supported
+[PASS] AD-gd-rural-public-household: supported
+[PASS] AE-gd-rural-public-infrastructure: supported
+[PASS] AF-gd-rural-flag-missing: insufficient
+[PASS] AG-gd-rural-province-missing: insufficient
+[PASS] AH-gd-rural-date-missing: insufficient
+[PASS] AI-gd-rural-flag-false: supported
+[PASS] AJ-gd-rural-over-capacity: insufficient
+[PASS] AK-gd-rural-after-trial: supported
+[PASS] AL-gd-rural-other-province: supported
+[PASS] AM-gd-rural-window-start: supported
+[PASS] AN-gd-rural-window-end: supported
+[PASS] AO-gd-rural-window-after-end: supported
+[PASS] AP-gd-rural-redline-false: supported
+[PASS] AQ-gd-factory-multi-line: supported
+[PASS] AR-gd-factory-multi-line-380v: supported
+[PASS] AS-gd-factory-single-line: supported
+[PASS] AT-gd-factory-per-line-over: insufficient
+[PASS] AU-gd-factory-total-over: insufficient
+[PASS] AV-gd-factory-full-self: supported
+[PASS] AW-gd-factory-full-self-380v: supported
+[PASS] AX-gd-factory-full-self-voltage-higher: insufficient
+[PASS] AY-gd-factory-surplus-not-full-self: insufficient
+[PASS] AZ-gd-factory-line-count-missing: insufficient
+[PASS] BA-gd-factory-per-line-missing: insufficient
+[PASS] BB-gd-factory-existing-voltage-missing: insufficient
+[PASS] BC-gd-factory-province-missing: insufficient
+[PASS] BD-gd-factory-date-missing: insufficient
+[PASS] BE-gd-factory-window-start: supported
+[PASS] BF-gd-factory-window-end: supported
+[PASS] BG-gd-factory-window-after: supported
+[PASS] BH-gd-factory-other-province: supported
+[PASS] BI-gd-factory-full-self-60mw: supported
+[PASS] BJ-gd-factory-multi-line-50mw: supported
+[PASS] BK-gd-factory-full-self-capacity-unknown: supported
+[PASS] BL-gd-factory-full-self-dc-basis: supported
+67/67 cases 通过；结果写入 eval\results\cases.json
+
+===== query (exit=0, 0.1s) =====
+{
+  "batch": "pv-national-2025-v1",
+  "queries": [
+    {
+      "query_id": "O-Q01",
+      "question": "一项项目分类判断需要哪些属性、依据哪些原文条件？仅凭容量能否确定？",
+      "query_type": "class_requirements",
+      "result": [
+        {
+          "case_id": "large_industrial_business_35kv",
+          "label": "大型工商业（35 千伏）",
+          "conditions": [
+            {
+              "predicate": "in",
+              "field": "site_category",
+              "value": [
+                "public_institution",
+                "industrial_commercial",
+                "other_building"
+              ],
+              "field_meta": {
+                "field": "site_category",
+                "type": "enum",
+                "unit": null,
+                "label": "建设场所类型",
+                "enum": [
+                  "residential",
+                  "public_institution",
+                  "industrial_commercial",
+                  "other_building",
+                  "agricultural_structure"
+                ]
+              }
+            },
+            {
+              "predicate": "in",
+              "field": "connection_type",
+              "value": [
+                "user_side_grid",
+                "dedicated_line"
+              ],
+              "field_meta": {
+                "field": "connection_type",
+                "type": "enum",
+                "unit": null,
+                "label": "并网连接方式",
+                "enum": [
+                  "public_grid",
+                  "user_side_grid",
+                  "dedicated_line"
+                ]
+              }
+            },
+            {
+              "predicate": "is_true",
+              "field": "investor_same_legal_person_as_user",
+              "field_meta": {
+                "field": "investor_same_legal_person_as_user",
+                "type": "boolean",
+                "unit": null,
+                "label": "投资方与用户同一法人主体",
+                "enum": null
+              }
+            },
+            {
+              "predicate": "equals",
+              "field": "connection_voltage_kv",
+              "value": 35,
+              "field_meta": {
+                "field": "connection_voltage_kv",
+                "type": "number",
+                "unit": "kV",
+                "label": "公共电网连接点电压等级",
+                "enum": null
+              }
+            },
+            {
+              "predicate": "lte",
+              "field": "capacity_mw",
+              "value": 20,
+              "field_meta": {
+                "field": "capacity_mw",
+                "type": "number",
+                "unit": "MW",
+                "label": "总装机容量",
+                "enum": null
+              }
+            },
+            {
+              "predicate": "equals",
+              "field": "capacity_basis",
+              "value": "ac_inverter_sum",
+              "field_meta": {
+                "field": "capacity_basis",
+                "type": "enum",
+                "unit": null,
+                "label": "容量计量口径",
+                "enum": [
+                  "ac_inverter_sum",
+                  "dc_module_sum",
+                  "unknown"
+                ]
+              }
+            },
+            {
+              "predicate": "is_true",
+              "field": "same_red_line",
+              "field_meta": {
+                "field": "same_red_line",
+                "type": "boolean",
+                "unit": null,
+                "label": "同一用地红线",
+                "enum": null
+              }
+            }
+          ]
+        },
+        {
+          "case_id": "large_industrial_business_110kv",
+          "label": "大型工商业（110/66 千伏）",
+          "conditions": [
+            {
+              "predicate": "equals",
+              "field": "investor_type",
+              "value": "non_natural_person",
+              "field_meta": {
+                "field": "investor_type",
+                "type": "enum",
+                "unit": null,
+                "label": "投资主体类型",
+                "enum": [
+                  "natural_person",
+                  "non_natural_person"
+                ]
+              }
+            },
+            {
+              "predicate": "in",
+              "field": "site_category",
+              "value": [
+                "public_institution",
+                "industrial_commercial",
+                "other_building"
+              ],
+              "field_meta": {
+                "field": "site_category",
+                "type": "enum",
+                "unit": null,
+                "label": "建设场所类型",
+                "enum": [
+                  "residential",
+                  "public_institution",
+                  "industrial_commercial",
+                  "other_building",
+                  "agricultural_structure"
+                ]
+              }
+            },
+            {
+              "predicate": "in",
+              "field": "connection_type",
+              "value": [
+                "user_side_grid",
+                "dedicated_line"
+              ],
+              "field_meta": {
+                "field": "connection_type",
+                "type": "enum",
+                "unit": null,
+                "label": "并网连接方式",
+                "enum": [
+                  "public_grid",
+                  "user_side_grid",
+                  "dedicated_line"
+                ]
+              }
+            },
+            {
+              "predicate": "is_true",
+              "field": "investor_same_legal_person_as_user",
+              "field_meta": {
+                "field": "investor_same_legal_person_as_user",
+                "type": "boolean",
+                "unit": null,
+                "label": "投资方与用户同一法人主体",
+                "enum": null
+              }
+            },
+            {
+              "predicate": "in",
+              "field": "connection_voltage_kv",
+              "value": [
+                110,
+                66
+              ],
+              "field_meta": {
+                "field": "connection_voltage_kv",
+                "type": "number",
+                "unit": "kV",
+                "label": "公共电网连接
+...（输出其余 48217 字符已截断）
+
+===== export (exit=0, 0.1s) =====
+exported 20 records -> exports\ontology_evidence.jsonl
+  by_type: {'entity': 7, 'fact': 5, 'rule': 4, 'constraint': 4}
+  by_kind: {'extracted': 12, 'derived': 8}
+
+===== negative (exit=0, 84.0s) =====
+[PASS] bad-predicate: rc=1, 期望包含 '谓词不在白名单'
+[PASS] bad-compare-field: rc=1, 期望包含 '比较字段必须是 number'
+[PASS] bad-quote: rc=1, 期望包含 '找不到'
+[PASS] eval-only-ref: rc=1, 期望包含 '不得引用'
+[PASS] field-not-declared: rc=1, 期望包含 '未在 input_fields 声明'
+[PASS] bad-sha: rc=1, 期望包含 'raw_sha256 不匹配'
+[PASS] bad-locator: rc=1, 期望包含 'locator 在 normalized 中不存在'
+[PASS] rel-dangling: rc=1, 期望包含 'entity 不存在'
+[PASS] rel-bad-type: rc=1, 期望包含 'to 节点类型不符'
+[PASS] rel-duplicate: rc=1, 期望包含 '重复边'
+[PASS] rel-self: rc=1, 期望包含 '自指边'
+[PASS] rel-no-note: rc=1, 期望包含 'note 必须是非空字符串'
+[PASS] rel-bad-temporal: rc=1, 期望包含 '起止倒置'
+[PASS] rel-single-ref: rc=1, 期望包含 '至少需要 2 条引用'
+[PASS] rel-note-null: rc=1, 期望包含 'note 必须是非空字符串'
+[PASS] rel-note-number: rc=1, 期望包含 'note 必须是非空字符串'
+[PASS] rel-note-list: rc=1, 期望包含 'note 必须是非空字符串'
+[PASS] rel-fact-without-constrains: rc=1, 期望包含 'fact 没有 constrains 出边'
+[PASS] rel-cycle: rc=1, 期望包含 'subclass_of 存在环'
+[PASS] guard-no-reason: rc=1, 期望包含 'reason 必须是非空字符串'
+[PASS] guard-bad-status: rc=1, 期望包含 'guard.status 只支持 insufficient'
+[PASS] guard-empty-missing: rc=1, 期望包含 'missing_fields 必须是非空数组'
+[PASS] guard-duplicate-id: rc=1, 期望包含 'guard_id 重复'
+[PASS] guard-field-not-input: rc=1, 期望包含 '未在 input_fields 声明'
+[PASS] constraint-bad-type: rc=1, 期望包含 'constraint_type 非法'
+[PASS] constraint-unknown-param: rc=1, 期望包含 'parameters 含未声明键'
+[PASS] constraint-no-normative: rc=1, 期望包含 '至少需要 1 条 normative 引用'
+[PASS] constraint-duplicate-id: rc=1, 期望包含 'constraint_id 重复'
+[PASS] constraint-bad-prefix: rc=1, 期望包含 'constraint_id 前缀必须是 O-C-'
+[PASS] constraint-schema-missing-key: rc=1, 期望包含 '缺少顶层键 decisions'
+[PASS] constraint-pair-same: rc=1, 期望包含 '不能是同一字段'
+[PASS] constraint-bad-target-class: rc=1, 期望包含 'target_classes 含非法分类'
+[PASS] constraint-bad-temporal: rc=1, 期望包含 '起止倒置'
+[PASS] claim-bad-id: rc=1, 期望包含 'claim_id 必须形如 O-K-001'
+[PASS] claim-duplicate-id: rc=1, 期望包含 'claim_id 重复'
+[PASS] claim-bad-schema: rc=1, 期望包含 'schema_version 必须是 consistency/v1'
+[PASS] claim-bad-quote: rc=1, 期望包含 '找不到'
+[PASS] claim-canonical-missing: rc=1, 期望包含 'canonical 必须是 statements 中的 locator'
+[PASS] claim-canonical-not-same: rc=1, 期望包含 'canonical 对应语句的 effect 必须是 same'
+[PASS] claim-relation-mismatch: rc=1, 期望包含 '与 effect 派生结果'
+[PASS] claim-different-no-note: rc=1, 期望包含 '必须写 note 说明为何互斥'
+[PASS] claim-bad-temporal: rc=1, 期望包含 'temporal.at 必须是 YYYY-MM-DD'
+[PASS] claim-risk-no-impact: rc=1, 期望包含 'note 必须写清影响'
+[PASS] claim-dangling-fact: rc=1, 期望包含 'fact_refs 指向不存在的事实'
+[PASS] claim-refines-not-refines: rc=1, 期望包含 'refines_edges 只接受 refines 边'
+[PASS] claim-coverage-gap: rc=1, 期望包含 '未覆盖被规则/事实引用的 locator'
+[PASS] claim-file-missing: rc=1, 期望包含 '找不到 knowledge/consistency.json'
+
+47/47 负例按预期失败
+
+===== relations (exit=0, 11.6s) =====
+[PASS] CQ5 大型工商业的分类上级是分布式光伏
+[PASS] CQ5 O-E-002 的分类上级是 O-E-001
+[PASS] CQ5 O-E-003 的分类上级是 O-E-001
+[PASS] CQ5 O-E-004 的分类上级是 O-E-001
+[PASS] impact JSON 版本为 relations/v1
+[PASS] 浙江第四条：直接受影响含 O-R-001（66kV 分支）、O-R-002（浙江大型余电上网分支）与 O-R-004
+[PASS] 浙江第四条：O-R-002 已是直接引用，不再计入候选
+[PASS] 浙江第四条：直接引用来自 source_refs，不是 refines 候选
+[PASS] 广东第二节：直接 O-R-004 / 候选 O-R-002
+[PASS] 国家第五条：直接 O-R-002 / 候选含 O-R-001（浙江第四条粒度）与 O-R-004
+[PASS] 国家第五条：下级含浙江第四条与广东第二节
+[PASS] 国家第四条：直接 O-R-001
+[PASS] 国家第四条：下级含浙江第五条、广东第一节（浙江第三条复述已删边）
+[PASS] 事实 O-F-001 只约束到 O-R-001
+[PASS] 事实 O-F-002 只约束到 O-R-003
+[PASS] 事实 O-F-003 只约束到 O-R-003
+[PASS] 事实 O-F-004 只约束到 O-R-002
+[PASS] 事实 O-F-005 只约束到 O-R-001
+[PASS] 删 006：浙江第四条 direct 仍含三条规则（含 O-R-002 的直接引用）
+[PASS] 删 006：浙江第四条 related 变空（证明该边曾是候选来源）
+[PASS] 删 009：广东第二节 related 变空
+[PASS] 删 008：O-F-005 直接影响面为空
+[PASS] 删 010：O-F-001 直接影响面为空
+[PASS] 删 013：O-F-004 直接影响面为空
+[PASS] 删 004：大型工商业没有分类上级（证明该边是 CQ5 的必要条件）
+
+25/25 关系层回归通过
+
+===== constraints (exit=0, 0.9s) =====
+constraint tests: 225/225 passed
+
+===== consistency (exit=0, 0.7s) =====
+[PASS] schema_version=consistency/v1
+[PASS] 共 19 条 claim
+[PASS] claim_id 为 O-K-001..019 且不重不缺
+[PASS] key 唯一
+[PASS] relation 与 effect 派生一致
+[PASS] canonical ∈ statements 且 effect=same
+[PASS] 被引用 locator 共 17 个
+[PASS] 覆盖被规则/事实引用的全部 locator
+[PASS] O-F-001..005 均被 claim 引用
+[PASS] refines_edges 只指向现存 refines 边
+[PASS] K-01 四类划分为 same_text 且含国家第四条与浙江第三条
+[PASS] K-03 66kV 差异判 refined 且浙江为 provincial_narrower
+[PASS] K-06 浙江放宽余电上网判 refined，风险已由 O-R-002 浙江分支承接（risk=none）
+[PASS] K-11 交流侧容量口径为 single_source（仅国家第十三条）
+[PASS] K-12 广东 30% 与浙江无比例判 refined（省级分叉）
+[PASS] 无 conflict（本轮无同级同地同时点的互斥结论）
+[PASS] K-17 广东试行期 2028-02-09 到期
+[PASS] K-18 浙江细则 2030-01-16 到期
+[PASS] K-19 国家五年期 2030-01-23 届满且标 expiry_unmodeled
+[PASS] risk 标注集合与登记清单一致
+[PASS] risk≠none 的 note 都写了「影响」
+[PASS] consistency list 退出码 0
+[PASS] consistency list 打印 19 行
+[PASS] consistency list --json 结构稳定
+[PASS] consistency show 支持 claim_id
+[PASS] consistency show 支持 key
+[PASS] consistency show 未知 claim 失败
+
+27/27 断言通过
+
+===== behavior (exit=0, 0.1s) =====
+[PASS] 001 66kV 缺 province -> guard 不给国家 66kV 大型结论: -> insufficient
+[PASS] 001 66kV province 空串 -> 按缺失处理: -> insufficient
+[PASS] 001 66kV 缺 investor_type -> 110 分支不得判大型: -> insufficient
+[PASS] 001 natural household: -> natural_person_household
+[PASS] 001 non-natural household: -> non_natural_person_household
+[PASS] 001 large 35kV: -> large_industrial_business_35kv
+[PASS] 001 large 110kV: -> large_industrial_business_110kv
+[PASS] 001 浙江 66kV/40MW + 细则生效日 -> 不判大型，unclassified（按集中式）: -> zhejiang_66kv_centralized
+[PASS] 001 浙江 66kV/40MW + 细则生效前一日 -> 仍按国家 66kV 判大型: -> large_industrial_business_110kv
+[PASS] 001 浙江 110kV/50MW + 细则生效后 -> 第三条含 110kV，仍判大型: -> large_industrial_business_110kv
+[PASS] 001 浙江 66kV/60MW -> 电压超第三条，同样按集中式 unclassified: -> zhejiang_66kv_centralized
+[PASS] 001 浙江 66kV/5MW 非自然人户用 -> 按集中式 unclassified: -> zhejiang_66kv_centralized
+[PASS] 001 浙江 66kV/40MW 投资人与用户不同法人 -> 仍按集中式 unclassified: -> zhejiang_66kv_centralized
+[PASS] 001 浙江 66kV 缺 policy_as_of -> guard 强制 insufficient: -> insufficient
+[PASS] 001 浙江 66kV/40MW 细则失效后（2031）-> 不套浙江分支，按国家 66kV 判大型: -> large_industrial_business_110kv
+[PASS] 001 general industrial: -> general_industrial_business
+[PASS] 001 缺 connection_type（10kV/8MW 自然人住宅）: -> insufficient
+[PASS] 001 缺 同一法人（35kV/20MW 非住宅）: -> insufficient
+[PASS] 001 缺 connection_type（35kV/20MW 非住宅）: -> insufficient
+[PASS] 001 容量口径为直流侧: -> insufficient
+[PASS] 001 齐备但 10kV/8MW 不属四类: -> unclassified_complete_non_natural
+[PASS] 002 户用三模式: -> household_three_modes
+[PASS] 002 一般工商业两模式: -> general_industrial_two_modes
+[PASS] 002 大型 + 现货 false + 他省 -> 仅全自发自用: -> large_default_self_consumption
+[PASS] 002 大型 + 现货 false + 缺省份 -> insufficient（不得默认国家口径）: -> insufficient
+[PASS] 002 大型 + 现货 null -> insufficient: -> insufficient
+[PASS] 002 大型 + 现货 true -> 两模式: -> large_spot_market_two_modes
+[PASS] 002 浙江大型 + 现货 null + 2026-08-03 -> 两模式（不要求现货地区）: -> zhejiang_large_industrial_two_modes
+[PASS] 002 浙江大型 + 2026-08-02（细则前）-> 仍按国家口径仅全自发自用: -> large_default_self_consumption
+[PASS] 002 浙江大型 + 无问题日期 -> insufficient（不默认按新细则）: -> insufficient
+[PASS] 002 浙江大型 + 现货 false + 无日期 -> insufficient（不得落国家全自发自用）: -> insufficient
+[PASS] 002 大型 + 现货 false + 缺省份 + 2026-11-14 -> insufficient（未知省份不当 other）: -> insufficient
+[PASS] 002 大型 + 现货 false + 其他省 + 2026-11-14 -> 仍按国家口径仅全自发自用: -> large_default_self_consumption
+[PASS] 002 大型 + 现货 true + 缺省份 -> 两模式（补省份不改变结论，不降级）: -> large_spot_market_two_modes
+[PASS] 003 1-23 备案 + 5-1 全容量 -> true: -> legacy_policy_applies
+[PASS] 003 部分容量 -> false: -> partial_capacity_not_legacy
+[PASS] 003 1-24 备案 -> false: -> filed_after_publication_not_legacy
+[PASS] 003 5-2 并网 -> false: -> late_connection_not_legacy
+[PASS] 003 并网状态缺失 -> insufficient: -> insufficient
+[PASS] 001 广东设施农业 10kV/5MW -> 一般工商业: -> guangdong_agricultural_structure_general_industrial
+[PASS] 001 广东设施农业但问的是 2025-06 时点 -> 不套用现行广东口径，判 insufficient（无适用分类）: -> insufficient
+[PASS] 001 广东设施农业 8MW 超 6MW -> 广东 6MW 口径不覆盖，判 insufficient: -> insufficient
+[PASS] 001 广东农村公共建筑 10kV/5MW/rural=true -> 非自然人户用: -> guangdong_rural_public_non_natural_household
+[PASS] 001 广东村内道路/小公园（other_building）3MW/rural=true -> 非自然人户用: -> guangdong_rural_public_non_natural_household
+[PASS] 001 广东农村公共建筑缺 rural_public_site -> 不得静默落一般工商业: -> insufficient
+[PASS] 001 广东农村公共建筑缺 province -> 不得把未知当非广东: -> insufficient
+[PASS] 001 广东农村公共建筑缺 policy_as_of -> 不得猜是否在试行期内: -> insufficient
+[PASS] 001 广东公共机构 rural_public_site=false -> 明确不适用，落一般工商业: -> general_industrial_business
+[PASS] 001 广东农村公共建筑 2026-02-10（试行首日）-> 非自然人户用: -> guangdong_rural_public_non_natural_household
+[PASS] 001 广东农村公共建筑 2028-02-09（期满当日）-> 非自然人户用: -> guangdong_rural_public_non_natural_household
+[PASS] 001 广东农村公共建筑 2028-02-10（期满次日）-> 新分支不覆盖，落一般工商业: -> general_industrial_business
+[PASS] 001 广东农村公共建筑 6.5MW 超 6MW -> 不适用扩围: -> unclassified_complete_non_natural
+[PASS] 001 其他省农村公共建筑 rural=true -> 国家口径一般工商业: -> general_industrial_business
+[PASS] 001 广东农村公共建筑 same_red_line=false -> 原文未设红线条件，仍归非自然人户用: -> guangdong_rural_public_non_natural_household
+[PASS] 001 广东厂房 A：2 回 10kV、单回 5MW、总 8MW -> 参照大型工商业: -> guangdong_factory_multi_line_reference_large
+[PASS] 001 广东厂房 A：光伏 380V 接入 2 回 10kV 线路、总 8MW -> 仍参照大型工商业: -> guangdong_factory_multi_line_reference_large
+[PASS] 001 广东厂房仅 1 回 10kV、5MW -> 不参照，按一般工商业: -> general_industrial_business
+[PASS] 001 广东厂房单回接入 6.5MW -> 超每回 6MW，落 unclassified: -> unclassified_complete_non_natural
+[PASS] 001 广东厂房 10 回、单回 6MW、总 55MW -> 超 50MW，落 unclassified: -> unclassified_complete_non_natural
+[PASS] 001 广东厂房全部自发自用、并网 10kV 不高于既有 10kV -> 参照大型工商业: -> guangdong_factory_full_self_consumption_reference_large
+[PASS] 001 广东厂房全部自发自用、容量与容量口径均未填 -> B 支无容量门槛，仍参照大型工商业: -> guangdong_factory_full_self_consumption_reference_large
+[PASS] 001 广东厂房全部自发自用、8MW、直流侧容量口径 -> B 支不套容量阈值，仍参照大型工商业: -> guangdong_factory_full_self_consumption_reference_large
+[PASS] 001 广东厂房全部自发自用、光伏 380V 接入、既有 10kV -> 参照大型工商业: -> guangdong_factory_full_self_consumption_reference_large
+[PASS] 001 广东厂房全部自发自用，但并网 20kV 高于既有 10kV -> 不参照，落 unclassified: -> unclassified_complete_non_natural
+[PASS] 001 广东厂房余电上网，不满足全部自发自用 -> 不参照，落 unclassified: -> unclassified_complete_non_natural
+[PASS] 001 广东厂房缺线路回数 -> 不得静默落一般工商业: -> insufficient
+[PASS] 001 广东厂房缺单回最大容量 -> 不得静默落一般工商业: -> insufficient
+[PASS] 001 广东厂房全部自发自用，缺既有供电电压 -> 不得静默落一般工商业: -> insufficient
+[PASS] 001 广东厂房 2 回 10kV/8MW，缺省份 -> 不得把未知当非广东: -> insufficient
+[PASS] 001 广东厂房 2 回 10kV/8MW，缺 policy_as_of -> 不得猜是否在试行期: -> insufficient
+[PASS] 001 广东厂房 2 回 10kV/5MW，2026-02-10（试行首日）-> 参照大型工商业: -> guangdong_factory_multi_line_reference_large
+[PASS] 001 广东厂房 2 回 10kV/5MW，2028-02-09（期满当日）-> 参照大型工商业: -> guangdong_factory_multi_line_reference_large
+[PASS] 001 广东厂房 2 回 10kV/5MW，2028-02-10（期满次日）-> 新分支不覆盖，按一般工商业: -> general_industrial_business
+[PASS] 001 其他省厂房 2 回 10kV/5MW -> 广东参照分支不适用，按一般工商业: -> general_industrial_business
+[PASS] 001 广东厂房全部自发自用、并网不高于既有，60MW -> 原文未设容量上限，仍参照大型工商业: -> guangdong_factory_full_self_consumption_reference_large
+[PASS] 001 广东厂房 10 回、单回 5MW、总 50MW -> 50MW 上限边界，参照大型工商业: -> guangdong_factory_multi_
+...（输出其余 1070 字符已截断）
+
+===== scenario (exit=0, 0.3s) =====
+[PASS] CLS-1 classification: 自然人用自家住宅建的项目属于哪一类？
+[PASS] CLS-2 classification: 工业园区里 10 千伏、5 兆瓦的厂房项目属于哪一类？
+[PASS] CLS-3 classification: 10 千伏、8 兆瓦的住宅项目属于一般工商业吗？
+[PASS] MODE-1 grid_mode: 一般工商业项目可以选哪种上网模式？
+[PASS] MODE-2 grid_mode: 现货地区的大型工商业项目上网模式有什么特殊安排？
+[PASS] MODE-3 grid_mode: 大型工商业项目只能全部自发自用吗？
+[PASS] LEG-1 legacy: 2025 年 4 月全容量并网的老项目还能按原有政策执行吗？
+[PASS] LEG-2 legacy: 发布之后才备案的项目还能按原有政策吗？
+[PASS] LEG-3 legacy: 部分容量并网的项目可以按原有政策吗？
+
+9/9 场景通过
+
+===== realq (exit=0, 0.4s) =====
+真实问法回归：19/19 通过
+真实问法 + 项目字段抽查：1/1 通过
+合计：20/20 通过
+
+===== contract (exit=0, 4.2s) =====
+[PASS] test_version
+[PASS] test_dump_schema
+[PASS] test_single
+[PASS] test_batch_stdin
+[PASS] test_project
+[PASS] test_project_date_not_misread
+[PASS] test_project_date_only_in_project
+[PASS] test_scope
+[PASS] test_unknown_field
+[PASS] test_invalid_topk
+[PASS] test_invalid_date
+[PASS] test_missing_question
+[PASS] test_empty_batch
+[PASS] test_scalar_input
+[PASS] test_conflict_args
+[PASS] test_human_mode
+[PASS] test_bad_json
+[PASS] test_input_schema_file
+ask/v1 契约测试：18/18 通过
+
+===== audit (exit=0, 0.4s) =====
+证据回检：81 条引用；结构校验 81/81 通过
+  可检索：Top1 69 / Top5 81 / Top20 81 / 未召回 0；未入池 0
+  可疑 0 条：
+  提示 17 条（同文跨来源，不影响结构校验）：
+    - [O-R-001] PV-NAT-2025-007-ATTACH#clause=第四条：同文出现在 3 个来源（PV-FAQ-20250411, PV-NAT-2025-007-ATTACH, PV-ZJ-2026-015）
+    - [O-R-001] PV-NAT-2025-007-ATTACH#clause=第四条：同文出现在 3 个来源（PV-FAQ-20250411, PV-NAT-2025-007-ATTACH, PV-ZJ-2026-015）
+    - [O-R-001] PV-NAT-2025-007-ATTACH#clause=第四条：同文出现在 3 个来源（PV-FAQ-20250411, PV-NAT-2025-007-ATTACH, PV-ZJ-2026-015）
+    - [O-R-001] PV-NAT-2025-007-ATTACH#clause=第四条：同文出现在 4 个来源（PV-FAQ-20250411, PV-GD-2025-002, PV-NAT-2025-007-ATTACH, PV-ZJ-2026-015）
+    - [O-R-001] PV-NAT-2025-007-ATTACH#clause=第四条：同文出现在 3 个来源（PV-FAQ-20250411, PV-NAT-2025-007-ATTACH, PV-ZJ-2026-015）
+    - [O-R-001] PV-NAT-2025-007-ATTACH#clause=第四条：同文出现在 3 个来源（PV-FAQ-20250411, PV-NAT-2025-007-ATTACH, PV-ZJ-2026-015）
+    - [O-R-001] PV-NAT-2025-007-ATTACH#clause=第四条：同文出现在 3 个来源（PV-FAQ-20250411, PV-NAT-2025-007-ATTACH, PV-ZJ-2026-015）
+    - [O-R-001] PV-NAT-2025-007-ATTACH#clause=第四条：同文出现在 3 个来源（PV-FAQ-20250411, PV-NAT-2025-007-ATTACH, PV-ZJ-2026-015）
+    - [O-C-004] PV-FAQ-20250411#qa=Q31：同文出现在 4 个来源（PV-FAQ-20250411, PV-GD-2025-002, PV-NAT-2025-007-ATTACH, PV-ZJ-2026-015）
+    - [O-C-004] PV-FAQ-20250411#qa=Q31：同文出现在 3 个来源（PV-FAQ-20250411, PV-NAT-2025-007-ATTACH, PV-ZJ-2026-015）
+    - [O-C-004] PV-NAT-2025-007-ATTACH#clause=第十四条：同文出现在 4 个来源（PV-FAQ-20250411, PV-GD-2025-002, PV-NAT-2025-007-ATTACH, PV-ZJ-2026-015）
+    - [O-F-001] PV-NAT-2025-007-ATTACH#clause=第四条：同文出现在 3 个来源（PV-FAQ-20250411, PV-NAT-2025-007-ATTACH, PV-ZJ-2026-015）
+    - [O-E-002] PV-NAT-2025-007-ATTACH#clause=第四条：同文出现在 3 个来源（PV-FAQ-20250411, PV-NAT-2025-007-ATTACH, PV-ZJ-2026-015）
+    - [O-E-002] PV-NAT-2025-007-ATTACH#clause=第四条：同文出现在 3 个来源（PV-FAQ-20250411, PV-NAT-2025-007-ATTACH, PV-ZJ-2026-015）
+    - [O-E-003] PV-NAT-2025-007-ATTACH#clause=第四条：同文出现在 3 个来源（PV-FAQ-20250411, PV-NAT-2025-007-ATTACH, PV-ZJ-2026-015）
+    - [O-E-004] PV-NAT-2025-007-ATTACH#clause=第四条：同文出现在 3 个来源（PV-FAQ-20250411, PV-NAT-2025-007-ATTACH, PV-ZJ-2026-015）
+    - [O-E-005] PV-NAT-2025-007-ATTACH#clause=第四条：同文出现在 3 个来源（PV-FAQ-20250411, PV-NAT-2025-007-ATTACH, PV-ZJ-2026-015）
+written E:\deepseek harness\项目\新能源Ontology\github-release-candidate\eval\evidence_audit.json (33115 B)
+
+===== conflict (exit=0, 0.5s) =====
+== conflict drill ==
+{
+  "result_status": "conflict",
+  "conclusions": [
+    {
+      "rule_id": "O-R-001",
+      "case_id": "natural_person_household",
+      "field": "project_class",
+      "value": "natural_person_household"
+    },
+    {
+      "rule_id": "O-R-002",
+      "case_id": "household_three_modes",
+      "field": "allowed_grid_modes",
+      "value": [
+        "full_feed_in",
+        "full_self_consumption",
+        "self_consumption_surplus_feed_in"
+      ]
+    },
+    {
+      "rule_id": "O-R-002",
+      "case_id": "household_three_modes",
+      "field": "requires_same_red_line_for_self_consumption",
+      "value": true
+    },
+    {
+      "rule_id": "O-R-003",
+      "case_id": "legacy_policy_applies",
+      "field": "legacy_policy_applies",
+      "value": true
+    },
+    {
+      "rule_id": "O-R-099",
+      "case_id": "sim_conflict_natural",
+      "field": "project_class",
+      "value": "general_industrial_business"
+    }
+  ],
+  "missing_fields": [],
+  "rule_ids": [
+    "O-R-001",
+    "O-R-002",
+    "O-R-003",
+    "O-R-099"
+  ],
+  "source_refs": [
+    {
+      "source_id": "PV-NAT-2025-007-ATTACH",
+      "locator_id": "PV-NAT-2025-007-ATTACH#clause=第四条",
+      "kind": "clause",
+      "value": "第四条",
+      "quote": "分布式光伏发电分为自然人户用、非自然人户用、一般工商业和大型工商业四种类型",
+      "evidence_level": "normative"
+    },
+    {
+      "source_id": "PV-NAT-2025-007-ATTACH",
+      "locator_id": "PV-NAT-2025-007-ATTACH#clause=第四条",
+      "kind": "clause",
+      "value": "第四条",
+      "quote": "自然人利用自有住宅、庭院投资建设",
+      "evidence_level": "normative"
+    },
+    {
+      "source_id": "PV-NAT-2025-007-ATTACH",
+      "locator_id": "PV-NAT-2025-007-ATTACH#clause=第四条",
+      "kind": "clause",
+      "value": "第四条",
+      "quote": "与公共电网连接点电压等级不超过380伏",
+      "evidence_level": "normative"
+    },
+    {
+      "source_id": "PV-NAT-2025-007-ATTACH",
+      "locator_id": "PV-NAT-2025-007-ATTACH#clause=第四条",
+      "kind": "clause",
+      "value": "第四条",
+      "quote": "与公共电网连接点电压等级不超过10千伏（20千伏）、总装机容量不超过6兆瓦",
+      "evidence_lev
+PASS: assess 保留 conflict（模拟规则 O-R-099，非真实政策矛盾）
+
+===== update (exit=0, 1.6s) =====
+== update drill（SIMULATED：发布之日 2025-01-23 → 2025-02-01）==
+
+-- v1 assess --
+[PASS] DRIFT-boundary-2025-01-30: supported
+
+-- v2 assess --
+[预期失配（模拟修订导致 expected 不再成立）] [FAIL] DRIFT-boundary-2025-01-30: supported | conclusions 缺少 [('legacy_policy_applies', 'false')]
+
+-- 判定翻转 --
+D-legacy-false-filed-after-publication: v1 legacy=false  v2 legacy=true
+J-date-boundary-legacy-false: v1 legacy=false  v2 legacy=true
+DRIFT-boundary-2025-01-30: v1 legacy=false  v2 legacy=true
+I-date-boundary-legacy-true: v1 legacy=true  v2 legacy=true
+
+注意：D/J 是原案例，v2 下 expected 已因模拟修订失配（这是演练想展示的“受影响案例”），不是代码错误；正式集未被修改。
+
+-- 受影响的查询（O-Q03 的备案截止条件）--
+v1: filing_date 条件值 = ['2025-01-23']
+v2: filing_date 条件值 = ['2025-02-01']
+
+-- 受影响的导出（O-R-003 的 conditions）--
+v1: 导出 O-R-003 filing_date 条件值 = ['2025-01-23']；记录数 20
+v2: 导出 O-R-003 filing_date 条件值 = ['2025-02-01']；记录数 20
+
+结论：修订只影响 O-R-003 / O-F-002 / O-Q03 / 导出 O-R-003 的 conditions；
+      引用 locator 不变，历史版本通过 v1 副本仍可复现；正式集未被修改。
+
+===== 汇总 =====
+[PASS] validate           exit=0      1.6s
+[PASS] assess             exit=0      0.2s
+[PASS] query              exit=0      0.1s
+[PASS] export             exit=0      0.1s
+[PASS] negative           exit=0     84.0s
+[PASS] relations          exit=0     11.6s
+[PASS] constraints        exit=0      0.9s
+[PASS] consistency        exit=0      0.7s
+[PASS] behavior           exit=0      0.1s
+[PASS] scenario           exit=0      0.3s
+[PASS] realq              exit=0      0.4s
+[PASS] contract           exit=0      4.2s
+[PASS] audit              exit=0      0.4s
+[PASS] conflict           exit=0      0.5s
+[PASS] update             exit=0      1.6s
+
+15/15 步通过
+报告：.tmp\run_all-report.json

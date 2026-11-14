@@ -1,0 +1,311 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:newenergy-ontology:ask:v1:response",
+  "title": "ask/v1 response",
+  "description": "新能源 Ontology 问答接口 ask/v1 的响应契约；成功返回 results，失败返回 error。",
+  "type": "object",
+  "required": [
+    "schema_version"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "ask/v1"
+    },
+    "results": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/result"
+      }
+    },
+    "error": {
+      "$ref": "#/$defs/error"
+    }
+  },
+  "additionalProperties": false,
+  "oneOf": [
+    {
+      "required": [
+        "results"
+      ],
+      "not": {
+        "required": [
+          "error"
+        ]
+      }
+    },
+    {
+      "required": [
+        "error"
+      ],
+      "not": {
+        "required": [
+          "results"
+        ]
+      }
+    }
+  ],
+  "$defs": {
+    "result": {
+      "type": "object",
+      "required": [
+        "schema_version",
+        "question",
+        "scenario",
+        "retrieval",
+        "assessment",
+        "answer",
+        "warnings"
+      ],
+      "properties": {
+        "schema_version": {
+          "const": "ask/v1"
+        },
+        "request_id": {
+          "type": "string"
+        },
+        "question": {
+          "type": "string",
+          "minLength": 1
+        },
+        "scenario": {
+          "enum": [
+            "legacy",
+            "grid_mode",
+            "classification",
+            "effective",
+            "capacity",
+            "province",
+            "evidence",
+            "scope"
+          ]
+        },
+        "retrieval": {
+          "type": "object",
+          "required": [
+            "method",
+            "params",
+            "corpus_units",
+            "evidence"
+          ],
+          "properties": {
+            "method": {
+              "type": "string",
+              "minLength": 1
+            },
+            "params": {
+              "type": "object",
+              "required": [
+                "k1",
+                "b",
+                "level_bonus"
+              ],
+              "properties": {
+                "k1": {
+                  "type": "number"
+                },
+                "b": {
+                  "type": "number"
+                },
+                "level_bonus": {
+                  "type": "number"
+                }
+              },
+              "additionalProperties": false
+            },
+            "corpus_units": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "evidence": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/evidence"
+              }
+            }
+          },
+          "additionalProperties": false
+        },
+        "assessment": {
+          "type": [
+            "object",
+            "null"
+          ]
+        },
+        "answer": {
+          "type": "object",
+          "required": [
+            "verdict",
+            "scenario",
+            "summary",
+            "points",
+            "missing_fields",
+            "source_refs"
+          ],
+          "properties": {
+            "verdict": {
+              "enum": [
+                "supported",
+                "insufficient",
+                "conflict",
+                "out_of_scope",
+                "unclassified",
+                "evidence_only",
+                "province_summary",
+                "province_pointer",
+                "abolished_document"
+              ]
+            },
+            "scenario": {
+              "enum": [
+                "legacy",
+                "grid_mode",
+                "classification",
+                "effective",
+                "capacity",
+                "province",
+                "evidence",
+                "scope"
+              ]
+            },
+            "summary": {
+              "type": "string"
+            },
+            "points": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "missing_fields": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "source_refs": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/ref"
+              }
+            }
+          },
+          "additionalProperties": false
+        },
+        "warnings": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "evidence": {
+      "type": "object",
+      "required": [
+        "rank",
+        "locator_id",
+        "source_id",
+        "kind",
+        "evidence_level",
+        "score",
+        "quote"
+      ],
+      "properties": {
+        "rank": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "locator_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "kind": {
+          "enum": [
+            "clause",
+            "qa",
+            "section",
+            "item"
+          ]
+        },
+        "evidence_level": {
+          "enum": [
+            "normative",
+            "official_explanation",
+            "official_qa",
+            null
+          ]
+        },
+        "score": {
+          "type": "number"
+        },
+        "quote": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "ref": {
+      "type": "object",
+      "required": [
+        "locator_id",
+        "source_id",
+        "evidence_level",
+        "quote"
+      ],
+      "properties": {
+        "locator_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "evidence_level": {
+          "enum": [
+            "normative",
+            "official_explanation",
+            "official_qa",
+            null
+          ]
+        },
+        "quote": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "error": {
+      "type": "object",
+      "required": [
+        "code",
+        "message"
+      ],
+      "properties": {
+        "code": {
+          "enum": [
+            "invalid_request",
+            "internal_error"
+          ]
+        },
+        "message": {
+          "type": "string",
+          "minLength": 1
+        },
+        "details": {
+          "type": [
+            "array",
+            "object",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

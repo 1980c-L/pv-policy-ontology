@@ -1,0 +1,14 @@
+{
+  "investor_type": "natural_person",
+  "site_category": "residential",
+  "connection_voltage_kv": 0.38,
+  "connection_type": "public_grid",
+  "investor_same_legal_person_as_user": false,
+  "capacity_mw": 0.01,
+  "capacity_basis": "ac_inverter_sum",
+  "same_red_line": true,
+  "site_owned_by_investor": true,
+  "filing_date": "2024-06-01",
+  "grid_connection_date": "2024-12-01",
+  "grid_connection_full_capacity": true
+}

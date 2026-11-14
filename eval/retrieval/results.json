@@ -1,0 +1,316 @@
+{
+  "batch": "pv-national-2025-v1",
+  "corpus_units": 130,
+  "corpus_by_kind": {
+    "clause": 43,
+    "qa": 73,
+    "section": 14
+  },
+  "questions": 10,
+  "top_k": 5,
+  "bm25": {
+    "n": 10,
+    "recall_at_1": 0.5,
+    "recall_at_5": 0.9,
+    "mrr": 0.6667,
+    "rows": [
+      {
+        "question_id": "R-Q01",
+        "rank": 3,
+        "top1": [
+          "PV-FAQ-20250411#qa=Q10"
+        ],
+        "top5": [
+          "PV-FAQ-20250411#qa=Q10",
+          "PV-FAQ-20250411#qa=Q11",
+          "PV-NAT-2025-007-ATTACH#clause=第五条",
+          "PV-FAQ-20250411#qa=Q66",
+          "PV-EXPLAIN-20250123#section=三(一)"
+        ]
+      },
+      {
+        "question_id": "R-Q02",
+        "rank": 2,
+        "top1": [
+          "PV-FAQ-20250411#qa=Q3"
+        ],
+        "top5": [
+          "PV-FAQ-20250411#qa=Q3",
+          "PV-NAT-2025-007-ATTACH#clause=第四条",
+          "PV-FAQ-20250411#qa=Q5",
+          "PV-FAQ-20250411#qa=Q7",
+          "PV-FAQ-20250411#qa=Q57"
+        ]
+      },
+      {
+        "question_id": "R-Q03",
+        "rank": 2,
+        "top1": [
+          "PV-FAQ-20250411#qa=Q54"
+        ],
+        "top5": [
+          "PV-FAQ-20250411#qa=Q54",
+          "PV-NAT-2025-007-ATTACH#clause=第十三条",
+          "PV-NAT-2025-007-ATTACH#clause=第三十一条",
+          "PV-EXPLAIN-20250123#section=三(三)",
+          "PV-FAQ-20250411#qa=Q45"
+        ]
+      },
+      {
+        "question_id": "R-Q04",
+        "rank": 1,
+        "top1": [
+          "PV-FAQ-20250411#qa=Q72"
+        ],
+        "top5": [
+          "PV-FAQ-20250411#qa=Q72",
+          "PV-FAQ-20250411#qa=Q18",
+          "PV-FAQ-20250411#qa=Q73",
+          "PV-FAQ-20250411#qa=Q71",
+          "PV-NAT-2025-007-ATTACH#clause=第四十三条"
+        ]
+      },
+      {
+        "question_id": "R-Q05",
+        "rank": 1,
+        "top1": [
+          "PV-FAQ-20250411#qa=Q71"
+        ],
+        "top5": [
+          "PV-FAQ-20250411#qa=Q71",
+          "PV-FAQ-20250411#qa=Q73",
+          "PV-NAT-2025-007-ATTACH#clause=第四十三条",
+          "PV-EXPLAIN-20250123#section=四(一)",
+          "PV-FAQ-20250411#qa=Q18"
+        ]
+      },
+      {
+        "question_id": "R-Q06",
+        "rank": 3,
+        "top1": [
+          "PV-FAQ-20250411#qa=Q5"
+        ],
+        "top5": [
+          "PV-FAQ-20250411#qa=Q5",
+          "PV-FAQ-20250411#qa=Q58",
+          "PV-NAT-2025-007-ATTACH#clause=第四条",
+          "PV-FAQ-20250411#qa=Q57",
+          "PV-FAQ-20250411#qa=Q6"
+        ]
+      },
+      {
+        "question_id": "R-Q07",
+        "rank": 1,
+        "top1": [
+          "PV-FAQ-20250411#qa=Q73"
+        ],
+        "top5": [
+          "PV-FAQ-20250411#qa=Q73",
+          "PV-NAT-2025-007-ATTACH#clause=第四十三条",
+          "PV-EXPLAIN-20250123#section=四(一)",
+          "PV-FAQ-20250411#qa=Q72",
+          "PV-FAQ-20250411#qa=Q71"
+        ]
+      },
+      {
+        "question_id": "R-Q08",
+        "rank": 1,
+        "top1": [
+          "PV-NAT-2025-007-ATTACH#clause=第五条"
+        ],
+        "top5": [
+          "PV-NAT-2025-007-ATTACH#clause=第五条",
+          "PV-FAQ-20250411#qa=Q9",
+          "PV-FAQ-20250411#qa=Q10",
+          "PV-FAQ-20250411#qa=Q11",
+          "PV-EXPLAIN-20250123#section=三(一)"
+        ]
+      },
+      {
+        "question_id": "R-Q09",
+        "rank": 0,
+        "top1": [
+          "PV-FAQ-20250411#qa=Q37"
+        ],
+        "top5": [
+          "PV-FAQ-20250411#qa=Q37",
+          "PV-FAQ-20250411#qa=Q54",
+          "PV-FAQ-20250411#qa=Q61",
+          "PV-EXPLAIN-20250123#section=二",
+          "PV-FAQ-20250411#qa=Q68"
+        ]
+      },
+      {
+        "question_id": "R-Q10",
+        "rank": 1,
+        "top1": [
+          "PV-FAQ-20250411#qa=Q5"
+        ],
+        "top5": [
+          "PV-FAQ-20250411#qa=Q5",
+          "PV-FAQ-20250411#qa=Q2",
+          "PV-NAT-2025-007-ATTACH#clause=第四条",
+          "PV-FAQ-20250411#qa=Q66",
+          "PV-FAQ-20250411#qa=Q7"
+        ]
+      }
+    ]
+  },
+  "embedding": {
+    "model": "google/embeddinggemma-2",
+    "model_dir": "E:\\hf-cache\\models\\embeddinggemma-2",
+    "revision": "f9972ac22e696a105c482202646979e33e4b5a1e1",
+    "dim": 768,
+    "normalized": true,
+    "dtype": "float32",
+    "query_prefix": "task: search result | query: ",
+    "doc_prefix": "title: {title} | text: {text}",
+    "n": 10,
+    "recall_at_1": 0.5,
+    "recall_at_5": 0.8,
+    "mrr": 0.6333,
+    "rows": [
+      {
+        "question_id": "R-Q01",
+        "rank": 2,
+        "top1": [
+          "PV-FAQ-20250411#qa=Q10"
+        ],
+        "top5": [
+          "PV-FAQ-20250411#qa=Q10",
+          "PV-NAT-2025-007-ATTACH#clause=第五条",
+          "PV-FAQ-20250411#qa=Q11",
+          "PV-FAQ-20250411#qa=Q9",
+          "PV-EXPLAIN-20250123#section=四(二)"
+        ]
+      },
+      {
+        "question_id": "R-Q02",
+        "rank": 0,
+        "top1": [
+          "PV-FAQ-20250411#qa=Q57"
+        ],
+        "top5": [
+          "PV-FAQ-20250411#qa=Q57",
+          "PV-FAQ-20250411#qa=Q7",
+          "PV-FAQ-20250411#qa=Q58",
+          "PV-FAQ-20250411#qa=Q17",
+          "PV-FAQ-20250411#qa=Q3"
+        ]
+      },
+      {
+        "question_id": "R-Q03",
+        "rank": 3,
+        "top1": [
+          "PV-FAQ-20250411#qa=Q54"
+        ],
+        "top5": [
+          "PV-FAQ-20250411#qa=Q54",
+          "PV-NAT-2025-007-ATTACH#clause=第二条",
+          "PV-NAT-2025-007-ATTACH#clause=第十三条",
+          "PV-FAQ-20250411#qa=Q44",
+          "PV-FAQ-20250411#qa=Q58"
+        ]
+      },
+      {
+        "question_id": "R-Q04",
+        "rank": 1,
+        "top1": [
+          "PV-FAQ-20250411#qa=Q72"
+        ],
+        "top5": [
+          "PV-FAQ-20250411#qa=Q72",
+          "PV-FAQ-20250411#qa=Q45",
+          "PV-FAQ-20250411#qa=Q73",
+          "PV-FAQ-20250411#qa=Q54",
+          "PV-FAQ-20250411#qa=Q58"
+        ]
+      },
+      {
+        "question_id": "R-Q05",
+        "rank": 1,
+        "top1": [
+          "PV-FAQ-20250411#qa=Q71"
+        ],
+        "top5": [
+          "PV-FAQ-20250411#qa=Q71",
+          "PV-EXPLAIN-20250123#section=引言",
+          "PV-NAT-2025-007-ATTACH#clause=第四十三条",
+          "PV-FAQ-20250411#qa=Q73",
+          "PV-EXPLAIN-20250123#section=四(一)"
+        ]
+      },
+      {
+        "question_id": "R-Q06",
+        "rank": 0,
+        "top1": [
+          "PV-FAQ-20250411#qa=Q58"
+        ],
+        "top5": [
+          "PV-FAQ-20250411#qa=Q58",
+          "PV-FAQ-20250411#qa=Q5",
+          "PV-FAQ-20250411#qa=Q6",
+          "PV-FAQ-20250411#qa=Q7",
+          "PV-FAQ-20250411#qa=Q54"
+        ]
+      },
+      {
+        "question_id": "R-Q07",
+        "rank": 1,
+        "top1": [
+          "PV-FAQ-20250411#qa=Q73"
+        ],
+        "top5": [
+          "PV-FAQ-20250411#qa=Q73",
+          "PV-FAQ-20250411#qa=Q27",
+          "PV-FAQ-20250411#qa=Q29",
+          "PV-NAT-2025-007-ATTACH#clause=第十五条",
+          "PV-EXPLAIN-20250123#section=四(一)"
+        ]
+      },
+      {
+        "question_id": "R-Q08",
+        "rank": 2,
+        "top1": [
+          "PV-FAQ-20250411#qa=Q9"
+        ],
+        "top5": [
+          "PV-FAQ-20250411#qa=Q9",
+          "PV-NAT-2025-007-ATTACH#clause=第五条",
+          "PV-FAQ-20250411#qa=Q10",
+          "PV-FAQ-20250411#qa=Q11",
+          "PV-FAQ-20250411#qa=Q8"
+        ]
+      },
+      {
+        "question_id": "R-Q09",
+        "rank": 1,
+        "top1": [
+          "PV-NAT-2025-007-ATTACH#clause=第二条"
+        ],
+        "top5": [
+          "PV-NAT-2025-007-ATTACH#clause=第二条",
+          "PV-FAQ-20250411#qa=Q1",
+          "PV-FAQ-20250411#qa=Q10",
+          "PV-FAQ-20250411#qa=Q2",
+          "PV-FAQ-20250411#qa=Q20"
+        ]
+      },
+      {
+        "question_id": "R-Q10",
+        "rank": 1,
+        "top1": [
+          "PV-FAQ-20250411#qa=Q5"
+        ],
+        "top5": [
+          "PV-FAQ-20250411#qa=Q5",
+          "PV-FAQ-20250411#qa=Q11",
+          "PV-FAQ-20250411#qa=Q6",
+          "PV-FAQ-20250411#qa=Q10",
+          "PV-FAQ-20250411#qa=Q13"
+        ]
+      }
+    ]
+  },
+  "note": "向量只作候选召回对照，不进入 rules/assess，也不作为主张真假判据。"
+}

@@ -1,0 +1,207 @@
+{
+  "n": 12,
+  "exact_match_count": "9/12",
+  "exact_match_rate": 0.75,
+  "mean_jaccard": 0.875,
+  "mean_author_coverage_by_reviewer": 0.875,
+  "rows": [
+    {
+      "question_id": "S-Q01",
+      "author_gold": [
+        "PV-NAT-2025-007-ATTACH#clause=第二条"
+      ],
+      "reviewer_gold": [
+        "PV-NAT-2025-007-ATTACH#clause=第二条"
+      ],
+      "intersection": [
+        "PV-NAT-2025-007-ATTACH#clause=第二条"
+      ],
+      "exact_match": true,
+      "jaccard": 1.0,
+      "author_coverage_by_reviewer": 1.0,
+      "reviewer_confidence": "high"
+    },
+    {
+      "question_id": "S-Q02",
+      "author_gold": [
+        "PV-NAT-2025-007-ATTACH#clause=第四条"
+      ],
+      "reviewer_gold": [
+        "PV-NAT-2025-007-ATTACH#clause=第四条"
+      ],
+      "intersection": [
+        "PV-NAT-2025-007-ATTACH#clause=第四条"
+      ],
+      "exact_match": true,
+      "jaccard": 1.0,
+      "author_coverage_by_reviewer": 1.0,
+      "reviewer_confidence": "high"
+    },
+    {
+      "question_id": "S-Q05",
+      "author_gold": [
+        "PV-NAT-2025-007-ATTACH#clause=第四条"
+      ],
+      "reviewer_gold": [
+        "PV-NAT-2025-007-ATTACH#clause=第四条"
+      ],
+      "intersection": [
+        "PV-NAT-2025-007-ATTACH#clause=第四条"
+      ],
+      "exact_match": true,
+      "jaccard": 1.0,
+      "author_coverage_by_reviewer": 1.0,
+      "reviewer_confidence": "high"
+    },
+    {
+      "question_id": "S-Q08",
+      "author_gold": [
+        "PV-NAT-2025-007-ATTACH#clause=第五条"
+      ],
+      "reviewer_gold": [
+        "PV-NAT-2025-007-ATTACH#clause=第五条"
+      ],
+      "intersection": [
+        "PV-NAT-2025-007-ATTACH#clause=第五条"
+      ],
+      "exact_match": true,
+      "jaccard": 1.0,
+      "author_coverage_by_reviewer": 1.0,
+      "reviewer_confidence": "high"
+    },
+    {
+      "question_id": "S-Q12",
+      "author_gold": [
+        "PV-NAT-2025-007-ATTACH#clause=第五条"
+      ],
+      "reviewer_gold": [
+        "PV-NAT-2025-007-ATTACH#clause=第五条"
+      ],
+      "intersection": [
+        "PV-NAT-2025-007-ATTACH#clause=第五条"
+      ],
+      "exact_match": true,
+      "jaccard": 1.0,
+      "author_coverage_by_reviewer": 1.0,
+      "reviewer_confidence": "high"
+    },
+    {
+      "question_id": "S-Q14",
+      "author_gold": [
+        "PV-NAT-2025-007-ATTACH#clause=第十三条"
+      ],
+      "reviewer_gold": [
+        "PV-NAT-2025-007-ATTACH#clause=第十三条"
+      ],
+      "intersection": [
+        "PV-NAT-2025-007-ATTACH#clause=第十三条"
+      ],
+      "exact_match": true,
+      "jaccard": 1.0,
+      "author_coverage_by_reviewer": 1.0,
+      "reviewer_confidence": "high"
+    },
+    {
+      "question_id": "S-Q17",
+      "author_gold": [
+        "PV-FAQ-20250411#qa=Q73",
+        "PV-NAT-2025-007-ATTACH#clause=第四十三条"
+      ],
+      "reviewer_gold": [
+        "PV-NAT-2025-007-ATTACH#clause=第四十三条"
+      ],
+      "intersection": [
+        "PV-NAT-2025-007-ATTACH#clause=第四十三条"
+      ],
+      "exact_match": false,
+      "jaccard": 0.5,
+      "author_coverage_by_reviewer": 0.5,
+      "reviewer_confidence": "high"
+    },
+    {
+      "question_id": "S-Q19",
+      "author_gold": [
+        "PV-FAQ-20250411#qa=Q72"
+      ],
+      "reviewer_gold": [
+        "PV-FAQ-20250411#qa=Q72"
+      ],
+      "intersection": [
+        "PV-FAQ-20250411#qa=Q72"
+      ],
+      "exact_match": true,
+      "jaccard": 1.0,
+      "author_coverage_by_reviewer": 1.0,
+      "reviewer_confidence": "high"
+    },
+    {
+      "question_id": "S-Q22",
+      "author_gold": [
+        "PV-FAQ-20250411#qa=Q71"
+      ],
+      "reviewer_gold": [
+        "PV-FAQ-20250411#qa=Q71"
+      ],
+      "intersection": [
+        "PV-FAQ-20250411#qa=Q71"
+      ],
+      "exact_match": true,
+      "jaccard": 1.0,
+      "author_coverage_by_reviewer": 1.0,
+      "reviewer_confidence": "high"
+    },
+    {
+      "question_id": "S-Q27",
+      "author_gold": [
+        "PV-EXPLAIN-20250123#section=四(二)",
+        "PV-NAT-2025-007-ATTACH#clause=第五条"
+      ],
+      "reviewer_gold": [
+        "PV-NAT-2025-007-ATTACH#clause=第五条"
+      ],
+      "intersection": [
+        "PV-NAT-2025-007-ATTACH#clause=第五条"
+      ],
+      "exact_match": false,
+      "jaccard": 0.5,
+      "author_coverage_by_reviewer": 0.5,
+      "reviewer_confidence": "high"
+    },
+    {
+      "question_id": "S-Q29",
+      "author_gold": [
+        "PV-NAT-2025-007-ATTACH#clause=第三十一条",
+        "PV-NAT-2025-007-ATTACH#clause=第十三条"
+      ],
+      "reviewer_gold": [
+        "PV-NAT-2025-007-ATTACH#clause=第三十一条",
+        "PV-NAT-2025-007-ATTACH#clause=第十三条"
+      ],
+      "intersection": [
+        "PV-NAT-2025-007-ATTACH#clause=第三十一条",
+        "PV-NAT-2025-007-ATTACH#clause=第十三条"
+      ],
+      "exact_match": true,
+      "jaccard": 1.0,
+      "author_coverage_by_reviewer": 1.0,
+      "reviewer_confidence": "medium"
+    },
+    {
+      "question_id": "S-Q36",
+      "author_gold": [
+        "PV-FAQ-20250411#qa=Q13",
+        "PV-NAT-2025-007-ATTACH#clause=第四条"
+      ],
+      "reviewer_gold": [
+        "PV-FAQ-20250411#qa=Q13"
+      ],
+      "intersection": [
+        "PV-FAQ-20250411#qa=Q13"
+      ],
+      "exact_match": false,
+      "jaccard": 0.5,
+      "author_coverage_by_reviewer": 0.5,
+      "reviewer_confidence": "high"
+    }
+  ]
+}

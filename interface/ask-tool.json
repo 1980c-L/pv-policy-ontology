@@ -1,0 +1,37 @@
+{
+  "name": "ask_new_energy_policy",
+  "description": "面向中国分布式光伏政策（国家办法 + 浙江/广东省级细则）的问答工具：检索候选原文、按结构化项目字段跑规则判定，并返回带 locator 引用的结论。不联网、不调用模型；政策外问题会明确说不代答。",
+  "parameters": {
+    "type": "object",
+    "required": [
+      "question"
+    ],
+    "properties": {
+      "question": {
+        "type": "string",
+        "description": "用户原话问题，中文。"
+      },
+      "project": {
+        "type": "object",
+        "description": "可选的项目结构化字段；用于规则判定。字段口径见 model/schema.json。"
+      },
+      "policy_as_of": {
+        "type": "string",
+        "description": "可选的政策时点 YYYY-MM-DD；用于判断规则是否在有效期内。"
+      },
+      "top_k": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 20,
+        "description": "可选，返回证据条数，默认 5。"
+      }
+    },
+    "additionalProperties": false
+  },
+  "x-output-schema": "urn:newenergy-ontology:ask:v1:response",
+  "x-schema-version": "ask/v1",
+  "x-invocation": {
+    "cli": "python tools/ask.py --input - --json",
+    "input": "ask/v1 input schema"
+  }
+}

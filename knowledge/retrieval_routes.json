@@ -1,0 +1,17 @@
+{
+  "description": "检索技术路由：按提问中的省名收窄候选来源，避免省级细则稀释国家办法问题。只影响候选召回，不影响规则判定。",
+  "provinces": [
+    {
+      "name": "浙江",
+      "source_prefix": "PV-ZJ-"
+    },
+    {
+      "name": "广东",
+      "source_prefix": "PV-GD-"
+    },
+    {
+      "name": "江苏",
+      "source_prefix": "PV-JS-"
+    }
+  ]
+}

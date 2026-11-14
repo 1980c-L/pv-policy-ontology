@@ -1,0 +1,2 @@
+# 本地规则判定与 run_all.py 使用 Python 标准库。
+# 可选向量检索实验的环境要求见 docs/SCOPE.md。

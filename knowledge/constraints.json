@@ -1,0 +1,227 @@
+{
+  "constraint_set_version": "constraints/v1",
+  "batch": "pv-national-2025-v1",
+  "status": "draft",
+  "scope_note": "多项目约束 v1：只处理同一用地红线内的附属场所、项目用地/用户变电站、用电户号合并与新增公共电网连接点。不是备案审查系统，不判断产权、备案主体资格或建设管理全流程；输入缺失时返回 insufficient，不猜结论。",
+  "constraints": [
+    {
+      "constraint_id": "O-C-001",
+      "title": "附属场所与建筑物应在同一用地红线",
+      "question": "项目使用建筑物以外的附属场所（含闲置空地）时，附属场所与建筑物是否在同一用地红线范围内？",
+      "constraint_type": "site_red_line",
+      "parameters": {
+        "use_field": "uses_ancillary_site",
+        "pair_fields": [
+          "building_red_line_id",
+          "ancillary_site_red_line_id"
+        ],
+        "consistency_field": "building_ancillary_same_red_line"
+      },
+      "source_refs": [
+        {
+          "source_id": "PV-FAQ-20250411",
+          "locator_id": "PV-FAQ-20250411#qa=Q14",
+          "kind": "qa",
+          "value": "Q14",
+          "quote": "当构筑物和闲置空地与建筑物在同一用地红线范围内",
+          "evidence_level": "official_qa"
+        },
+        {
+          "source_id": "PV-FAQ-20250411",
+          "locator_id": "PV-FAQ-20250411#qa=Q14",
+          "kind": "qa",
+          "value": "Q14",
+          "quote": "可按照“附属场所”相关要求建设分布式光伏发电项目",
+          "evidence_level": "official_qa"
+        },
+        {
+          "source_id": "PV-NAT-2025-007-ATTACH",
+          "locator_id": "PV-NAT-2025-007-ATTACH#clause=第四条",
+          "kind": "clause",
+          "value": "第四条",
+          "quote": "以上条款中建筑物及其附属场所应当位于同一用地红线范围内",
+          "evidence_level": "normative"
+        }
+      ],
+      "temporal_scope": {
+        "policy_document": "PV-NAT-2025-007-ATTACH",
+        "effective_from": "2025-01-23",
+        "effective_to": null
+      },
+      "notes": [
+        "Q14 明确同一红线内的闲置空地可按附属场所建设；不同红线不满足第四条的同一红线要求。",
+        "只看建筑物与附属场所两个红线 ID；same_red_line 是复合字段（还含用户与项目），不作为本约束的一致性位。",
+        "仅当调用方显式给出 building_ancillary_same_red_line 且与两个 ID 矛盾时返回 conflict，不强行选一个。"
+      ],
+      "open_items": [
+        "红线 ID 由调用方提供；本工具不核验产权证或宗地图。"
+      ]
+    },
+    {
+      "constraint_id": "O-C-002",
+      "title": "项目用地与用户变电站用地应在同一用地红线",
+      "question": "项目用地和用户变电站用地是否在同一用地红线范围内；大型工商业专线供电是否构成例外？",
+      "constraint_type": "site_red_line",
+      "parameters": {
+        "use_field": "uses_user_substation",
+        "pair_fields": [
+          "project_land_red_line_id",
+          "user_substation_red_line_id"
+        ],
+        "exception": {
+          "project_class": "large_industrial_business",
+          "connection_type": "dedicated_line"
+        }
+      },
+      "source_refs": [
+        {
+          "source_id": "PV-FAQ-20250411",
+          "locator_id": "PV-FAQ-20250411#qa=Q16",
+          "kind": "qa",
+          "value": "Q16",
+          "quote": "分布式光伏发电项目用地和用户变电站用地应在同一用地红线范围内",
+          "evidence_level": "official_qa"
+        },
+        {
+          "source_id": "PV-FAQ-20250411",
+          "locator_id": "PV-FAQ-20250411#qa=Q16",
+          "kind": "qa",
+          "value": "Q16",
+          "quote": "大型工商业分布式光伏与用户开展专线供电时，可跨越用地红线",
+          "evidence_level": "official_qa"
+        },
+        {
+          "source_id": "PV-NAT-2025-007-ATTACH",
+          "locator_id": "PV-NAT-2025-007-ATTACH#clause=第四条",
+          "kind": "clause",
+          "value": "第四条",
+          "quote": "以上条款中建筑物及其附属场所应当位于同一用地红线范围内",
+          "evidence_level": "normative"
+        }
+      ],
+      "temporal_scope": {
+        "policy_document": "PV-NAT-2025-007-ATTACH",
+        "effective_from": "2025-01-23",
+        "effective_to": null
+      },
+      "notes": [
+        "例外只限大型工商业且专线供电；分类或 connection_type 未定时返回 insufficient。",
+        "分类为 unclassified 时不能主张专线例外，按不满足同红线要求处理。"
+      ],
+      "open_items": [
+        "专线供电的工程认定不在本工具范围。"
+      ]
+    },
+    {
+      "constraint_id": "O-C-003",
+      "title": "同红线多建筑物按用电户号确定合并或独立",
+      "question": "同一用地红线范围内的多个建筑物，应对应同一用电户号合并为 1 个项目，还是可按多个户号分别建设？",
+      "constraint_type": "account_merge",
+      "parameters": {
+        "group_by": "red_line_id",
+        "account_field": "electricity_account_id"
+      },
+      "source_refs": [
+        {
+          "source_id": "PV-FAQ-20250411",
+          "locator_id": "PV-FAQ-20250411#qa=Q15",
+          "kind": "qa",
+          "value": "Q15",
+          "quote": "如果均对应同一用电户号，应按照1 个分布式光伏发电项目建设",
+          "evidence_level": "official_qa"
+        },
+        {
+          "source_id": "PV-FAQ-20250411",
+          "locator_id": "PV-FAQ-20250411#qa=Q15",
+          "kind": "qa",
+          "value": "Q15",
+          "quote": "如果对应多个用电户号，可按照多个分布式光伏发电项目建设",
+          "evidence_level": "official_qa"
+        },
+        {
+          "source_id": "PV-NAT-2025-007-ATTACH",
+          "locator_id": "PV-NAT-2025-007-ATTACH#clause=第四条",
+          "kind": "clause",
+          "value": "第四条",
+          "quote": "以上条款中建筑物及其附属场所应当位于同一用地红线范围内",
+          "evidence_level": "normative"
+        }
+      ],
+      "temporal_scope": {
+        "policy_document": "PV-NAT-2025-007-ATTACH",
+        "effective_from": "2025-01-23",
+        "effective_to": null
+      },
+      "notes": [
+        "同红线同户号→必须合并（输入若已拆成多个项目则 violated）；多个户号→允许独立，不是强制拆分。",
+        "混合户号按子集判：A/A/B 中 A/A 必须合并，B 可独立；不是出现第二个户号就整桶可分开。",
+        "缺户号/缺红线的成员单列 insufficient，不掩盖同一桶内已可判定的 must_merge。",
+        "非自然人户用的合并备案条件另见第十四条，本约束不替代备案审查。"
+      ],
+      "open_items": [
+        "户号由调用方提供，本工具不核验户号真实性。"
+      ]
+    },
+    {
+      "constraint_id": "O-C-004",
+      "title": "同红线分期或不同投资主体不得新增公共电网连接点",
+      "question": "同一用地红线内分期建设或不同投资主体分别开发的工商业项目，是否新增了与公共电网的连接点？",
+      "constraint_type": "connection_point",
+      "parameters": {
+        "group_by": "red_line_id",
+        "differentiation_fields": [
+          "investor_id",
+          "phase_id"
+        ],
+        "target_classes": [
+          "general_industrial_business",
+          "large_industrial_business"
+        ],
+        "anchor_field": "existing_connection_point_id",
+        "anchor_map_field": "existing_connection_points",
+        "connection_field": "grid_connection_point_id"
+      },
+      "source_refs": [
+        {
+          "source_id": "PV-FAQ-20250411",
+          "locator_id": "PV-FAQ-20250411#qa=Q31",
+          "kind": "qa",
+          "value": "Q31",
+          "quote": "不得新增与公共电网的连接点",
+          "evidence_level": "official_qa"
+        },
+        {
+          "source_id": "PV-FAQ-20250411",
+          "locator_id": "PV-FAQ-20250411#qa=Q31",
+          "kind": "qa",
+          "value": "Q31",
+          "quote": "应当按照“谁投资、谁备案”的原则确定备案主体",
+          "evidence_level": "official_qa"
+        },
+        {
+          "source_id": "PV-NAT-2025-007-ATTACH",
+          "locator_id": "PV-NAT-2025-007-ATTACH#clause=第十四条",
+          "kind": "clause",
+          "value": "第十四条",
+          "quote": "不得新增与公共电网的连接点",
+          "evidence_level": "normative"
+        }
+      ],
+      "temporal_scope": {
+        "policy_document": "PV-NAT-2025-007-ATTACH",
+        "effective_from": "2025-01-23",
+        "effective_to": null
+      },
+      "notes": [
+        "按红线分别取锚点：existing_connection_points[red_line_id] 可为单个或多个既有点；该对象存在时，某红线未给锚点即视为缺锚点，不再退回组级单锚点；只有完全没有该对象时才退回组级 existing_connection_point_id（仅单红线组可用）。",
+        "每条红线的连接点都落在该线既有点集合内才 satisfied；任一落在外即 violated；缺锚点/连接点单列 insufficient，不能拿别的红线的锚点判新增。",
+        "只覆盖工商业项目；同一红线内非工商业成员不参与判定，工商业子集仍可判；工商业成员不足 2 个时 not_applicable。",
+        "不同投资主体或不同分期至少有一项可确认不同才适用；无法确认时 insufficient。"
+      ],
+      "open_items": [
+        "连接点标识由调用方提供；本工具不核验电网接入批复。",
+        "同一红线多个既有点用数组表达；组级单锚点不能跨红线复用。"
+      ]
+    }
+  ]
+}

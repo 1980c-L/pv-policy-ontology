@@ -1,0 +1,1144 @@
+{
+  "batch": "pv-national-2025-v1",
+  "protocol": "codex-aligned-v1",
+  "corpus_units": 130,
+  "corpus_by_kind": {
+    "clause": 43,
+    "qa": 73,
+    "section": 14
+  },
+  "scoring_questions": 36,
+  "controls": 4,
+  "top_k": 20,
+  "results": {
+    "bm25": {
+      "n": 36,
+      "complete_evidence_at_5": 0.8611,
+      "complete_evidence_at_20": 0.9722,
+      "evidence_group_coverage_at_20": 0.9773,
+      "mrr": 0.6262,
+      "complete_evidence_count_at_5": "31/36",
+      "complete_evidence_count_at_20": "35/36",
+      "evidence_group_count_at_20": "43/44",
+      "rows": [
+        {
+          "question_id": "S-Q01",
+          "complete@5": false,
+          "complete@20": false,
+          "coverage@20": "0/1",
+          "first_relevant_rank": 0
+        },
+        {
+          "question_id": "S-Q02",
+          "complete@5": true,
+          "complete@20": true,
+          "coverage@20": "1/1",
+          "first_relevant_rank": 2
+        },
+        {
+          "question_id": "S-Q03",
+          "complete@5": true,
+          "complete@20": true,
+          "coverage@20": "1/1",
+          "first_relevant_rank": 4
+        },
+        {
+          "question_id": "S-Q04",
+          "complete@5": true,
+          "complete@20": true,
+          "coverage@20": "1/1",
+          "first_relevant_rank": 3
+        },
+        {
+          "question_id": "S-Q05",
+          "complete@5": false,
+          "complete@20": true,
+          "coverage@20": "1/1",
+          "first_relevant_rank": 7
+        },
+        {
+          "question_id": "S-Q06",
+          "complete@5": true,
+          "complete@20": true,
+          "coverage@20": "1/1",
+          "first_relevant_rank": 4
+        },
+        {
+          "question_id": "S-Q07",
+          "complete@5": true,
+          "complete@20": true,
+          "coverage@20": "1/1",
+          "first_relevant_rank": 5
+        },
+        {
+          "question_id": "S-Q08",
+          "complete@5": false,
+          "complete@20": true,
+          "coverage@20": "1/1",
+          "first_relevant_rank": 6
+        },
+        {
+          "question_id": "S-Q09",
+          "complete@5": true,
+          "complete@20": true,
+          "coverage@20": "1/1",
+          "first_relevant_rank": 4
+        },
+        {
+          "question_id": "S-Q10",
+          "complete@5": true,
+          "complete@20": true,
+          "coverage@20": "1/1",
+          "first_relevant_rank": 1
+        },
+        {
+          "question_id": "S-Q11",
+          "complete@5": true,
+          "complete@20": true,
+          "coverage@20": "1/1",
+          "first_relevant_rank": 4
+        },
+        {
+          "question_id": "S-Q12",
+          "complete@5": false,
+          "complete@20": true,
+          "coverage@20": "1/1",
+          "first_relevant_rank": 6
+        },
+        {
+          "question_id": "S-Q13",
+          "complete@5": true,
+          "complete@20": true,
+          "coverage@20": "1/1",
+          "first_relevant_rank": 1
+        },
+        {
+          "question_id": "S-Q14",
+          "complete@5": true,
+          "complete@20": true,
+          "coverage@20": "1/1",
+          "first_relevant_rank": 2
+        },
+        {
+          "question_id": "S-Q15",
+          "complete@5": true,
+          "complete@20": true,
+          "coverage@20": "1/1",
+          "first_relevant_rank": 3
+        },
+        {
+          "question_id": "S-Q16",
+          "complete@5": true,
+          "complete@20": true,
+          "coverage@20": "1/1",
+          "first_relevant_rank": 1
+        },
+        {
+          "question_id": "S-Q17",
+          "complete@5": true,
+          "complete@20": true,
+          "coverage@20": "2/2",
+          "first_relevant_rank": 1
+        },
+        {
+          "question_id": "S-Q18",
+          "complete@5": true,
+          "complete@20": true,
+          "coverage@20": "1/1",
+          "first_relevant_rank": 1
+        },
+        {
+          "question_id": "S-Q19",
+          "complete@5": true,
+          "complete@20": true,
+          "coverage@20": "1/1",
+          "first_relevant_rank": 1
+        },
+        {
+          "question_id": "S-Q20",
+          "complete@5": true,
+          "complete@20": true,
+          "coverage@20": "1/1",
+          "first_relevant_rank": 1
+        },
+        {
+          "question_id": "S-Q21",
+          "complete@5": true,
+          "complete@20": true,
+          "coverage@20": "1/1",
+          "first_relevant_rank": 1
+        },
+        {
+          "question_id": "S-Q22",
+          "complete@5": true,
+          "complete@20": true,
+          "coverage@20": "1/1",
+          "first_relevant_rank": 1
+        },
+        {
+          "question_id": "S-Q23",
+          "complete@5": true,
+          "complete@20": true,
+          "coverage@20": "2/2",
+          "first_relevant_rank": 1
+        },
+        {
+          "question_id": "S-Q24",
+          "complete@5": true,
+          "complete@20": true,
+          "coverage@20": "2/2",
+          "first_relevant_rank": 1
+        },
+        {
+          "question_id": "S-Q25",
+          "complete@5": true,
+          "complete@20": true,
+          "coverage@20": "2/2",
+          "first_relevant_rank": 1
+        },
+        {
+          "question_id": "S-Q26",
+          "complete@5": true,
+          "complete@20": true,
+          "coverage@20": "1/1",
+          "first_relevant_rank": 2
+        },
+        {
+          "question_id": "S-Q27",
+          "complete@5": false,
+          "complete@20": true,
+          "coverage@20": "2/2",
+          "first_relevant_rank": 5
+        },
+        {
+          "question_id": "S-Q28",
+          "complete@5": true,
+          "complete@20": true,
+          "coverage@20": "1/1",
+          "first_relevant_rank": 1
+        },
+        {
+          "question_id": "S-Q29",
+          "complete@5": true,
+          "complete@20": true,
+          "coverage@20": "2/2",
+          "first_relevant_rank": 1
+        },
+        {
+          "question_id": "S-Q30",
+          "complete@5": true,
+          "complete@20": true,
+          "coverage@20": "1/1",
+          "first_relevant_rank": 2
+        },
+        {
+          "question_id": "S-Q31",
+          "complete@5": true,
+          "complete@20": true,
+          "coverage@20": "1/1",
+          "first_relevant_rank": 4
+        },
+        {
+          "question_id": "S-Q32",
+          "complete@5": true,
+          "complete@20": true,
+          "coverage@20": "1/1",
+          "first_relevant_rank": 4
+        },
+        {
+          "question_id": "S-Q33",
+          "complete@5": true,
+          "complete@20": true,
+          "coverage@20": "2/2",
+          "first_relevant_rank": 1
+        },
+        {
+          "question_id": "S-Q34",
+          "complete@5": true,
+          "complete@20": true,
+          "coverage@20": "1/1",
+          "first_relevant_rank": 1
+        },
+        {
+          "question_id": "S-Q35",
+          "complete@5": true,
+          "complete@20": true,
+          "coverage@20": "1/1",
+          "first_relevant_rank": 2
+        },
+        {
+          "question_id": "S-Q36",
+          "complete@5": true,
+          "complete@20": true,
+          "coverage@20": "2/2",
+          "first_relevant_rank": 1
+        }
+      ],
+      "control_top1": {
+        "S-C01": {
+          "top1": "PV-FAQ-20250411#qa=Q22",
+          "max_score": 9.339
+        },
+        "S-C02": {
+          "top1": "PV-FAQ-20250411#qa=Q18",
+          "max_score": 8.4195
+        },
+        "S-C03": {
+          "top1": "PV-FAQ-20250411#qa=Q36",
+          "max_score": 20.233
+        },
+        "S-C04": {
+          "top1": "PV-FAQ-20250411#qa=Q54",
+          "max_score": 18.5229
+        }
+      }
+    },
+    "vector": {
+      "n": 36,
+      "complete_evidence_at_5": 0.8056,
+      "complete_evidence_at_20": 0.9722,
+      "evidence_group_coverage_at_20": 0.9773,
+      "mrr": 0.6136,
+      "complete_evidence_count_at_5": "29/36",
+      "complete_evidence_count_at_20": "35/36",
+      "evidence_group_count_at_20": "43/44",
+      "rows": [
+        {
+          "question_id": "S-Q01",
+          "complete@5": true,
+          "complete@20": true,
+          "coverage@20": "1/1",
+          "first_relevant_rank": 1
+        },
+        {
+          "question_id": "S-Q02",
+          "complete@5": true,
+          "complete@20": true,
+          "coverage@20": "1/1",
+          "first_relevant_rank": 2
+        },
+        {
+          "question_id": "S-Q03",
+          "complete@5": true,
+          "complete@20": true,
+          "coverage@20": "1/1",
+          "first_relevant_rank": 2
+        },
+        {
+          "question_id": "S-Q04",
+          "complete@5": true,
+          "complete@20": true,
+          "coverage@20": "1/1",
+          "first_relevant_rank": 2
+        },
+        {
+          "question_id": "S-Q05",
+          "complete@5": true,
+          "complete@20": true,
+          "coverage@20": "1/1",
+          "first_relevant_rank": 1
+        },
+        {
+          "question_id": "S-Q06",
+          "complete@5": false,
+          "complete@20": true,
+          "coverage@20": "1/1",
+          "first_relevant_rank": 6
+        },
+        {
+          "question_id": "S-Q07",
+          "complete@5": false,
+          "complete@20": true,
+          "coverage@20": "1/1",
+          "first_relevant_rank": 9
+        },
+        {
+          "question_id": "S-Q08",
+          "complete@5": true,
+          "complete@20": true,
+          "coverage@20": "1/1",
+          "first_relevant_rank": 3
+        },
+        {
+          "question_id": "S-Q09",
+          "complete@5": true,
+          "complete@20": true,
+          "coverage@20": "1/1",
+          "first_relevant_rank": 2
+        },
+        {
+          "question_id": "S-Q10",
+          "complete@5": true,
+          "complete@20": true,
+          "coverage@20": "1/1",
+          "first_relevant_rank": 3
+        },
+        {
+          "question_id": "S-Q11",
+          "complete@5": true,
+          "complete@20": true,
+          "coverage@20": "1/1",
+          "first_relevant_rank": 4
+        },
+        {
+          "question_id": "S-Q12",
+          "complete@5": false,
+          "complete@20": false,
+          "coverage@20": "0/1",
+          "first_relevant_rank": 0
+        },
+        {
+          "question_id": "S-Q13",
+          "complete@5": true,
+          "complete@20": true,
+          "coverage@20": "1/1",
+          "first_relevant_rank": 3
+        },
+        {
+          "question_id": "S-Q14",
+          "complete@5": true,
+          "complete@20": true,
+          "coverage@20": "1/1",
+          "first_relevant_rank": 4
+        },
+        {
+          "question_id": "S-Q15",
+          "complete@5": true,
+          "complete@20": true,
+          "coverage@20": "1/1",
+          "first_relevant_rank": 2
+        },
+        {
+          "question_id": "S-Q16",
+          "complete@5": true,
+          "complete@20": true,
+          "coverage@20": "1/1",
+          "first_relevant_rank": 1
+        },
+        {
+          "question_id": "S-Q17",
+          "complete@5": true,
+          "complete@20": true,
+          "coverage@20": "2/2",
+          "first_relevant_rank": 1
+        },
+        {
+          "question_id": "S-Q18",
+          "complete@5": true,
+          "complete@20": true,
+          "coverage@20": "1/1",
+          "first_relevant_rank": 1
+        },
+        {
+          "question_id": "S-Q19",
+          "complete@5": true,
+          "complete@20": true,
+          "coverage@20": "1/1",
+          "first_relevant_rank": 1
+        },
+        {
+          "question_id": "S-Q20",
+          "complete@5": true,
+          "complete@20": true,
+          "coverage@20": "1/1",
+          "first_relevant_rank": 1
+        },
+        {
+          "question_id": "S-Q21",
+          "complete@5": true,
+          "complete@20": true,
+          "coverage@20": "1/1",
+          "first_relevant_rank": 1
+        },
+        {
+          "question_id": "S-Q22",
+          "complete@5": true,
+          "complete@20": true,
+          "coverage@20": "1/1",
+          "first_relevant_rank": 1
+        },
+        {
+          "question_id": "S-Q23",
+          "complete@5": true,
+          "complete@20": true,
+          "coverage@20": "2/2",
+          "first_relevant_rank": 1
+        },
+        {
+          "question_id": "S-Q24",
+          "complete@5": false,
+          "complete@20": true,
+          "coverage@20": "2/2",
+          "first_relevant_rank": 1
+        },
+        {
+          "question_id": "S-Q25",
+          "complete@5": false,
+          "complete@20": true,
+          "coverage@20": "2/2",
+          "first_relevant_rank": 1
+        },
+        {
+          "question_id": "S-Q26",
+          "complete@5": true,
+          "complete@20": true,
+          "coverage@20": "1/1",
+          "first_relevant_rank": 2
+        },
+        {
+          "question_id": "S-Q27",
+          "complete@5": true,
+          "complete@20": true,
+          "coverage@20": "2/2",
+          "first_relevant_rank": 3
+        },
+        {
+          "question_id": "S-Q28",
+          "complete@5": true,
+          "complete@20": true,
+          "coverage@20": "1/1",
+          "first_relevant_rank": 1
+        },
+        {
+          "question_id": "S-Q29",
+          "complete@5": true,
+          "complete@20": true,
+          "coverage@20": "2/2",
+          "first_relevant_rank": 2
+        },
+        {
+          "question_id": "S-Q30",
+          "complete@5": true,
+          "complete@20": true,
+          "coverage@20": "1/1",
+          "first_relevant_rank": 2
+        },
+        {
+          "question_id": "S-Q31",
+          "complete@5": true,
+          "complete@20": true,
+          "coverage@20": "1/1",
+          "first_relevant_rank": 5
+        },
+        {
+          "question_id": "S-Q32",
+          "complete@5": false,
+          "complete@20": true,
+          "coverage@20": "1/1",
+          "first_relevant_rank": 6
+        },
+        {
+          "question_id": "S-Q33",
+          "complete@5": true,
+          "complete@20": true,
+          "coverage@20": "2/2",
+          "first_relevant_rank": 1
+        },
+        {
+          "question_id": "S-Q34",
+          "complete@5": true,
+          "complete@20": true,
+          "coverage@20": "1/1",
+          "first_relevant_rank": 2
+        },
+        {
+          "question_id": "S-Q35",
+          "complete@5": true,
+          "complete@20": true,
+          "coverage@20": "1/1",
+          "first_relevant_rank": 1
+        },
+        {
+          "question_id": "S-Q36",
+          "complete@5": false,
+          "complete@20": true,
+          "coverage@20": "2/2",
+          "first_relevant_rank": 9
+        }
+      ],
+      "control_top1": {
+        "S-C01": {
+          "top1": "PV-NAT-2025-007-ATTACH#clause=第十六条",
+          "max_score": 0.6834
+        },
+        "S-C02": {
+          "top1": "PV-EXPLAIN-20250123#section=三(五)",
+          "max_score": 0.6607
+        },
+        "S-C03": {
+          "top1": "PV-NAT-2025-007-ATTACH#clause=第二十条",
+          "max_score": 0.7498
+        },
+        "S-C04": {
+          "top1": "PV-NAT-2025-007-ATTACH#clause=第十三条",
+          "max_score": 0.7536
+        }
+      }
+    },
+    "hybrid_rrf": {
+      "n": 36,
+      "complete_evidence_at_5": 0.8333,
+      "complete_evidence_at_20": 1.0,
+      "evidence_group_coverage_at_20": 1.0,
+      "mrr": 0.6639,
+      "complete_evidence_count_at_5": "30/36",
+      "complete_evidence_count_at_20": "36/36",
+      "evidence_group_count_at_20": "44/44",
+      "rows": [
+        {
+          "question_id": "S-Q01",
+          "complete@5": false,
+          "complete@20": true,
+          "coverage@20": "1/1",
+          "first_relevant_rank": 11
+        },
+        {
+          "question_id": "S-Q02",
+          "complete@5": true,
+          "complete@20": true,
+          "coverage@20": "1/1",
+          "first_relevant_rank": 2
+        },
+        {
+          "question_id": "S-Q03",
+          "complete@5": true,
+          "complete@20": true,
+          "coverage@20": "1/1",
+          "first_relevant_rank": 2
+        },
+        {
+          "question_id": "S-Q04",
+          "complete@5": true,
+          "complete@20": true,
+          "coverage@20": "1/1",
+          "first_relevant_rank": 2
+        },
+        {
+          "question_id": "S-Q05",
+          "complete@5": true,
+          "complete@20": true,
+          "coverage@20": "1/1",
+          "first_relevant_rank": 3
+        },
+        {
+          "question_id": "S-Q06",
+          "complete@5": true,
+          "complete@20": true,
+          "coverage@20": "1/1",
+          "first_relevant_rank": 5
+        },
+        {
+          "question_id": "S-Q07",
+          "complete@5": false,
+          "complete@20": true,
+          "coverage@20": "1/1",
+          "first_relevant_rank": 6
+        },
+        {
+          "question_id": "S-Q08",
+          "complete@5": true,
+          "complete@20": true,
+          "coverage@20": "1/1",
+          "first_relevant_rank": 3
+        },
+        {
+          "question_id": "S-Q09",
+          "complete@5": true,
+          "complete@20": true,
+          "coverage@20": "1/1",
+          "first_relevant_rank": 2
+        },
+        {
+          "question_id": "S-Q10",
+          "complete@5": true,
+          "complete@20": true,
+          "coverage@20": "1/1",
+          "first_relevant_rank": 2
+        },
+        {
+          "question_id": "S-Q11",
+          "complete@5": true,
+          "complete@20": true,
+          "coverage@20": "1/1",
+          "first_relevant_rank": 4
+        },
+        {
+          "question_id": "S-Q12",
+          "complete@5": false,
+          "complete@20": true,
+          "coverage@20": "1/1",
+          "first_relevant_rank": 13
+        },
+        {
+          "question_id": "S-Q13",
+          "complete@5": true,
+          "complete@20": true,
+          "coverage@20": "1/1",
+          "first_relevant_rank": 1
+        },
+        {
+          "question_id": "S-Q14",
+          "complete@5": true,
+          "complete@20": true,
+          "coverage@20": "1/1",
+          "first_relevant_rank": 1
+        },
+        {
+          "question_id": "S-Q15",
+          "complete@5": true,
+          "complete@20": true,
+          "coverage@20": "1/1",
+          "first_relevant_rank": 2
+        },
+        {
+          "question_id": "S-Q16",
+          "complete@5": true,
+          "complete@20": true,
+          "coverage@20": "1/1",
+          "first_relevant_rank": 1
+        },
+        {
+          "question_id": "S-Q17",
+          "complete@5": true,
+          "complete@20": true,
+          "coverage@20": "2/2",
+          "first_relevant_rank": 1
+        },
+        {
+          "question_id": "S-Q18",
+          "complete@5": true,
+          "complete@20": true,
+          "coverage@20": "1/1",
+          "first_relevant_rank": 1
+        },
+        {
+          "question_id": "S-Q19",
+          "complete@5": true,
+          "complete@20": true,
+          "coverage@20": "1/1",
+          "first_relevant_rank": 1
+        },
+        {
+          "question_id": "S-Q20",
+          "complete@5": true,
+          "complete@20": true,
+          "coverage@20": "1/1",
+          "first_relevant_rank": 1
+        },
+        {
+          "question_id": "S-Q21",
+          "complete@5": true,
+          "complete@20": true,
+          "coverage@20": "1/1",
+          "first_relevant_rank": 1
+        },
+        {
+          "question_id": "S-Q22",
+          "complete@5": true,
+          "complete@20": true,
+          "coverage@20": "1/1",
+          "first_relevant_rank": 1
+        },
+        {
+          "question_id": "S-Q23",
+          "complete@5": true,
+          "complete@20": true,
+          "coverage@20": "2/2",
+          "first_relevant_rank": 1
+        },
+        {
+          "question_id": "S-Q24",
+          "complete@5": false,
+          "complete@20": true,
+          "coverage@20": "2/2",
+          "first_relevant_rank": 1
+        },
+        {
+          "question_id": "S-Q25",
+          "complete@5": true,
+          "complete@20": true,
+          "coverage@20": "2/2",
+          "first_relevant_rank": 1
+        },
+        {
+          "question_id": "S-Q26",
+          "complete@5": true,
+          "complete@20": true,
+          "coverage@20": "1/1",
+          "first_relevant_rank": 2
+        },
+        {
+          "question_id": "S-Q27",
+          "complete@5": true,
+          "complete@20": true,
+          "coverage@20": "2/2",
+          "first_relevant_rank": 3
+        },
+        {
+          "question_id": "S-Q28",
+          "complete@5": true,
+          "complete@20": true,
+          "coverage@20": "1/1",
+          "first_relevant_rank": 1
+        },
+        {
+          "question_id": "S-Q29",
+          "complete@5": true,
+          "complete@20": true,
+          "coverage@20": "2/2",
+          "first_relevant_rank": 1
+        },
+        {
+          "question_id": "S-Q30",
+          "complete@5": true,
+          "complete@20": true,
+          "coverage@20": "1/1",
+          "first_relevant_rank": 1
+        },
+        {
+          "question_id": "S-Q31",
+          "complete@5": true,
+          "complete@20": true,
+          "coverage@20": "1/1",
+          "first_relevant_rank": 5
+        },
+        {
+          "question_id": "S-Q32",
+          "complete@5": false,
+          "complete@20": true,
+          "coverage@20": "1/1",
+          "first_relevant_rank": 6
+        },
+        {
+          "question_id": "S-Q33",
+          "complete@5": true,
+          "complete@20": true,
+          "coverage@20": "2/2",
+          "first_relevant_rank": 1
+        },
+        {
+          "question_id": "S-Q34",
+          "complete@5": true,
+          "complete@20": true,
+          "coverage@20": "1/1",
+          "first_relevant_rank": 1
+        },
+        {
+          "question_id": "S-Q35",
+          "complete@5": true,
+          "complete@20": true,
+          "coverage@20": "1/1",
+          "first_relevant_rank": 1
+        },
+        {
+          "question_id": "S-Q36",
+          "complete@5": false,
+          "complete@20": true,
+          "coverage@20": "2/2",
+          "first_relevant_rank": 4
+        }
+      ],
+      "control_top1": {
+        "S-C01": {
+          "top1": "PV-FAQ-20250411#qa=Q37",
+          "max_score": 0.0323
+        },
+        "S-C02": {
+          "top1": "PV-FAQ-20250411#qa=Q37",
+          "max_score": 0.0313
+        },
+        "S-C03": {
+          "top1": "PV-FAQ-20250411#qa=Q36",
+          "max_score": 0.0325
+        },
+        "S-C04": {
+          "top1": "PV-FAQ-20250411#qa=Q54",
+          "max_score": 0.0318
+        }
+      }
+    },
+    "hybrid_rerank_level": {
+      "n": 36,
+      "complete_evidence_at_5": 0.8889,
+      "complete_evidence_at_20": 1.0,
+      "evidence_group_coverage_at_20": 1.0,
+      "mrr": 0.7491,
+      "complete_evidence_count_at_5": "32/36",
+      "complete_evidence_count_at_20": "36/36",
+      "evidence_group_count_at_20": "44/44",
+      "rows": [
+        {
+          "question_id": "S-Q01",
+          "complete@5": false,
+          "complete@20": true,
+          "coverage@20": "1/1",
+          "first_relevant_rank": 10
+        },
+        {
+          "question_id": "S-Q02",
+          "complete@5": true,
+          "complete@20": true,
+          "coverage@20": "1/1",
+          "first_relevant_rank": 1
+        },
+        {
+          "question_id": "S-Q03",
+          "complete@5": true,
+          "complete@20": true,
+          "coverage@20": "1/1",
+          "first_relevant_rank": 2
+        },
+        {
+          "question_id": "S-Q04",
+          "complete@5": true,
+          "complete@20": true,
+          "coverage@20": "1/1",
+          "first_relevant_rank": 1
+        },
+        {
+          "question_id": "S-Q05",
+          "complete@5": true,
+          "complete@20": true,
+          "coverage@20": "1/1",
+          "first_relevant_rank": 2
+        },
+        {
+          "question_id": "S-Q06",
+          "complete@5": true,
+          "complete@20": true,
+          "coverage@20": "1/1",
+          "first_relevant_rank": 4
+        },
+        {
+          "question_id": "S-Q07",
+          "complete@5": true,
+          "complete@20": true,
+          "coverage@20": "1/1",
+          "first_relevant_rank": 5
+        },
+        {
+          "question_id": "S-Q08",
+          "complete@5": true,
+          "complete@20": true,
+          "coverage@20": "1/1",
+          "first_relevant_rank": 3
+        },
+        {
+          "question_id": "S-Q09",
+          "complete@5": true,
+          "complete@20": true,
+          "coverage@20": "1/1",
+          "first_relevant_rank": 2
+        },
+        {
+          "question_id": "S-Q10",
+          "complete@5": true,
+          "complete@20": true,
+          "coverage@20": "1/1",
+          "first_relevant_rank": 1
+        },
+        {
+          "question_id": "S-Q11",
+          "complete@5": true,
+          "complete@20": true,
+          "coverage@20": "1/1",
+          "first_relevant_rank": 3
+        },
+        {
+          "question_id": "S-Q12",
+          "complete@5": false,
+          "complete@20": true,
+          "coverage@20": "1/1",
+          "first_relevant_rank": 12
+        },
+        {
+          "question_id": "S-Q13",
+          "complete@5": true,
+          "complete@20": true,
+          "coverage@20": "1/1",
+          "first_relevant_rank": 1
+        },
+        {
+          "question_id": "S-Q14",
+          "complete@5": true,
+          "complete@20": true,
+          "coverage@20": "1/1",
+          "first_relevant_rank": 1
+        },
+        {
+          "question_id": "S-Q15",
+          "complete@5": true,
+          "complete@20": true,
+          "coverage@20": "1/1",
+          "first_relevant_rank": 1
+        },
+        {
+          "question_id": "S-Q16",
+          "complete@5": true,
+          "complete@20": true,
+          "coverage@20": "1/1",
+          "first_relevant_rank": 1
+        },
+        {
+          "question_id": "S-Q17",
+          "complete@5": true,
+          "complete@20": true,
+          "coverage@20": "2/2",
+          "first_relevant_rank": 1
+        },
+        {
+          "question_id": "S-Q18",
+          "complete@5": true,
+          "complete@20": true,
+          "coverage@20": "1/1",
+          "first_relevant_rank": 1
+        },
+        {
+          "question_id": "S-Q19",
+          "complete@5": true,
+          "complete@20": true,
+          "coverage@20": "1/1",
+          "first_relevant_rank": 1
+        },
+        {
+          "question_id": "S-Q20",
+          "complete@5": true,
+          "complete@20": true,
+          "coverage@20": "1/1",
+          "first_relevant_rank": 1
+        },
+        {
+          "question_id": "S-Q21",
+          "complete@5": true,
+          "complete@20": true,
+          "coverage@20": "1/1",
+          "first_relevant_rank": 1
+        },
+        {
+          "question_id": "S-Q22",
+          "complete@5": true,
+          "complete@20": true,
+          "coverage@20": "1/1",
+          "first_relevant_rank": 1
+        },
+        {
+          "question_id": "S-Q23",
+          "complete@5": true,
+          "complete@20": true,
+          "coverage@20": "2/2",
+          "first_relevant_rank": 1
+        },
+        {
+          "question_id": "S-Q24",
+          "complete@5": false,
+          "complete@20": true,
+          "coverage@20": "2/2",
+          "first_relevant_rank": 1
+        },
+        {
+          "question_id": "S-Q25",
+          "complete@5": true,
+          "complete@20": true,
+          "coverage@20": "2/2",
+          "first_relevant_rank": 1
+        },
+        {
+          "question_id": "S-Q26",
+          "complete@5": true,
+          "complete@20": true,
+          "coverage@20": "1/1",
+          "first_relevant_rank": 1
+        },
+        {
+          "question_id": "S-Q27",
+          "complete@5": true,
+          "complete@20": true,
+          "coverage@20": "2/2",
+          "first_relevant_rank": 3
+        },
+        {
+          "question_id": "S-Q28",
+          "complete@5": true,
+          "complete@20": true,
+          "coverage@20": "1/1",
+          "first_relevant_rank": 1
+        },
+        {
+          "question_id": "S-Q29",
+          "complete@5": true,
+          "complete@20": true,
+          "coverage@20": "2/2",
+          "first_relevant_rank": 1
+        },
+        {
+          "question_id": "S-Q30",
+          "complete@5": true,
+          "complete@20": true,
+          "coverage@20": "1/1",
+          "first_relevant_rank": 1
+        },
+        {
+          "question_id": "S-Q31",
+          "complete@5": true,
+          "complete@20": true,
+          "coverage@20": "1/1",
+          "first_relevant_rank": 4
+        },
+        {
+          "question_id": "S-Q32",
+          "complete@5": true,
+          "complete@20": true,
+          "coverage@20": "1/1",
+          "first_relevant_rank": 3
+        },
+        {
+          "question_id": "S-Q33",
+          "complete@5": true,
+          "complete@20": true,
+          "coverage@20": "2/2",
+          "first_relevant_rank": 1
+        },
+        {
+          "question_id": "S-Q34",
+          "complete@5": true,
+          "complete@20": true,
+          "coverage@20": "1/1",
+          "first_relevant_rank": 1
+        },
+        {
+          "question_id": "S-Q35",
+          "complete@5": true,
+          "complete@20": true,
+          "coverage@20": "1/1",
+          "first_relevant_rank": 1
+        },
+        {
+          "question_id": "S-Q36",
+          "complete@5": false,
+          "complete@20": true,
+          "coverage@20": "2/2",
+          "first_relevant_rank": 4
+        }
+      ],
+      "control_top1": {
+        "S-C01": {
+          "top1": "PV-NAT-2025-007-ATTACH#clause=第十六条",
+          "max_score": 1.0278
+        },
+        "S-C02": {
+          "top1": "PV-FAQ-20250411#qa=Q37",
+          "max_score": 1.01
+        },
+        "S-C03": {
+          "top1": "PV-FAQ-20250411#qa=Q36",
+          "max_score": 1.01
+        },
+        "S-C04": {
+          "top1": "PV-NAT-2025-007-ATTACH#clause=第四十三条",
+          "max_score": 1.0485
+        }
+      }
+    }
+  },
+  "note": "候选召回对照；gold 由作者标注，非独立标注；不进入 rules/assess。"
+}

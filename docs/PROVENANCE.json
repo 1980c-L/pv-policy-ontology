@@ -1,0 +1,68 @@
+{
+  "prepared_on": "2026-11-15",
+  "project": "pv-policy-ontology",
+  "source_commit": "0c331d1efbc340a62310c8f06eb65ab0cb9c716a",
+  "selection": "生产代码、冻结公开材料与本地回归用例；发布候选在独立目录维护。",
+  "sources": [
+    {
+      "source_id": "ALT-MOFCOM-PV-NAT-2025-007",
+      "url": "https://policy.mofcom.gov.cn/claw/clawContent.shtml?id=101798",
+      "raw_path": "raw/ALT-MOFCOM-PV-NAT-2025-007.html",
+      "raw_sha256": "0612c8a07e0efb499f712d05d5f7b371982ed15fe4aebf5ade10db923f1c8679"
+    },
+    {
+      "source_id": "PV-CASE-20250402",
+      "url": "https://www.nea.gov.cn/20250402/1c56ebc576504b4e8acb2ae9f5a3ee9b/c.html",
+      "raw_path": "raw/PV-CASE-20250402__case.html",
+      "raw_sha256": "5abc8d99e906320b32f7ef050a100c1f52c2e6c18ef7bfadc2993984ed9891e8"
+    },
+    {
+      "source_id": "PV-EXPLAIN-20250123",
+      "url": "https://www.nea.gov.cn/20250123/d38e5436b4d04159863ddbc10a6ede10/c.html",
+      "raw_path": "raw/PV-EXPLAIN-20250123__explain.html",
+      "raw_sha256": "cc7c4a7f7243b6c99f7b3f1d545175d6daaea5475c49c4473ade10f1bf827774"
+    },
+    {
+      "source_id": "PV-FAQ-20250411",
+      "url": "https://www.nea.gov.cn/20250411/dca28f9186e848dda1d690d192fa50f8/20250411dca28f9186e848dda1d690d192fa50f8_113000de00999043e8a7fe4446dd6d97d8.pdf",
+      "raw_path": "raw/PV-FAQ-20250411__faq2025.pdf",
+      "raw_sha256": "d2263d2b7929f86a556993a5d08aa40b897495526cb9bceb5f3e33e6be949838"
+    },
+    {
+      "source_id": "PV-NAT-2025-007",
+      "url": "https://www.nea.gov.cn/20250123/112c5b199c5f45dd8e7ac93c9f5e4eaf/c.html",
+      "raw_path": "raw/PV-NAT-2025-007__notice.html",
+      "raw_sha256": "d2e6c69f192c106a9f1730424146a891e595c4ab11819fb9393988457a626d88"
+    },
+    {
+      "source_id": "PV-NAT-2025-007-ATTACH",
+      "url": "https://www.nea.gov.cn/20250123/112c5b199c5f45dd8e7ac93c9f5e4eaf/20250123112c5b199c5f45dd8e7ac93c9f5e4eaf_010446cd75b7d649969599bba99df7d0dd.doc",
+      "raw_path": "raw/PV-NAT-2025-007__measure.doc",
+      "raw_sha256": "9e05e863abc95b99b68409df4f8e482d85541204e8c427c89a2c1efdd7675a03"
+    },
+    {
+      "source_id": "PV-JS-2025-002",
+      "url": "https://fzggw.jiangsu.gov.cn/art/2025/5/8/art_51007_11560583.html",
+      "raw_path": "raw/PV-JS-2025-002.html",
+      "raw_sha256": "5042f2b438fc9e3aa4eb30dfcdf766709ff2a306b69292e6a0f8924dae82200d"
+    },
+    {
+      "source_id": "PV-GD-2025-002",
+      "url": "https://drc.gd.gov.cn/gdsnyj/gkmlpt/content/4/4837/mpost_4837956.html",
+      "raw_path": "raw/PV-GD-2025-002.html",
+      "raw_sha256": "77182eab39c80c1fcf4323a38e1cd6212945a4a2033f81326cd8e09eb61ed69c"
+    },
+    {
+      "source_id": "PV-SPOT-2023-1217",
+      "url": "https://www.gov.cn/gongbao/2023/issue_10846/202311/content_6917342.html",
+      "raw_path": "raw/PV-SPOT-2023-1217.html",
+      "raw_sha256": "5099d0229910250c91ccc8718d202a2b5d404ca7020cfc20f95fbf014a138356"
+    },
+    {
+      "source_id": "PV-ZJ-2026-015",
+      "url": "https://fzggw.zj.gov.cn/col/col1229123366/art/2026/art_88d61ad2526d40f6821d8122a4649eb4.html",
+      "raw_path": "raw/PV-ZJ-2026-015.docx",
+      "raw_sha256": "8de2159105e206abc3e233672054326fc5ae373ba3b4f129bba37822b23ab0b6"
+    }
+  ]
+}

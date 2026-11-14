@@ -1,0 +1,8 @@
+group: G-01-ancillary-same  结果: satisfied
+  O-C-001  satisfied      same_red_line_confirmed      附属场所与建筑物应在同一用地红线
+      - P-01: 两个红线 ID 相同
+  O-C-002  not_applicable not_applicable               项目用地与用户变电站用地应在同一用地红线
+  O-C-003  not_applicable not_applicable               同红线多建筑物按用电户号确定合并或独立
+      - 组内只有一个项目，不涉及多项目合并
+  O-C-004  not_applicable not_applicable               同红线分期或不同投资主体不得新增公共电网连接点
+      - 组内只有一个项目，不涉及新增连接点

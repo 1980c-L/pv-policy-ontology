@@ -1,0 +1,83 @@
+{
+  "started_at": "2026-11-15T04:38:36+0800",
+  "with_corpus": false,
+  "results": [
+    {
+      "step": "validate",
+      "exit": 0,
+      "seconds": 1.6
+    },
+    {
+      "step": "assess",
+      "exit": 0,
+      "seconds": 0.2
+    },
+    {
+      "step": "query",
+      "exit": 0,
+      "seconds": 0.1
+    },
+    {
+      "step": "export",
+      "exit": 0,
+      "seconds": 0.1
+    },
+    {
+      "step": "negative",
+      "exit": 0,
+      "seconds": 84.0
+    },
+    {
+      "step": "relations",
+      "exit": 0,
+      "seconds": 11.6
+    },
+    {
+      "step": "constraints",
+      "exit": 0,
+      "seconds": 0.9
+    },
+    {
+      "step": "consistency",
+      "exit": 0,
+      "seconds": 0.7
+    },
+    {
+      "step": "behavior",
+      "exit": 0,
+      "seconds": 0.1
+    },
+    {
+      "step": "scenario",
+      "exit": 0,
+      "seconds": 0.3
+    },
+    {
+      "step": "realq",
+      "exit": 0,
+      "seconds": 0.4
+    },
+    {
+      "step": "contract",
+      "exit": 0,
+      "seconds": 4.2
+    },
+    {
+      "step": "audit",
+      "exit": 0,
+      "seconds": 0.4
+    },
+    {
+      "step": "conflict",
+      "exit": 0,
+      "seconds": 0.5
+    },
+    {
+      "step": "update",
+      "exit": 0,
+      "seconds": 1.6
+    }
+  ],
+  "passed": 15,
+  "total": 15
+}

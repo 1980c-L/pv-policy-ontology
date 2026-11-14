@@ -1,0 +1,111 @@
+{
+  "schema_version": "ask/v1",
+  "results": [
+    {
+      "schema_version": "ask/v1",
+      "question": "分布式光伏分几类？",
+      "scenario": "classification",
+      "retrieval": {
+        "method": "bm25+level_bonus+route:national",
+        "params": {
+          "k1": 1.2,
+          "b": 0.3,
+          "level_bonus": 0.18
+        },
+        "corpus_units": 260,
+        "evidence": [
+          {
+            "rank": 1,
+            "locator_id": "PV-NAT-2025-007-ATTACH#clause=第四条",
+            "source_id": "PV-NAT-2025-007-ATTACH",
+            "kind": "clause",
+            "evidence_level": "normative",
+            "score": 1.1428,
+            "quote": "第四条 分布式光伏发电分为自然人户用、非自然人户用、一般工商业和大型工商业四种类型"
+          },
+          {
+            "rank": 2,
+            "locator_id": "PV-NAT-2025-007-ATTACH#clause=第二十九条",
+            "source_id": "PV-NAT-2025-007-ATTACH",
+            "kind": "clause",
+            "evidence_level": "normative",
+            "score": 1.1311,
+            "quote": "第二十九条 接入公共电网的分布式光伏发电项目，接入系统工程以及因接入引起的公共电网改造部分由电网企业投资建设"
+          },
+          {
+            "rank": 3,
+            "locator_id": "PV-NAT-2025-007-ATTACH#clause=第十二条",
+            "source_id": "PV-NAT-2025-007-ATTACH",
+            "kind": "clause",
+            "evidence_level": "normative",
+            "score": 1.1295,
+            "quote": "第十二条 分布式光伏发电项目应当按照“谁投资、谁备案”的原则确定备案主体"
+          },
+          {
+            "rank": 4,
+            "locator_id": "PV-NAT-2025-007-ATTACH#clause=第五条",
+            "source_id": "PV-NAT-2025-007-ATTACH",
+            "kind": "clause",
+            "evidence_level": "normative",
+            "score": 1.1145,
+            "quote": "第五条 分布式光伏发电上网模式包括全额上网、全部自发自用、自发自用余电上网三种"
+          },
+          {
+            "rank": 5,
+            "locator_id": "PV-NAT-2025-007#section=正文",
+            "source_id": "PV-NAT-2025-007",
+            "kind": "section",
+            "evidence_level": "normative",
+            "score": 1.1134,
+            "quote": "国家能源局关于印发《分布式光伏发电开发建设管理办法》的通知"
+          }
+        ]
+      },
+      "assessment": null,
+      "answer": {
+        "verdict": "evidence_only",
+        "scenario": "classification",
+        "summary": "政策把分布式光伏分为自然人户用、非自然人户用、一般工商业、大型工商业四类（第四条）。要判定某个项目属于哪类，需要补充投资者类型、场地、电压、容量口径、连接方式等信息。",
+        "points": [
+          "政策把分布式光伏分为自然人户用、非自然人户用、一般工商业、大型工商业四类（第四条）。要判定某个项目属于哪类，需要补充投资者类型、场地、电压、容量口径、连接方式等信息。",
+          "最相关原文：第四条 分布式光伏发电分为自然人户用、非自然人户用、一般工商业和大型工商业四种类型",
+          "证据（候选，供人工核对）：[1] PV-NAT-2025-007-ATTACH#clause=第四条（normative）；[2] PV-NAT-2025-007-ATTACH#clause=第二十九条（normative）；[3] PV-NAT-2025-007-ATTACH#clause=第十二条（normative）"
+        ],
+        "missing_fields": [],
+        "source_refs": [
+          {
+            "locator_id": "PV-NAT-2025-007-ATTACH#clause=第四条",
+            "source_id": "PV-NAT-2025-007-ATTACH",
+            "evidence_level": "normative",
+            "quote": "第四条 分布式光伏发电分为自然人户用、非自然人户用、一般工商业和大型工商业四种类型"
+          },
+          {
+            "locator_id": "PV-NAT-2025-007-ATTACH#clause=第二十九条",
+            "source_id": "PV-NAT-2025-007-ATTACH",
+            "evidence_level": "normative",
+            "quote": "第二十九条 接入公共电网的分布式光伏发电项目，接入系统工程以及因接入引起的公共电网改造部分由电网企业投资建设"
+          },
+          {
+            "locator_id": "PV-NAT-2025-007-ATTACH#clause=第十二条",
+            "source_id": "PV-NAT-2025-007-ATTACH",
+            "evidence_level": "normative",
+            "quote": "第十二条 分布式光伏发电项目应当按照“谁投资、谁备案”的原则确定备案主体"
+          },
+          {
+            "locator_id": "PV-NAT-2025-007-ATTACH#clause=第五条",
+            "source_id": "PV-NAT-2025-007-ATTACH",
+            "evidence_level": "normative",
+            "quote": "第五条 分布式光伏发电上网模式包括全额上网、全部自发自用、自发自用余电上网三种"
+          },
+          {
+            "locator_id": "PV-NAT-2025-007#section=正文",
+            "source_id": "PV-NAT-2025-007",
+            "evidence_level": "normative",
+            "quote": "国家能源局关于印发《分布式光伏发电开发建设管理办法》的通知"
+          }
+        ]
+      },
+      "warnings": []
+    }
+  ]
+}

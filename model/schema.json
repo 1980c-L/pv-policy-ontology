@@ -1,0 +1,596 @@
+{
+  "schema_version": "0.1",
+  "batch": "pv-national-2025-v1",
+  "ontology_name": "国能发新能规〔2025〕7号 分布式光伏项目分类与上网模式（硬门禁骨架）",
+  "status": "draft",
+  "scope_note": "本文件覆盖硬门禁 3 条规则（项目类型判定、上网模式判定、新老划断）+ 1 条省级比例规则（O-R-004，广东 30% / 浙江不作要求）。未覆盖：建设管理全流程、产权核验、变更与监管；同红线多项目合并与不得新增公共连接点已由 constraints/v1 覆盖（O-C-003/O-C-004）；备案主体资格与确定规则仍未建模。 2026-11-11 起 corpus 批次 pv-corpus-2025-v2 只扩来源层（江苏/广东实施意见、电力现货基本规则）；2026-11-12 批次 pv-corpus-2025-v3 纳入浙江正式细则，并把广东设施农业分类与 30% 比例写入规则层（O-R-001 广东分支、O-R-004）；2026-11-13 起浙江细则进入规则层：O-R-001 增加设施农业低于 6 兆瓦分支与 66 千伏超第三条列举电压分支（覆盖非自然人户用/一般工商业/大型工商业，输出 unclassified，提示按集中式备案管理，集中式规则未建；其它条件已知且仅缺 policy_as_of 时由规则级 guard 判 insufficient；缺 province 或投资主体类型时也不落国家 66 千伏大型分支），O-R-004 增加浙江比例不作要求分支。",
+  "id_prefixes": {
+    "entity": "O-E-",
+    "fact": "O-F-",
+    "rule": "O-R-",
+    "constraint": "O-C-"
+  },
+  "classes": [
+    {
+      "class_id": "policy_document",
+      "label": "政策文件",
+      "definition": "具有发文字号的规范性文件或官方解释材料。"
+    },
+    {
+      "class_id": "distributed_pv_project",
+      "label": "分布式光伏发电项目",
+      "definition": "在用户侧开发、配电网接入、就近平衡的分布式光伏项目实例。"
+    },
+    {
+      "class_id": "project_type",
+      "label": "项目类型",
+      "definition": "办法第四条划分的四类：自然人户用、非自然人户用、一般工商业、大型工商业。"
+    },
+    {
+      "class_id": "policy_concept",
+      "label": "政策概念",
+      "definition": "政策文本中的判定概念，如上网模式、新老划断、容量口径。"
+    }
+  ],
+  "fields": {
+    "project_id": {
+      "type": "string",
+      "label": "项目标识",
+      "definition": "调用方自定义的项目编号；仅用于回填结果，不参与判定。"
+    },
+    "investor_type": {
+      "type": "enum",
+      "values": [
+        "natural_person",
+        "non_natural_person"
+      ],
+      "value_labels": {
+        "natural_person": "自然人",
+        "non_natural_person": "非自然人（法人或其他组织）"
+      },
+      "label": "投资主体类型",
+      "definition": "投资建设分布式光伏的主体是自然人还是非自然人。备案主体与实际投资主体不一致时，按实际投资主体填。",
+      "used_by": [
+        "O-R-001"
+      ]
+    },
+    "site_category": {
+      "type": "enum",
+      "values": [
+        "residential",
+        "public_institution",
+        "industrial_commercial",
+        "other_building",
+        "agricultural_structure"
+      ],
+      "value_labels": {
+        "residential": "自有/居民住宅、庭院",
+        "public_institution": "党政机关、学校、医院、市政、文化、体育设施、交通场站等公共机构",
+        "industrial_commercial": "工商业厂房等",
+        "other_building": "其他建筑物及其附属场所",
+        "agricultural_structure": "设施农用地上的农业建（构）筑物（工厂化栽培/养殖车间、连栋温室、畜禽舍等）"
+      },
+      "label": "建设场所类型",
+      "definition": "按第四条列举的建设场所归并；agricultural_structure 只用于广东省级口径（设施农用地上的农业建（构）筑物），国家办法第四条本身未单列该场所。住宅/庭院与公共机构、工商业厂房必须分开；无法归入前四类的建筑物记 other_building。",
+      "used_by": [
+        "O-R-001"
+      ]
+    },
+    "connection_voltage_kv": {
+      "type": "number",
+      "unit": "kV",
+      "label": "公共电网连接点电压等级",
+      "definition": "项目与公共电网连接点的电压等级；380 伏记作 0.38。大型工商业按用户侧并网时，填与公共电网的实际连接点电压等级。",
+      "used_by": [
+        "O-R-001"
+      ]
+    },
+    "connection_type": {
+      "type": "enum",
+      "values": [
+        "public_grid",
+        "user_side_grid",
+        "dedicated_line"
+      ],
+      "value_labels": {
+        "public_grid": "直接接入公共电网",
+        "user_side_grid": "接入用户侧电网",
+        "dedicated_line": "与用户开展专线供电"
+      },
+      "label": "并网连接方式",
+      "definition": "项目以何种方式接入。第四条对大型工商业要求接入用户侧电网或专线供电（不直接接入公共电网）。",
+      "used_by": [
+        "O-R-001"
+      ]
+    },
+    "investor_same_legal_person_as_user": {
+      "type": "boolean",
+      "label": "投资方与用户同一法人主体",
+      "definition": "第四条大型工商业条件之一：用户与发电项目投资方为同一法人主体。未核实填 null，不得默认 true。",
+      "used_by": [
+        "O-R-001"
+      ]
+    },
+    "capacity_mw": {
+      "type": "number",
+      "unit": "MW",
+      "label": "总装机容量",
+      "definition": "项目总装机容量，单位兆瓦；计量口径必须由 capacity_basis 说明。",
+      "used_by": [
+        "O-R-001"
+      ]
+    },
+    "capacity_basis": {
+      "type": "enum",
+      "values": [
+        "ac_inverter_sum",
+        "dc_module_sum",
+        "unknown"
+      ],
+      "value_labels": {
+        "ac_inverter_sum": "交流侧容量（逆变器额定输出功率之和）",
+        "dc_module_sum": "直流侧组件容量之和",
+        "unknown": "口径未说明"
+      },
+      "label": "容量计量口径",
+      "definition": "第十三条：分布式光伏发电项目的容量为交流侧容量（即逆变器额定输出功率之和）。使用容量阈值判定前必须先确认口径；dc_module_sum 或 unknown 不得直接套用 6/20/50 兆瓦阈值。",
+      "used_by": [
+        "O-R-001"
+      ]
+    },
+    "grid_mode": {
+      "type": "enum",
+      "values": [
+        "full_feed_in",
+        "full_self_consumption",
+        "self_consumption_surplus_feed_in"
+      ],
+      "value_labels": {
+        "full_feed_in": "全额上网",
+        "full_self_consumption": "全部自发自用",
+        "self_consumption_surplus_feed_in": "自发自用余电上网"
+      },
+      "label": "上网模式",
+      "definition": "第五条三种上网模式。拟采用或已采用的上网模式。",
+      "used_by": [
+        "O-R-001",
+        "O-R-002"
+      ]
+    },
+    "spot_market_region": {
+      "type": "boolean",
+      "label": "电力现货市场连续运行地区",
+      "definition": "项目所在地区是否属于电力现货市场连续运行地区。不是全国统一条件，必须按地区核实；未核实填 null。",
+      "used_by": [
+        "O-R-002"
+      ]
+    },
+    "same_red_line": {
+      "type": "boolean",
+      "label": "同一用地红线",
+      "definition": "建筑物及其附属场所、以及涉及自发自用时的用户与项目，是否位于同一用地红线范围内。未核实填 null。",
+      "used_by": [
+        "O-R-001",
+        "O-R-002"
+      ]
+    },
+    "filing_date": {
+      "type": "date",
+      "label": "首次备案日期",
+      "definition": "项目首次备案日期（ISO 8601，YYYY-MM-DD）。不是备案变更日期，也不是并网日期。",
+      "used_by": [
+        "O-R-003"
+      ]
+    },
+    "filing_change_date": {
+      "type": "date",
+      "label": "备案变更日期",
+      "definition": "项目备案信息变更日期；无变更为 null。仅作记录，Q73 明确变更日期不影响新老划断。",
+      "used_by": [
+        "O-R-003"
+      ]
+    },
+    "grid_connection_date": {
+      "type": "date",
+      "label": "并网投产日期",
+      "definition": "项目并网投产日期（ISO 8601）。部分容量并网的，填首次并网日期，并同时填写 grid_connection_full_capacity。",
+      "used_by": [
+        "O-R-003"
+      ]
+    },
+    "grid_connection_full_capacity": {
+      "type": "boolean",
+      "label": "是否全容量并网",
+      "definition": "截至判定时点是否已全容量并网。Q72：2025-05-01 前（含当日）并网指全容量并网，部分容量并网不能按原政策。",
+      "used_by": [
+        "O-R-003"
+      ]
+    },
+    "policy_as_of": {
+      "type": "date",
+      "label": "政策适用时点",
+      "definition": "问题所问的政策时点，不是抓取时间。用于判断规则版本与时效，不得用 retrieved_at 代替。",
+      "used_by": []
+    },
+    "site_owned_by_investor": {
+      "type": "boolean",
+      "label": "场所为投资人自有",
+      "definition": "自然人用于投资的住宅、庭院是否为本人自有（产权或合法使用权归投资人本人）。仅自然人户用判定使用；未核实填 null。",
+      "used_by": [
+        "O-R-001"
+      ]
+    },
+    "province": {
+      "type": "enum",
+      "values": [
+        "guangdong",
+        "jiangsu",
+        "zhejiang",
+        "other"
+      ],
+      "value_labels": {
+        "guangdong": "广东",
+        "jiangsu": "江苏",
+        "zhejiang": "浙江",
+        "other": "其他省份"
+      },
+      "label": "项目所在省份",
+      "definition": "项目所在的省级行政区，用于选择省级细则口径。目前只有广东、浙江进入规则层（广东设施农业分类 + 30% 比例、农村公共建筑归非自然人户用；浙江设施农业与 66 千伏口径）；其他省份填 other。未核实填 null，不得默认按国家口径推断省级要求。",
+      "used_by": [
+        "O-R-001",
+        "O-R-004"
+      ]
+    },
+    "rural_public_site": {
+      "type": "boolean",
+      "label": "农村公共建筑物/农村公共基础设施",
+      "definition": "广东口径：非自然人利用村集体办公用房、文化中心、卫生所等农村公共建筑物及其附属场所，或已建成的村内道路、小公园、休闲活动场所等农村公共基础设施建设。仅用于广东 2026-02-10 至 2028-02-09 试行期分支；true=属于，false=明确不属于，未核实填 null。",
+      "used_by": [
+        "O-R-001"
+      ]
+    },
+    "factory_10kv_line_count": {
+      "type": "number",
+      "unit": "回",
+      "label": "厂房 10 千伏供电线路回数",
+      "definition": "广东口径：工商业厂房由几回 10 千伏线路供电，只填整数回数（如 2、3），不是光伏并网回路数。仅用于广东 2026-02-10 至 2028-02-09 试行期“2 回及以上 10 千伏线路供电”分支；未核实填 null。",
+      "used_by": [
+        "O-R-001"
+      ]
+    },
+    "max_pv_capacity_per_10kv_line_mw": {
+      "type": "number",
+      "unit": "MW",
+      "label": "单回 10 千伏线路接入光伏容量",
+      "definition": "广东口径：各回 10 千伏供电线路中，单回线路上接入的光伏装机容量最大值（交流侧），用于“每回不超过 6 兆瓦”判定，不是项目总容量。未核实填 null。",
+      "used_by": [
+        "O-R-001"
+      ]
+    },
+    "existing_supply_voltage_kv": {
+      "type": "number",
+      "unit": "kV",
+      "label": "厂房既有供电线路电压",
+      "definition": "广东口径：工商业厂房既有供电线路的电压等级，用于“并网电压不超过厂房既有供电线路电压”比较；380 伏记作 0.38。未核实填 null。",
+      "used_by": [
+        "O-R-001"
+      ]
+    },
+    "self_consumption_ratio_pct": {
+      "type": "number",
+      "unit": "%",
+      "label": "年自发自用电量比例",
+      "definition": "项目年自发自用电量占年发电量的百分比（0–100）。只填实际或设计值；未知填 null。用于广东一般工商业（农业建（构）筑物）30% 判定。",
+      "used_by": [
+        "O-R-004"
+      ]
+    },
+    "grid_opinion_date": {
+      "type": "date",
+      "label": "电网企业支持并网意见日期",
+      "definition": "电网企业出具支持并网意见（并网意向回复或接入意见）的日期；用于广东 30% 豁免三日期判定。未取得填 null。",
+      "used_by": [
+        "O-R-004"
+      ]
+    },
+    "construction_completion_date": {
+      "type": "date",
+      "label": "项目全部建成日期",
+      "definition": "项目全部建成（全容量建成）日期；用于广东 30% 豁免“生效后 2 个月内全部建成”判定。尚未建成填 null。",
+      "used_by": [
+        "O-R-004"
+      ]
+    }
+  },
+  "output_fields": {
+    "project_class": {
+      "type": "enum",
+      "values": [
+        "natural_person_household",
+        "non_natural_person_household",
+        "general_industrial_business",
+        "large_industrial_business",
+        "unclassified"
+      ],
+      "value_labels": {
+        "natural_person_household": "自然人户用",
+        "non_natural_person_household": "非自然人户用",
+        "general_industrial_business": "一般工商业",
+        "large_industrial_business": "大型工商业",
+        "unclassified": "无法按第四条归入四类"
+      },
+      "label": "项目类型判定结果"
+    },
+    "allowed_grid_modes": {
+      "type": "enum_set",
+      "values": [
+        "full_feed_in",
+        "full_self_consumption",
+        "self_consumption_surplus_feed_in"
+      ],
+      "label": "政策允许的上网模式集合"
+    },
+    "requires_same_red_line_for_self_consumption": {
+      "type": "boolean",
+      "label": "自发自用须同一用地红线"
+    },
+    "legacy_policy_applies": {
+      "type": "boolean",
+      "label": "是否按原有政策执行（新老划断）"
+    },
+    "provincial_ratio_requirement": {
+      "type": "enum",
+      "values": [
+        "met",
+        "not_met",
+        "exempted",
+        "no_requirement",
+        "not_applicable"
+      ],
+      "value_labels": {
+        "met": "满足省级比例要求",
+        "not_met": "不满足省级比例要求",
+        "exempted": "符合豁免条件，不作比例要求",
+        "no_requirement": "省级文件明确不作比例要求（浙江）",
+        "not_applicable": "省级比例规则不适用"
+      },
+      "label": "省级余电上网自发自用比例结论"
+    },
+    "provincial_ratio_min_pct": {
+      "type": "number",
+      "unit": "%",
+      "label": "省级最低自发自用比例"
+    }
+  },
+  "predicates": [
+    {
+      "name": "equals",
+      "args": [
+        "field",
+        "value"
+      ],
+      "value_type": "same_as_field",
+      "description": "字段值等于给定值。"
+    },
+    {
+      "name": "not_equals",
+      "args": [
+        "field",
+        "value"
+      ],
+      "value_type": "same_as_field",
+      "description": "字段值不等于给定值。"
+    },
+    {
+      "name": "in",
+      "args": [
+        "field",
+        "value"
+      ],
+      "value_type": "array_of_field",
+      "description": "字段值属于给定集合。"
+    },
+    {
+      "name": "not_in",
+      "args": [
+        "field",
+        "value"
+      ],
+      "value_type": "array_of_field",
+      "description": "字段值不属于给定集合。"
+    },
+    {
+      "name": "lte",
+      "args": [
+        "field",
+        "value"
+      ],
+      "value_type": "number",
+      "description": "数值字段小于等于给定值。"
+    },
+    {
+      "name": "lte_field",
+      "args": [
+        "field",
+        "value_field"
+      ],
+      "value_type": "field",
+      "description": "数值字段小于等于另一数值字段（字段对字段比较）。"
+    },
+    {
+      "name": "lt",
+      "args": [
+        "field",
+        "value"
+      ],
+      "value_type": "number",
+      "description": "数值字段小于给定值。"
+    },
+    {
+      "name": "gte",
+      "args": [
+        "field",
+        "value"
+      ],
+      "value_type": "number",
+      "description": "数值字段大于等于给定值。"
+    },
+    {
+      "name": "gt",
+      "args": [
+        "field",
+        "value"
+      ],
+      "value_type": "number",
+      "description": "数值字段大于给定值。"
+    },
+    {
+      "name": "date_lte",
+      "args": [
+        "field",
+        "value"
+      ],
+      "value_type": "date",
+      "description": "日期字段早于或等于给定日期。"
+    },
+    {
+      "name": "date_lt",
+      "args": [
+        "field",
+        "value"
+      ],
+      "value_type": "date",
+      "description": "日期字段早于给定日期。"
+    },
+    {
+      "name": "date_gte",
+      "args": [
+        "field",
+        "value"
+      ],
+      "value_type": "date",
+      "description": "日期字段晚于或等于给定日期。"
+    },
+    {
+      "name": "date_gt",
+      "args": [
+        "field",
+        "value"
+      ],
+      "value_type": "date",
+      "description": "日期字段晚于给定日期。"
+    },
+    {
+      "name": "is_null",
+      "args": [
+        "field"
+      ],
+      "value_type": "none",
+      "description": "字段缺失或为 null。"
+    },
+    {
+      "name": "is_not_null",
+      "args": [
+        "field"
+      ],
+      "value_type": "none",
+      "description": "字段存在且不为 null。"
+    },
+    {
+      "name": "is_true",
+      "args": [
+        "field"
+      ],
+      "value_type": "none",
+      "field_type": "boolean",
+      "description": "布尔字段为 true。"
+    },
+    {
+      "name": "is_false",
+      "args": [
+        "field"
+      ],
+      "value_type": "none",
+      "field_type": "boolean",
+      "description": "布尔字段为 false。"
+    }
+  ],
+  "relations": [
+    {
+      "name": "definition",
+      "description": "概念/实体的政策定义。",
+      "subject_classes": [
+        "project_type",
+        "policy_concept"
+      ]
+    },
+    {
+      "name": "classification_scheme",
+      "description": "项目分类的划分方案。",
+      "subject_classes": [
+        "policy_concept"
+      ]
+    },
+    {
+      "name": "grid_mode_rule",
+      "description": "不同类型项目可选上网模式的规则。",
+      "subject_classes": [
+        "policy_concept"
+      ]
+    },
+    {
+      "name": "date_semantics",
+      "description": "政策日期口径（发布之日、并网截止日）的解释。",
+      "subject_classes": [
+        "policy_concept"
+      ]
+    },
+    {
+      "name": "legacy_transition",
+      "description": "新老政策衔接规则。",
+      "subject_classes": [
+        "policy_concept"
+      ]
+    }
+  ],
+  "entity_relations": [
+    {
+      "name": "subclass_of",
+      "description": "概念/项目类型之间的上下位关系（A 是 B 的一种）。",
+      "domain": ["entity"],
+      "range": ["entity"]
+    },
+    {
+      "name": "refines",
+      "description": "下级文件条款对上级文件条款的细化、补充，或行使上级授权的裁量空间。",
+      "domain": ["locator"],
+      "range": ["locator"]
+    },
+    {
+      "name": "constrains",
+      "description": "事实对规则适用口径的约束；事实变化时，依赖该口径的规则需复核。",
+      "domain": ["fact"],
+      "range": ["rule"]
+    }
+  ],
+  "evidence_levels": [
+    "normative",
+    "official_explanation",
+    "official_qa"
+  ],
+  "roles": [
+    "build",
+    "eval_only",
+    "corroborate"
+  ],
+  "rule_default_status": [
+    "insufficient",
+    "unclassified",
+    "out_of_scope"
+  ],
+  "batches": [
+    "pv-national-2025-v1",
+    "pv-corpus-2025-v2",
+    "pv-corpus-2025-v3"
+  ]
+}

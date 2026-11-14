@@ -1,0 +1,47 @@
+[
+  {
+    "project": "新能源Ontology",
+    "arguments": [
+      "tools/ask.py",
+      "--question",
+      "分布式光伏分几类？",
+      "--json"
+    ],
+    "exit": 0
+  },
+  {
+    "project": "新能源Ontology",
+    "arguments": [
+      "tools/ask.py",
+      "--question",
+      "这个项目还能按原政策吗？",
+      "--project",
+      "eval/project.example.json",
+      "--policy-as-of",
+      "2025-06-01",
+      "--json"
+    ],
+    "exit": 0
+  },
+  {
+    "project": "新能源Ontology",
+    "arguments": [
+      "tools/ontology_tool.py",
+      "relations",
+      "impact",
+      "PV-NAT-2025-007-ATTACH#clause=第五条"
+    ],
+    "exit": 0
+  },
+  {
+    "project": "新能源Ontology",
+    "arguments": [
+      "tools/ontology_tool.py",
+      "constraints",
+      "check",
+      "--group",
+      "eval/constraint_group.example.json"
+    ],
+    "exit": 0
+  }
+]

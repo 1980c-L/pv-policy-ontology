@@ -1,0 +1,10 @@
+{"question_id": "R-Q01", "question": "一般工商业分布式光伏可以选择哪些上网模式？", "gold_locator": "PV-NAT-2025-007-ATTACH#clause=第五条", "gold_level": "normative"}
+{"question_id": "R-Q02", "question": "自然人户用分布式光伏的连接点电压等级上限是多少？", "gold_locator": "PV-NAT-2025-007-ATTACH#clause=第四条", "gold_level": "normative"}
+{"question_id": "R-Q03", "question": "分布式光伏的容量按直流侧还是交流侧计算？", "gold_locator": "PV-NAT-2025-007-ATTACH#clause=第十三条", "gold_level": "normative"}
+{"question_id": "R-Q04", "question": "2025年5月1日前并网是指全部容量并网还是部分容量也算？", "gold_locator": "PV-FAQ-20250411#qa=Q72", "gold_level": "official_qa"}
+{"question_id": "R-Q05", "question": "《管理办法》里的“发布之日”具体指哪一天？", "gold_locator": "PV-FAQ-20250411#qa=Q71", "gold_level": "official_qa"}
+{"question_id": "R-Q06", "question": "大型工商业分布式光伏的装机容量上限是多少？", "gold_locator": "PV-NAT-2025-007-ATTACH#clause=第四条", "gold_level": "normative"}
+{"question_id": "R-Q07", "question": "项目在发布之日后做了备案变更，还能按原有政策执行吗？", "gold_locator": "PV-FAQ-20250411#qa=Q73", "gold_level": "official_qa"}
+{"question_id": "R-Q08", "question": "户用分布式光伏可以选择全额上网吗？", "gold_locator": "PV-NAT-2025-007-ATTACH#clause=第五条", "gold_level": "normative"}
+{"question_id": "R-Q09", "question": "分布式光伏发电的定义是什么？", "gold_locator": "PV-NAT-2025-007-ATTACH#clause=第二条", "gold_level": "normative"}
+{"question_id": "R-Q10", "question": "一般工商业和大型工商业分布式光伏怎么区分？", "gold_locator": "PV-FAQ-20250411#qa=Q5", "gold_level": "official_qa"}

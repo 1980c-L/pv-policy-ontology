@@ -1,0 +1,144 @@
+{
+  "schema_version": "constraint-schema/v1",
+  "batch": "pv-national-2025-v1",
+  "status": "draft",
+  "scope_note": "多项目约束的输入/输出结构。组内成员共享 group.policy_as_of；成员可用自己的 policy_as_of 覆盖，覆盖值同时用于规则时效过滤。成员字段=model/schema.json 的 21 个基础字段 + 本文件 member_extension_fields。派生字段（project_class 等）由规则重算，不接受调用方注入。",
+  "group_required_fields": [
+    "group_id",
+    "members"
+  ],
+  "group_optional_fields": [
+    "policy_as_of",
+    "existing_connection_point_id",
+    "existing_connection_points",
+    "label"
+  ],
+  "group_fields": {
+    "group_id": {
+      "type": "string",
+      "label": "约束组标识，调用方自定义"
+    },
+    "members": {
+      "type": "array",
+      "label": "同一约束组内的项目成员，1–20 个"
+    },
+    "policy_as_of": {
+      "type": "date",
+      "label": "组级政策适用时点；成员未给时使用"
+    },
+    "existing_connection_point_id": {
+      "type": "string",
+      "label": "已有公共电网连接点标识，O-C-004 的比对锚点"
+    },
+    "existing_connection_points": {
+      "type": "object",
+      "label": "按红线给出的既有公共电网连接点集合：{red_line_id: string 或 [string]}；与 existing_connection_point_id 同时给时优先使用本字段"
+    },
+    "label": {
+      "type": "string",
+      "label": "可选说明"
+    }
+  },
+  "member_extension_fields": {
+    "red_line_id": {
+      "type": "string",
+      "label": "用地红线标识；同值视为同一红线"
+    },
+    "building_red_line_id": {
+      "type": "string",
+      "label": "建筑物所在地块的红线标识"
+    },
+    "ancillary_site_red_line_id": {
+      "type": "string",
+      "label": "附属场所（含闲置空地）所在地块的红线标识"
+    },
+    "uses_ancillary_site": {
+      "type": "boolean",
+      "label": "项目是否使用建筑物以外的附属场所"
+    },
+    "building_ancillary_same_red_line": {
+      "type": "boolean",
+      "label": "建筑物与附属场所是否在同一用地红线（仅声明用；与两个红线 ID 矛盾时报 conflict）"
+    },
+    "project_land_red_line_id": {
+      "type": "string",
+      "label": "分布式光伏项目用地红线标识"
+    },
+    "user_substation_red_line_id": {
+      "type": "string",
+      "label": "用户变电站用地红线标识"
+    },
+    "uses_user_substation": {
+      "type": "boolean",
+      "label": "项目是否使用用户变电站用地"
+    },
+    "electricity_account_id": {
+      "type": "string",
+      "label": "用电户号；同红线同户号按 1 个项目"
+    },
+    "grid_connection_point_id": {
+      "type": "string",
+      "label": "项目拟接入/已接入的公共电网连接点标识"
+    },
+    "investor_id": {
+      "type": "string",
+      "label": "投资主体标识；用于识别不同投资主体分别开发"
+    },
+    "phase_id": {
+      "type": "string",
+      "label": "分期标识；用于识别分期建设"
+    }
+  },
+  "member_base_fields_source": "model/schema.json#fields",
+  "max_members": 20,
+  "statuses": [
+    "satisfied",
+    "violated",
+    "insufficient",
+    "conflict",
+    "not_applicable"
+  ],
+  "decisions": [
+    "same_red_line_required",
+    "same_red_line_confirmed",
+    "dedicated_line_exception",
+    "must_merge",
+    "may_separate",
+    "no_new_connection_point",
+    "existing_point_shared",
+    "insufficient_information",
+    "not_applicable",
+    "conflict"
+  ],
+  "constraint_types": {
+    "site_red_line": {
+      "required_parameters": [
+        "use_field",
+        "pair_fields"
+      ],
+      "optional_parameters": [
+        "exception",
+        "consistency_field"
+      ]
+    },
+    "account_merge": {
+      "required_parameters": [
+        "group_by",
+        "account_field"
+      ],
+      "optional_parameters": []
+    },
+    "connection_point": {
+      "required_parameters": [
+        "group_by",
+        "differentiation_fields",
+        "target_classes",
+        "anchor_field",
+        "connection_field"
+      ],
+      "optional_parameters": [
+        "anchor_map_field"
+      ]
+    }
+  }
+}

@@ -1,0 +1,2004 @@
+{
+  "rule_set_version": "0.1",
+  "batch": "pv-national-2025-v1",
+  "policy_document": "PV-NAT-2025-007-ATTACH",
+  "status": "draft",
+  "evaluation": {
+    "case_selection": "ordered_first_match",
+    "missing_data": "未满足任何 case 且无 default 可判时，返回 default.status；不得把缺失数据当作否定结论。"
+  },
+  "rules": [
+    {
+      "rule_id": "O-R-001",
+      "title": "分布式光伏项目类型判定（四类）",
+      "knowledge_kind": "derived",
+      "rule_status": "draft",
+      "question": "给定投资主体、建设场所、连接点电压、容量口径与并网方式，项目属于第四条哪一类？",
+      "input_fields": [
+        "investor_type",
+        "site_category",
+        "connection_voltage_kv",
+        "connection_type",
+        "investor_same_legal_person_as_user",
+        "capacity_mw",
+        "capacity_basis",
+        "same_red_line",
+        "site_owned_by_investor",
+        "province",
+        "rural_public_site",
+        "factory_10kv_line_count",
+        "max_pv_capacity_per_10kv_line_mw",
+        "existing_supply_voltage_kv",
+        "grid_mode",
+        "policy_as_of"
+      ],
+      "cases": [
+        {
+          "case_id": "natural_person_household",
+          "label": "自然人户用",
+          "when": {
+            "logic": "all",
+            "conditions": [
+              {
+                "predicate": "equals",
+                "field": "investor_type",
+                "value": "natural_person"
+              },
+              {
+                "predicate": "equals",
+                "field": "site_category",
+                "value": "residential"
+              },
+              {
+                "predicate": "lte",
+                "field": "connection_voltage_kv",
+                "value": 0.38
+              },
+              {
+                "predicate": "is_true",
+                "field": "site_owned_by_investor"
+              },
+              {
+                "predicate": "is_true",
+                "field": "same_red_line"
+              }
+            ]
+          },
+          "then": {
+            "conclusions": [
+              {
+                "field": "project_class",
+                "value": "natural_person_household"
+              }
+            ]
+          }
+        },
+        {
+          "case_id": "non_natural_person_household",
+          "label": "非自然人户用",
+          "when": {
+            "logic": "all",
+            "conditions": [
+              {
+                "predicate": "equals",
+                "field": "investor_type",
+                "value": "non_natural_person"
+              },
+              {
+                "predicate": "equals",
+                "field": "site_category",
+                "value": "residential"
+              },
+              {
+                "predicate": "lte",
+                "field": "connection_voltage_kv",
+                "value": 20
+              },
+              {
+                "predicate": "lte",
+                "field": "capacity_mw",
+                "value": 6
+              },
+              {
+                "predicate": "equals",
+                "field": "capacity_basis",
+                "value": "ac_inverter_sum"
+              },
+              {
+                "predicate": "is_true",
+                "field": "same_red_line"
+              }
+            ]
+          },
+          "then": {
+            "conclusions": [
+              {
+                "field": "project_class",
+                "value": "non_natural_person_household"
+              }
+            ]
+          }
+        },
+        {
+          "case_id": "guangdong_rural_public_non_natural_household",
+          "label": "广东：农村公共建筑/农村公共基础设施（≤20kV、≤6MW，2026-02-10 至 2028-02-09）归非自然人户用",
+          "blocks_on_unknown": true,
+          "when": {
+            "logic": "all",
+            "conditions": [
+              {
+                "predicate": "equals",
+                "field": "province",
+                "value": "guangdong"
+              },
+              {
+                "predicate": "equals",
+                "field": "investor_type",
+                "value": "non_natural_person"
+              },
+              {
+                "predicate": "in",
+                "field": "site_category",
+                "value": [
+                  "public_institution",
+                  "other_building"
+                ]
+              },
+              {
+                "predicate": "is_true",
+                "field": "rural_public_site"
+              },
+              {
+                "predicate": "lte",
+                "field": "connection_voltage_kv",
+                "value": 20
+              },
+              {
+                "predicate": "lte",
+                "field": "capacity_mw",
+                "value": 6
+              },
+              {
+                "predicate": "equals",
+                "field": "capacity_basis",
+                "value": "ac_inverter_sum"
+              },
+              {
+                "predicate": "date_gte",
+                "field": "policy_as_of",
+                "value": "2026-02-10"
+              },
+              {
+                "predicate": "date_lte",
+                "field": "policy_as_of",
+                "value": "2028-02-09"
+              }
+            ]
+          },
+          "then": {
+            "conclusions": [
+              {
+                "field": "project_class",
+                "value": "non_natural_person_household"
+              }
+            ]
+          }
+        },
+        {
+          "case_id": "large_industrial_business_35kv",
+          "label": "大型工商业（35 千伏）",
+          "when": {
+            "logic": "all",
+            "conditions": [
+              {
+                "predicate": "in",
+                "field": "site_category",
+                "value": [
+                  "public_institution",
+                  "industrial_commercial",
+                  "other_building"
+                ]
+              },
+              {
+                "predicate": "in",
+                "field": "connection_type",
+                "value": [
+                  "user_side_grid",
+                  "dedicated_line"
+                ]
+              },
+              {
+                "predicate": "is_true",
+                "field": "investor_same_legal_person_as_user"
+              },
+              {
+                "predicate": "equals",
+                "field": "connection_voltage_kv",
+                "value": 35
+              },
+              {
+                "predicate": "lte",
+                "field": "capacity_mw",
+                "value": 20
+              },
+              {
+                "predicate": "equals",
+                "field": "capacity_basis",
+                "value": "ac_inverter_sum"
+              },
+              {
+                "predicate": "is_true",
+                "field": "same_red_line"
+              }
+            ]
+          },
+          "then": {
+            "conclusions": [
+              {
+                "field": "project_class",
+                "value": "large_industrial_business"
+              }
+            ]
+          }
+        },
+        {
+          "case_id": "zhejiang_66kv_centralized",
+          "label": "浙江：66 千伏超出第三条列举电压等级，按集中式光伏电站备案管理（2026-08-03 至 2030-01-16）",
+          "when": {
+            "logic": "all",
+            "conditions": [
+              {
+                "predicate": "equals",
+                "field": "province",
+                "value": "zhejiang"
+              },
+              {
+                "predicate": "equals",
+                "field": "investor_type",
+                "value": "non_natural_person"
+              },
+              {
+                "predicate": "in",
+                "field": "site_category",
+                "value": [
+                  "residential",
+                  "public_institution",
+                  "industrial_commercial",
+                  "other_building",
+                  "agricultural_structure"
+                ]
+              },
+              {
+                "predicate": "in",
+                "field": "connection_type",
+                "value": [
+                  "user_side_grid",
+                  "dedicated_line"
+                ]
+              },
+              {
+                "predicate": "equals",
+                "field": "connection_voltage_kv",
+                "value": 66
+              },
+              {
+                "predicate": "equals",
+                "field": "capacity_basis",
+                "value": "ac_inverter_sum"
+              },
+              {
+                "predicate": "is_true",
+                "field": "same_red_line"
+              },
+              {
+                "predicate": "date_gte",
+                "field": "policy_as_of",
+                "value": "2026-08-03"
+              },
+              {
+                "predicate": "date_lte",
+                "field": "policy_as_of",
+                "value": "2030-01-16"
+              }
+            ]
+          },
+          "then": {
+            "conclusions": [
+              {
+                "field": "project_class",
+                "value": "unclassified"
+              }
+            ]
+          }
+        },
+        {
+          "case_id": "large_industrial_business_110kv",
+          "label": "大型工商业（110/66 千伏）",
+          "when": {
+            "logic": "all",
+            "conditions": [
+
+              {
+                "predicate": "equals",
+                "field": "investor_type",
+                "value": "non_natural_person"
+              },
+              {
+                "predicate": "in",
+                "field": "site_category",
+                "value": [
+                  "public_institution",
+                  "industrial_commercial",
+                  "other_building"
+                ]
+              },
+              {
+                "predicate": "in",
+                "field": "connection_type",
+                "value": [
+                  "user_side_grid",
+                  "dedicated_line"
+                ]
+              },
+              {
+                "predicate": "is_true",
+                "field": "investor_same_legal_person_as_user"
+              },
+              {
+                "predicate": "in",
+                "field": "connection_voltage_kv",
+                "value": [
+                  110,
+                  66
+                ]
+              },
+              {
+                "predicate": "lte",
+                "field": "capacity_mw",
+                "value": 50
+              },
+              {
+                "predicate": "equals",
+                "field": "capacity_basis",
+                "value": "ac_inverter_sum"
+              },
+              {
+                "predicate": "is_true",
+                "field": "same_red_line"
+              }
+            ]
+          },
+          "then": {
+            "conclusions": [
+              {
+                "field": "project_class",
+                "value": "large_industrial_business"
+              }
+            ]
+          }
+        },
+        {
+          "case_id": "guangdong_factory_multi_line_reference_large",
+          "label": "广东：工商业厂房由 2 回及以上 10 千伏线路供电，每回接入≤6MW、总≤50MW（2026-02-10 至 2028-02-09）参照大型工商业",
+          "blocks_on_unknown": true,
+          "when": {
+            "logic": "all",
+            "conditions": [
+              {
+                "predicate": "equals",
+                "field": "province",
+                "value": "guangdong"
+              },
+              {
+                "predicate": "equals",
+                "field": "investor_type",
+                "value": "non_natural_person"
+              },
+              {
+                "predicate": "equals",
+                "field": "site_category",
+                "value": "industrial_commercial"
+              },
+              {
+                "predicate": "gte",
+                "field": "factory_10kv_line_count",
+                "value": 2
+              },
+              {
+                "predicate": "lte",
+                "field": "max_pv_capacity_per_10kv_line_mw",
+                "value": 6
+              },
+              {
+                "predicate": "lte",
+                "field": "connection_voltage_kv",
+                "value": 10
+              },
+              {
+                "predicate": "lte",
+                "field": "capacity_mw",
+                "value": 50
+              },
+              {
+                "predicate": "equals",
+                "field": "capacity_basis",
+                "value": "ac_inverter_sum"
+              },
+              {
+                "predicate": "date_gte",
+                "field": "policy_as_of",
+                "value": "2026-02-10"
+              },
+              {
+                "predicate": "date_lte",
+                "field": "policy_as_of",
+                "value": "2028-02-09"
+              }
+            ]
+          },
+          "then": {
+            "conclusions": [
+              {
+                "field": "project_class",
+                "value": "large_industrial_business"
+              }
+            ]
+          }
+        },
+        {
+          "case_id": "guangdong_factory_full_self_consumption_reference_large",
+          "label": "广东：工商业厂房全部自发自用且并网电压不超过既有供电线路电压（2026-02-10 至 2028-02-09）参照大型工商业",
+          "blocks_on_unknown": true,
+          "when": {
+            "logic": "all",
+            "conditions": [
+              {
+                "predicate": "equals",
+                "field": "province",
+                "value": "guangdong"
+              },
+              {
+                "predicate": "equals",
+                "field": "investor_type",
+                "value": "non_natural_person"
+              },
+              {
+                "predicate": "equals",
+                "field": "site_category",
+                "value": "industrial_commercial"
+              },
+              {
+                "predicate": "equals",
+                "field": "grid_mode",
+                "value": "full_self_consumption"
+              },
+              {
+                "predicate": "lte_field",
+                "field": "connection_voltage_kv",
+                "value_field": "existing_supply_voltage_kv"
+              },
+              {
+                "predicate": "date_gte",
+                "field": "policy_as_of",
+                "value": "2026-02-10"
+              },
+              {
+                "predicate": "date_lte",
+                "field": "policy_as_of",
+                "value": "2028-02-09"
+              }
+            ]
+          },
+          "then": {
+            "conclusions": [
+              {
+                "field": "project_class",
+                "value": "large_industrial_business"
+              }
+            ]
+          }
+        },
+        {
+          "case_id": "general_industrial_business",
+          "label": "一般工商业",
+          "when": {
+            "logic": "all",
+            "conditions": [
+              {
+                "predicate": "in",
+                "field": "site_category",
+                "value": [
+                  "public_institution",
+                  "industrial_commercial"
+                ]
+              },
+              {
+                "predicate": "lte",
+                "field": "connection_voltage_kv",
+                "value": 20
+              },
+              {
+                "predicate": "lte",
+                "field": "capacity_mw",
+                "value": 6
+              },
+              {
+                "predicate": "equals",
+                "field": "capacity_basis",
+                "value": "ac_inverter_sum"
+              },
+              {
+                "predicate": "is_true",
+                "field": "same_red_line"
+              }
+            ]
+          },
+          "then": {
+            "conclusions": [
+              {
+                "field": "project_class",
+                "value": "general_industrial_business"
+              }
+            ]
+          }
+        },
+        {
+          "case_id": "guangdong_agricultural_structure_general_industrial",
+          "label": "广东：设施农用地上农业建（构）筑物（≤20kV、≤6MW）归一般工商业（policy_as_of ≥ 2026-02-10）",
+          "when": {
+            "logic": "all",
+            "conditions": [
+              {
+                "predicate": "equals",
+                "field": "province",
+                "value": "guangdong"
+              },
+              {
+                "predicate": "equals",
+                "field": "site_category",
+                "value": "agricultural_structure"
+              },
+              {
+                "predicate": "lte",
+                "field": "connection_voltage_kv",
+                "value": 20
+              },
+              {
+                "predicate": "lte",
+                "field": "capacity_mw",
+                "value": 6
+              },
+              {
+                "predicate": "equals",
+                "field": "capacity_basis",
+                "value": "ac_inverter_sum"
+              },
+              {
+                "predicate": "is_true",
+                "field": "same_red_line"
+              },
+              {
+                "predicate": "date_gte",
+                "field": "policy_as_of",
+                "value": "2026-02-10"
+              }
+            ]
+          },
+          "then": {
+            "conclusions": [
+              {
+                "field": "project_class",
+                "value": "general_industrial_business"
+              }
+            ]
+          }
+        },
+        {
+          "case_id": "zhejiang_facility_agriculture_general_industrial",
+          "label": "浙江：设施农业（农业种植/畜禽养殖/林业培育/渔业养殖设施）交流侧 <6MW，按一般工商业分布式管理（policy_as_of >= 2026-08-03）",
+          "when": {
+            "logic": "all",
+            "conditions": [
+              {
+                "predicate": "equals",
+                "field": "province",
+                "value": "zhejiang"
+              },
+              {
+                "predicate": "equals",
+                "field": "site_category",
+                "value": "agricultural_structure"
+              },
+              {
+                "predicate": "lte",
+                "field": "connection_voltage_kv",
+                "value": 20
+              },
+              {
+                "predicate": "lt",
+                "field": "capacity_mw",
+                "value": 6
+              },
+              {
+                "predicate": "equals",
+                "field": "capacity_basis",
+                "value": "ac_inverter_sum"
+              },
+              {
+                "predicate": "is_true",
+                "field": "same_red_line"
+              },
+              {
+                "predicate": "date_gte",
+                "field": "policy_as_of",
+                "value": "2026-08-03"
+              }
+            ]
+          },
+          "then": {
+            "conclusions": [
+              {
+                "field": "project_class",
+                "value": "general_industrial_business"
+              }
+            ]
+          }
+        },
+        {
+          "case_id": "unclassified_complete_natural",
+          "label": "数据齐备但不符合四类（自然人投资）（场所/连接/法人字段齐备）",
+          "when": {
+            "logic": "all",
+            "conditions": [
+              {
+                "predicate": "equals",
+                "field": "investor_type",
+                "value": "natural_person"
+              },
+              {
+                "predicate": "is_not_null",
+                "field": "site_category"
+              },
+              {
+                "predicate": "is_not_null",
+                "field": "connection_voltage_kv"
+              },
+              {
+                "predicate": "is_not_null",
+                "field": "capacity_mw"
+              },
+              {
+                "predicate": "is_not_null",
+                "field": "site_owned_by_investor"
+              },
+              {
+                "predicate": "is_not_null",
+                "field": "same_red_line"
+              },
+              {
+                "predicate": "equals",
+                "field": "capacity_basis",
+                "value": "ac_inverter_sum"
+              },
+              {
+                "predicate": "is_not_null",
+                "field": "connection_type"
+              },
+              {
+                "predicate": "is_not_null",
+                "field": "investor_same_legal_person_as_user"
+              }
+            ]
+          },
+          "then": {
+            "conclusions": [
+              {
+                "field": "project_class",
+                "value": "unclassified"
+              }
+            ]
+          }
+        },
+        {
+          "case_id": "unclassified_complete_non_natural",
+          "label": "数据齐备但不符合四类（非自然人投资）（场所/连接/法人字段齐备）",
+          "when": {
+            "logic": "all",
+            "conditions": [
+              {
+                "predicate": "equals",
+                "field": "investor_type",
+                "value": "non_natural_person"
+              },
+              {
+                "predicate": "is_not_null",
+                "field": "site_category"
+              },
+              {
+                "predicate": "is_not_null",
+                "field": "connection_voltage_kv"
+              },
+              {
+                "predicate": "is_not_null",
+                "field": "capacity_mw"
+              },
+              {
+                "predicate": "is_not_null",
+                "field": "same_red_line"
+              },
+              {
+                "predicate": "equals",
+                "field": "capacity_basis",
+                "value": "ac_inverter_sum"
+              },
+              {
+                "predicate": "is_not_null",
+                "field": "connection_type"
+              },
+              {
+                "predicate": "is_not_null",
+                "field": "investor_same_legal_person_as_user"
+              }
+            ]
+          },
+          "then": {
+            "conclusions": [
+              {
+                "field": "project_class",
+                "value": "unclassified"
+              }
+            ]
+          }
+        }
+      ],
+      "guards": [
+        {
+          "guard_id": "zhejiang_66kv_requires_policy_as_of",
+          "label": "浙江 66 千伏非自然人项目缺 policy_as_of：无法判断是否适用 2026-08-03 新细则",
+          "when": {
+            "logic": "all",
+            "conditions": [
+              {
+                "predicate": "equals",
+                "field": "province",
+                "value": "zhejiang"
+              },
+              {
+                "predicate": "equals",
+                "field": "investor_type",
+                "value": "non_natural_person"
+              },
+              {
+                "predicate": "in",
+                "field": "site_category",
+                "value": [
+                  "residential",
+                  "public_institution",
+                  "industrial_commercial",
+                  "other_building",
+                  "agricultural_structure"
+                ]
+              },
+              {
+                "predicate": "in",
+                "field": "connection_type",
+                "value": [
+                  "user_side_grid",
+                  "dedicated_line"
+                ]
+              },
+              {
+                "predicate": "equals",
+                "field": "connection_voltage_kv",
+                "value": 66
+              },
+              {
+                "predicate": "equals",
+                "field": "capacity_basis",
+                "value": "ac_inverter_sum"
+              },
+              {
+                "predicate": "is_true",
+                "field": "same_red_line"
+              },
+              {
+                "predicate": "is_null",
+                "field": "policy_as_of"
+              }
+            ]
+          },
+          "status": "insufficient",
+          "missing_fields": [
+            "policy_as_of"
+          ],
+          "reason": "浙江 66 千伏项目在 2026-08-03 前后适用不同口径：此前国家第四条把 66 千伏列入大型工商业，此后浙江细则第四条把超出第三条电压等级的项目转集中式。缺 policy_as_of 时不能猜日期，也不得落国家 66 千伏分支判为大型工商业。"
+        },
+        {
+          "guard_id": "voltage_66kv_requires_province",
+          "label": "66 千伏项目缺 province：不能直接套国家 66 千伏大型分支",
+          "when": {
+            "logic": "all",
+            "conditions": [
+              {
+                "predicate": "in",
+                "field": "site_category",
+                "value": [
+                  "public_institution",
+                  "industrial_commercial",
+                  "other_building"
+                ]
+              },
+              {
+                "predicate": "in",
+                "field": "connection_type",
+                "value": [
+                  "user_side_grid",
+                  "dedicated_line"
+                ]
+              },
+              {
+                "predicate": "is_true",
+                "field": "investor_same_legal_person_as_user"
+              },
+              {
+                "predicate": "equals",
+                "field": "connection_voltage_kv",
+                "value": 66
+              },
+              {
+                "predicate": "lte",
+                "field": "capacity_mw",
+                "value": 50
+              },
+              {
+                "predicate": "equals",
+                "field": "capacity_basis",
+                "value": "ac_inverter_sum"
+              },
+              {
+                "predicate": "is_true",
+                "field": "same_red_line"
+              },
+              {
+                "predicate": "is_null",
+                "field": "province"
+              }
+            ]
+          },
+          "status": "insufficient",
+          "missing_fields": [
+            "province"
+          ],
+          "reason": "国家第四条把 66 千伏列入大型工商业，浙江细则自 2026-08-03 起把 66 千伏按集中式备案；province 缺失时无法判断适用哪套口径，不能直接判大型工商业。"
+        }
+      ],
+      "default": {
+        "status": "insufficient",
+        "conclusions": [],
+        "reason": "关键输入缺失或容量口径不是交流侧（capacity_basis 非 ac_inverter_sum），无法套用第四条阈值；缺少的字段应在 assess 的 missing_fields 中列出，不得据此反推“不属于四类”或“不允许建设”。"
+      },
+      "exceptions": [
+        "“不超过10千伏（20千伏）”中的 20 千伏适用于 20 千伏供电地区；本草案不区分地区，按上限 20 千伏处理，需在 B 阶段引入地区电压等级参数后细分。",
+        "6/20/50 兆瓦是“原则上”上限，不是绝对禁止线；超限项目可能按集中式光伏电站或其他方式管理（解读四(三)），本草案只做归类，不判违规。",
+        "大型工商业要求“不直接接入公共电网且用户与发电项目投资方为同一法人主体”；本草案用 connection_type + investor_same_legal_person_as_user 两个字段表达，缺一即不归类。",
+        "自然人户用要求住宅/庭院为投资人本人自有（第四条“自有住宅、庭院”）；未核实填 null，规则返回 insufficient，不按租用场所归类。",
+        "同一用地红线是第四条对所有类型的共同要求（“以上条款中建筑物及其附属场所应当位于同一用地红线范围内”）；填 false 视为不满足分类条件，落 unclassified，需另行人工判断。",
+        "大型工商业要求“利用建筑物及其附属场所建设”；本草案用 site_category ∈ {公共机构, 工商业厂房, 其他建筑物} 表达，住宅类不走大型工商业。"
+      ],
+      "source_refs": [
+        {
+          "source_id": "PV-NAT-2025-007-ATTACH",
+          "locator_id": "PV-NAT-2025-007-ATTACH#clause=第四条",
+          "kind": "clause",
+          "value": "第四条",
+          "quote": "分布式光伏发电分为自然人户用、非自然人户用、一般工商业和大型工商业四种类型",
+          "evidence_level": "normative"
+        },
+        {
+          "source_id": "PV-NAT-2025-007-ATTACH",
+          "locator_id": "PV-NAT-2025-007-ATTACH#clause=第四条",
+          "kind": "clause",
+          "value": "第四条",
+          "quote": "自然人利用自有住宅、庭院投资建设",
+          "evidence_level": "normative"
+        },
+        {
+          "source_id": "PV-NAT-2025-007-ATTACH",
+          "locator_id": "PV-NAT-2025-007-ATTACH#clause=第四条",
+          "kind": "clause",
+          "value": "第四条",
+          "quote": "与公共电网连接点电压等级不超过380伏",
+          "evidence_level": "normative"
+        },
+        {
+          "source_id": "PV-NAT-2025-007-ATTACH",
+          "locator_id": "PV-NAT-2025-007-ATTACH#clause=第四条",
+          "kind": "clause",
+          "value": "第四条",
+          "quote": "与公共电网连接点电压等级不超过10千伏（20千伏）、总装机容量不超过6兆瓦",
+          "evidence_level": "normative"
+        },
+        {
+          "source_id": "PV-NAT-2025-007-ATTACH",
+          "locator_id": "PV-NAT-2025-007-ATTACH#clause=第四条",
+          "kind": "clause",
+          "value": "第四条",
+          "quote": "总装机容量原则上不超过6兆瓦",
+          "evidence_level": "normative"
+        },
+        {
+          "source_id": "PV-NAT-2025-007-ATTACH",
+          "locator_id": "PV-NAT-2025-007-ATTACH#clause=第四条",
+          "kind": "clause",
+          "value": "第四条",
+          "quote": "接入用户侧电网或者与用户开展专线供电",
+          "evidence_level": "normative"
+        },
+        {
+          "source_id": "PV-NAT-2025-007-ATTACH",
+          "locator_id": "PV-NAT-2025-007-ATTACH#clause=第四条",
+          "kind": "clause",
+          "value": "第四条",
+          "quote": "与公共电网连接点电压等级为35千伏、总装机容量原则上不超过20兆瓦",
+          "evidence_level": "normative"
+        },
+        {
+          "source_id": "PV-NAT-2025-007-ATTACH",
+          "locator_id": "PV-NAT-2025-007-ATTACH#clause=第四条",
+          "kind": "clause",
+          "value": "第四条",
+          "quote": "与公共电网连接点电压等级为110千伏（66千伏）、总装机容量原则上不超过50兆瓦",
+          "evidence_level": "normative"
+        },
+        {
+          "source_id": "PV-NAT-2025-007-ATTACH",
+          "locator_id": "PV-NAT-2025-007-ATTACH#clause=第四条",
+          "kind": "clause",
+          "value": "第四条",
+          "quote": "大型工商业分布式光伏是指利用建筑物及其附属场所建设",
+          "evidence_level": "normative"
+        },
+        {
+          "source_id": "PV-NAT-2025-007-ATTACH",
+          "locator_id": "PV-NAT-2025-007-ATTACH#clause=第四条",
+          "kind": "clause",
+          "value": "第四条",
+          "quote": "以上条款中建筑物及其附属场所应当位于同一用地红线范围内",
+          "evidence_level": "normative"
+        },
+        {
+          "source_id": "PV-NAT-2025-007-ATTACH",
+          "locator_id": "PV-NAT-2025-007-ATTACH#clause=第十三条",
+          "kind": "clause",
+          "value": "第十三条",
+          "quote": "分布式光伏发电项目的容量为交流侧容量（即逆变器额定输出功率之和）",
+          "evidence_level": "normative"
+        },
+        {
+          "source_id": "PV-EXPLAIN-20250123",
+          "locator_id": "PV-EXPLAIN-20250123#section=三(一)",
+          "kind": "section",
+          "value": "三(一)",
+          "quote": "细分为自然人户用、非自然人户用、一般工商业、大型工商业四种类型",
+          "evidence_level": "official_explanation"
+        },
+        {
+          "source_id": "PV-FAQ-20250411",
+          "locator_id": "PV-FAQ-20250411#qa=Q6",
+          "kind": "qa",
+          "value": "Q6",
+          "quote": "该项目装机容量为8兆瓦，不属于一般工商业分布式光伏",
+          "evidence_level": "official_qa"
+        },
+        {
+          "source_id": "PV-GD-2025-002",
+          "locator_id": "PV-GD-2025-002#section=一",
+          "kind": "section",
+          "value": "一",
+          "quote": "利用设施农用地上工厂化栽培车间、工厂化养殖车间、连栋温室",
+          "evidence_level": "normative"
+        },
+        {
+          "source_id": "PV-GD-2025-002",
+          "locator_id": "PV-GD-2025-002#section=一",
+          "kind": "section",
+          "value": "一",
+          "quote": "总装机容量不超过6兆瓦的光伏发电项目",
+          "evidence_level": "normative"
+        },
+        {
+          "source_id": "PV-GD-2025-002",
+          "locator_id": "PV-GD-2025-002#section=一",
+          "kind": "section",
+          "value": "一",
+          "quote": "归于一般工商业分布式光伏发电项目管理",
+          "evidence_level": "normative"
+        },
+        {
+          "source_id": "PV-GD-2025-002",
+          "locator_id": "PV-GD-2025-002#section=一",
+          "kind": "section",
+          "value": "一",
+          "quote": "且满足年自发自用电量占发电量比例不低于30%的条件",
+          "evidence_level": "normative"
+        },
+        {
+          "source_id": "PV-ZJ-2026-015",
+          "locator_id": "PV-ZJ-2026-015#clause=第五条",
+          "kind": "clause",
+          "value": "第五条",
+          "quote": "交流侧装机容量低于6兆瓦的按照一般工商业分布式光伏项目管理",
+          "evidence_level": "normative"
+        },
+        {
+          "source_id": "PV-ZJ-2026-015",
+          "locator_id": "PV-ZJ-2026-015#clause=第三条",
+          "kind": "clause",
+          "value": "第三条",
+          "quote": "与公共电网连接点电压等级为110千伏、总装机容量原则上不超过50兆瓦",
+          "evidence_level": "normative"
+        },
+        {
+          "source_id": "PV-ZJ-2026-015",
+          "locator_id": "PV-ZJ-2026-015#clause=第四条",
+          "kind": "clause",
+          "value": "第四条",
+          "quote": "容量、电压等级超出第三条规定的",
+          "evidence_level": "normative"
+        },
+        {
+          "source_id": "PV-ZJ-2026-015",
+          "locator_id": "PV-ZJ-2026-015#clause=第四条",
+          "kind": "clause",
+          "value": "第四条",
+          "quote": "按集中式光伏电站备案和管理",
+          "evidence_level": "normative"
+        },
+        {
+          "source_id": "PV-GD-2025-002",
+          "locator_id": "PV-GD-2025-002#section=一",
+          "kind": "section",
+          "value": "一",
+          "quote": "工商业厂房由2回及以上10千伏线路供电",
+          "evidence_level": "normative"
+        },
+        {
+          "source_id": "PV-GD-2025-002",
+          "locator_id": "PV-GD-2025-002#section=一",
+          "kind": "section",
+          "value": "一",
+          "quote": "每回10千伏线路接入的光伏装机容量不超过6兆瓦",
+          "evidence_level": "normative"
+        },
+        {
+          "source_id": "PV-GD-2025-002",
+          "locator_id": "PV-GD-2025-002#section=一",
+          "kind": "section",
+          "value": "一",
+          "quote": "项目总装机容量不超过50兆瓦",
+          "evidence_level": "normative"
+        },
+        {
+          "source_id": "PV-GD-2025-002",
+          "locator_id": "PV-GD-2025-002#section=一",
+          "kind": "section",
+          "value": "一",
+          "quote": "项目采取全部自发自用模式",
+          "evidence_level": "normative"
+        },
+        {
+          "source_id": "PV-GD-2025-002",
+          "locator_id": "PV-GD-2025-002#section=一",
+          "kind": "section",
+          "value": "一",
+          "quote": "与公共电网连接点电压等级不超过工商业厂房既有供电线路电压等级",
+          "evidence_level": "normative"
+        }
+      ],
+      "temporal_scope": {
+        "policy_document": "PV-NAT-2025-007-ATTACH",
+        "effective_from": "2025-01-23",
+        "effective_to": null
+      },
+      "notes": [
+        "第十三条把“容量”定义为交流侧容量（逆变器额定输出功率之和），所以凡使用容量阈值的 case 都要求 capacity_basis = ac_inverter_sum；口径为 dc_module_sum/unknown 或缺失时返回 insufficient，不套用 6/20/50 兆瓦阈值。",
+        "只有“数据齐备（含场所自有、同一红线、容量口径均已填）且仍不满足任一类型”时才输出 unclassified；缺字段与“确属四类之外”严格分开（对应独立复审 B-1）。",
+        "Q6（10 千伏、8 兆瓦）是边界样例：一般工商业容量超限、大型工商业电压不符，数据齐备时应为 unclassified。",
+        "广东分支只对 province=guangdong 且 site_category=agricultural_structure 生效，并要求 policy_as_of ≥ 2026-02-10（试行起点）；policy_as_of 为空时该 case 记 UNKNOWN，项目落 unclassified，不按广东口径倒推。",
+        "广东分支只判“归一般工商业”这一分类结论；国家第四条其他条件（同一红线、投资主体等）仍按原 case 要求，未放宽。",
+        "广东农村公共建筑分支（guangdong_rural_public_non_natural_household）只对 province=guangdong、investor_type=non_natural_person、site_category∈[public_institution, other_building]、rural_public_site=true 且 2026-02-10 ≤ policy_as_of ≤ 2028-02-09 生效，结论 non_natural_person_household。2028-02-09 为试行期届满日（2026-02-10 起试行 2 年），期满后是否续期未核实，本分支不覆盖 2028-02-10 之后，届时按国家口径归类。",
+        "该分支设 blocks_on_unknown=true：其余条件已满足、仅因 rural_public_site/province/policy_as_of 为空无法判定时，后续一般工商业分支不得代替定论，返回 insufficient 并报缺失字段；rural_public_site=false 是明确否定，不拦，按国家口径落一般工商业。",
+        "广东原文未对农村公共建筑分支提“同一用地红线”或并网连接方式要求，本分支不核 same_red_line/connection_type；村内道路、小公园等基础设施通常没有单一红线，调用方不要用国家第四条的红线要求反推否定。",
+        "广东厂房多回线路分支（guangdong_factory_multi_line_reference_large）来自广东实施意见第一条末段：工商业厂房由 2 回及以上 10 千伏线路供电、每回接入光伏≤6MW、总装机≤50MW，可参照大型工商业管理；本分支只对 province=guangdong、investor_type=non_natural_person、site_category=industrial_commercial 且 2026-02-10 ≤ policy_as_of ≤ 2028-02-09 生效。原文约束的是厂房供电线路，不是光伏并网电压；实现加 connection_voltage_kv ≤ 10 是为了覆盖 380V 接入同一 10kV 线路的项目并排除 35kV 项目，属落地解释而非原文逐字条件。",
+        "广东厂房全部自发自用分支（guangdong_factory_full_self_consumption_reference_large）要求 grid_mode=full_self_consumption 且并网电压 ≤ 厂房既有供电线路电压（lte_field 字段对字段比较），时间窗同上。原文此支未写容量上限，本分支不另加 50MW 上限；是否应与大型工商业 50MW 定义对齐，列入 open_items 待裁决。",
+        "上述两个广东厂房分支都设 blocks_on_unknown=true：其余条件已满足、仅因 factory_10kv_line_count/max_pv_capacity_per_10kv_line_mw/existing_supply_voltage_kv/province/policy_as_of 为空无法判定时，后续一般工商业或 unclassified 分支不得代替定论，返回 insufficient 并报缺失字段。明确否定（如回数 1、grid_mode 为余电上网、容量超限）不拦。判为 large_industrial_business 后 O-R-002 按国家大型口径处理，A 支项目若拟余电上网会被收紧，调用方需知悉。",
+        "浙江分支只对 province=zhejiang 且 site_category=agricultural_structure 生效，容量严格 < 6MW（第五条写“低于6兆瓦”，与广东“不超过6兆瓦”不同），并要求 policy_as_of >= 2026-08-03；≥6MW 在浙江属集中式，不在分布式四类内。",
+        "浙江 66 千伏分支：浙江第三条在大型工商业定义中只列 35 千伏和 110 千伏，没有国家第四条的“（66千伏）”。因此 66 千伏且其余条件本应满足大型工商业的项目，自 2026-08-03 起不按大型工商业归类；浙江第四条末段把“容量、电压等级超出第三条”的项目按集中式光伏电站备案管理，本规则只能输出 unclassified（不属于分布式四类，不等于不允许建设），调用方应转集中式口径。",
+        "浙江 66 千伏分支要求 policy_as_of >= 2026-08-03；policy_as_of 为空时该 case 不命中，仍会落到国家 [110,66] 分支判为大型工商业，属已知缺口；调用方应传 policy_as_of。66 千伏、容量超过 50 兆瓦的项目本来就不满足第三条，走 catch-all unclassified，不依赖本分支。"
+      ],
+      "open_items": [
+        "20 千伏地区参数未建：需在 B 阶段把“10(20) 千伏”拆成地区参数，否则 20 千伏项目会一律按上限处理。",
+        "“建筑物及其附属场所位于同一用地红线”是第四条的附加要求，本规则不据此改分类，只在输出中保留该要求，供 assess 判定时使用。",
+        "浙江设施农业 ≥6MW 按集中式管理（第五条），已超出分布式四类，本规则只能落 unclassified；调用方应改用集中式口径判定。",
+        "浙江道路上方/边坡（同红线内按工商业分布式、其他按集中式）未建模；需要新增“道路是否在同一红线内”的场所细分。",
+        "广东道路上方/边坡未建模；2 回 10 千伏供电与全部自发自用参照大型工商业已补入（2026-11-14），但“10kV（20kV）”的地区参数仍未拆。",
+        "广东厂房全部自发自用分支原文未设容量上限，本实现未加 50MW 上限；是否与大型工商业定义对齐（尤其是超大容量全自发自用项目）待裁决。",
+        "广东农村公共建筑与厂房参照分支只覆盖 2026-02-10 至 2028-02-09 试行期；2028-02-10 之后的续期口径未核实，到期后按国家口径归类。",
+        "浙江 66 千伏项目只标 unclassified，尚未建集中式备案/管理规则；policy_as_of 缺失时仍可能按国家 66 千伏分支归大型工商业。"
+      ]
+    },
+    {
+      "rule_id": "O-R-002",
+      "title": "分布式光伏上网模式判定（按项目类型）",
+      "knowledge_kind": "derived",
+      "rule_status": "draft",
+      "question": "给定 O-R-001 的项目类型与项目所在地区属性，政策允许哪些上网模式？",
+      "input_fields": [
+        "project_class",
+        "spot_market_region",
+        "province",
+        "policy_as_of"
+      ],
+      "cases": [
+        {
+          "case_id": "household_three_modes",
+          "label": "户用两类：三选一",
+          "when": {
+            "logic": "all",
+            "conditions": [
+              {
+                "predicate": "in",
+                "field": "project_class",
+                "value": [
+                  "natural_person_household",
+                  "non_natural_person_household"
+                ]
+              }
+            ]
+          },
+          "then": {
+            "conclusions": [
+              {
+                "field": "allowed_grid_modes",
+                "value": [
+                  "full_feed_in",
+                  "full_self_consumption",
+                  "self_consumption_surplus_feed_in"
+                ]
+              },
+              {
+                "field": "requires_same_red_line_for_self_consumption",
+                "value": true
+              }
+            ]
+          }
+        },
+        {
+          "case_id": "general_industrial_two_modes",
+          "label": "一般工商业：二选一（不含全额上网）",
+          "when": {
+            "logic": "all",
+            "conditions": [
+              {
+                "predicate": "equals",
+                "field": "project_class",
+                "value": "general_industrial_business"
+              }
+            ]
+          },
+          "then": {
+            "conclusions": [
+              {
+                "field": "allowed_grid_modes",
+                "value": [
+                  "full_self_consumption",
+                  "self_consumption_surplus_feed_in"
+                ]
+              },
+              {
+                "field": "requires_same_red_line_for_self_consumption",
+                "value": true
+              }
+            ]
+          }
+        },
+        {
+          "case_id": "zhejiang_large_industrial_two_modes",
+          "label": "浙江：大型工商业不设现货前置，可选余电上网（2026-08-03 起）",
+          "blocks_on_unknown": true,
+          "when": {
+            "logic": "all",
+            "conditions": [
+              {
+                "predicate": "equals",
+                "field": "project_class",
+                "value": "large_industrial_business"
+              },
+              {
+                "predicate": "equals",
+                "field": "province",
+                "value": "zhejiang"
+              },
+              {
+                "predicate": "date_gte",
+                "field": "policy_as_of",
+                "value": "2026-08-03"
+              }
+            ]
+          },
+          "then": {
+            "conclusions": [
+              {
+                "field": "allowed_grid_modes",
+                "value": [
+                  "full_self_consumption",
+                  "self_consumption_surplus_feed_in"
+                ]
+              },
+              {
+                "field": "requires_same_red_line_for_self_consumption",
+                "value": true
+              }
+            ]
+          }
+        },
+        {
+          "case_id": "large_spot_market_two_modes",
+          "label": "大型工商业：现货市场连续运行地区可余电上网",
+          "when": {
+            "logic": "all",
+            "conditions": [
+              {
+                "predicate": "equals",
+                "field": "project_class",
+                "value": "large_industrial_business"
+              },
+              {
+                "predicate": "is_true",
+                "field": "spot_market_region"
+              }
+            ]
+          },
+          "then": {
+            "conclusions": [
+              {
+                "field": "allowed_grid_modes",
+                "value": [
+                  "full_self_consumption",
+                  "self_consumption_surplus_feed_in"
+                ]
+              },
+              {
+                "field": "requires_same_red_line_for_self_consumption",
+                "value": true
+              }
+            ]
+          }
+        },
+        {
+          "case_id": "large_default_self_consumption",
+          "label": "大型工商业（已确认非现货市场连续运行地区）",
+          "when": {
+            "logic": "all",
+            "conditions": [
+              {
+                "predicate": "equals",
+                "field": "project_class",
+                "value": "large_industrial_business"
+              },
+              {
+                "predicate": "is_false",
+                "field": "spot_market_region"
+              }
+            ]
+          },
+          "then": {
+            "conclusions": [
+              {
+                "field": "allowed_grid_modes",
+                "value": [
+                  "full_self_consumption"
+                ]
+              },
+              {
+                "field": "requires_same_red_line_for_self_consumption",
+                "value": true
+              }
+            ]
+          }
+        }
+      ],
+      "default": {
+        "status": "insufficient",
+        "conclusions": [],
+        "reason": "项目类型未确定（O-R-001 返回 insufficient 或 unclassified）、或大型工商业未提供现货市场地区状态时，无法按第五条给出确定的允许模式；不得反推。"
+      },
+      "exceptions": [
+        "一般工商业采用自发自用余电上网时，年自发自用电量占发电量的比例由各省级能源主管部门确定；本规则只判“模式是否可选”，不判比例是否达标（缺省级参数）。广东设施农业的 30% 已单列 O-R-004。",
+        "大型工商业在电力现货市场连续运行地区可选余电上网“参与现货市场”，不是无条件余电上网；spot_market_region 未核实为 null 时，只能给“原则上全部自发自用”。",
+        "第三十五条允许投运后按第五条规定变更上网模式一次；本规则判的是可选集合，不判变更次数与流程。",
+        "大型工商业的“原则上全部自发自用”与“现货地区可余电上网”依赖 spot_market_region；该字段为 null（未核实）时规则返回 insufficient，不把未知当作“只能全自发自用”（对应独立复审 B-2）。",
+        "浙江自 2026-08-03 起第四条不再把“现货市场连续运行地区”作为大型工商业余电上网的前提，由 zhejiang_large_industrial_two_modes 分支承接。该分支带 blocks_on_unknown：province 或 policy_as_of 未知时，本规则不许任何后续分支（含国家 spot=false 全自发自用）定论，返回 insufficient 并报出缺的字段；已知省份为浙江且日期早于 2026-08-03 时该分支被明确否定，仍按国家口径判。"
+      ],
+      "source_refs": [
+        {
+          "source_id": "PV-NAT-2025-007-ATTACH",
+          "locator_id": "PV-NAT-2025-007-ATTACH#clause=第五条",
+          "kind": "clause",
+          "value": "第五条",
+          "quote": "分布式光伏发电上网模式包括全额上网、全部自发自用、自发自用余电上网三种",
+          "evidence_level": "normative"
+        },
+        {
+          "source_id": "PV-NAT-2025-007-ATTACH",
+          "locator_id": "PV-NAT-2025-007-ATTACH#clause=第五条",
+          "kind": "clause",
+          "value": "第五条",
+          "quote": "自然人户用、非自然人户用分布式光伏可选择全额上网",
+          "evidence_level": "normative"
+        },
+        {
+          "source_id": "PV-NAT-2025-007-ATTACH",
+          "locator_id": "PV-NAT-2025-007-ATTACH#clause=第五条",
+          "kind": "clause",
+          "value": "第五条",
+          "quote": "一般工商业分布式光伏可选择全部自发自用或者自发自用余电上网模式",
+          "evidence_level": "normative"
+        },
+        {
+          "source_id": "PV-NAT-2025-007-ATTACH",
+          "locator_id": "PV-NAT-2025-007-ATTACH#clause=第五条",
+          "kind": "clause",
+          "value": "第五条",
+          "quote": "大型工商业分布式光伏原则上选择全部自发自用模式",
+          "evidence_level": "normative"
+        },
+        {
+          "source_id": "PV-NAT-2025-007-ATTACH",
+          "locator_id": "PV-NAT-2025-007-ATTACH#clause=第五条",
+          "kind": "clause",
+          "value": "第五条",
+          "quote": "大型工商业分布式光伏可采用自发自用余电上网模式参与现货市场",
+          "evidence_level": "normative"
+        },
+        {
+          "source_id": "PV-NAT-2025-007-ATTACH",
+          "locator_id": "PV-NAT-2025-007-ATTACH#clause=第五条",
+          "kind": "clause",
+          "value": "第五条",
+          "quote": "涉及自发自用的，用户和分布式光伏发电项目应位于同一用地红线范围内",
+          "evidence_level": "normative"
+        },
+        {
+          "source_id": "PV-ZJ-2026-015",
+          "locator_id": "PV-ZJ-2026-015#clause=第四条",
+          "kind": "clause",
+          "value": "第四条",
+          "quote": "大型工商业分布式光伏可选择全部自发自用或者自发自用余电上网",
+          "evidence_level": "normative"
+        },
+        {
+          "source_id": "PV-EXPLAIN-20250123",
+          "locator_id": "PV-EXPLAIN-20250123#section=三(一)",
+          "kind": "section",
+          "value": "三(一)",
+          "quote": "一般工商业可在全部自发自用和自发自用余电上网模式中二选一",
+          "evidence_level": "official_explanation"
+        },
+        {
+          "source_id": "PV-FAQ-20250411",
+          "locator_id": "PV-FAQ-20250411#qa=Q5",
+          "kind": "qa",
+          "value": "Q5",
+          "quote": "一般工商业分布式光伏与公共电网连接点电压等级不超过10千伏（20千伏）",
+          "evidence_level": "official_qa"
+        }
+      ],
+      "temporal_scope": {
+        "policy_document": "PV-NAT-2025-007-ATTACH",
+        "effective_from": "2025-01-23",
+        "effective_to": null
+      },
+      "notes": [
+        "本规则不直接判“某项目拟用模式是否违规”，只输出政策允许集合；是否违规由 assess 比较拟用模式与集合得出，避免把“缺地区参数”误判成违规。",
+        "Q5 只用于佐证一般工商业的电压口径，不用于上网模式结论；引用时已标 official_qa，避免与正文同等效力。",
+        "现货市场地区字段只表示“当地电力现货市场是否连续运行”，不是项目是否参与现货交易；省级余电比例只建模广东设施农业（O-R-004），其他省仍不建模。"
+      ],
+      "open_items": [
+        "省级余电比例上限未入库：一般工商业余电上网的比例合规性需省级参数，本批只判广东设施农业 30%（O-R-004），其他省不判。",
+        "“电力现货市场连续运行地区”名单未入库：spot_market_region 需由调用方按官方名单填写，规则不自行推断。"
+      ]
+    },
+    {
+      "rule_id": "O-R-003",
+      "title": "新老划断：是否按原有政策执行",
+      "knowledge_kind": "derived",
+      "rule_status": "draft",
+      "question": "给定首次备案日期、并网投产日期与是否全容量并网，项目是否按原有政策执行？",
+      "input_fields": [
+        "filing_date",
+        "grid_connection_date",
+        "grid_connection_full_capacity"
+      ],
+      "cases": [
+        {
+          "case_id": "legacy_policy_applies",
+          "label": "发布之日前已备案且 2025-05-01 前全容量并网",
+          "when": {
+            "logic": "all",
+            "conditions": [
+              {
+                "predicate": "date_lte",
+                "field": "filing_date",
+                "value": "2025-01-23"
+              },
+              {
+                "predicate": "date_lte",
+                "field": "grid_connection_date",
+                "value": "2025-05-01"
+              },
+              {
+                "predicate": "is_true",
+                "field": "grid_connection_full_capacity"
+              }
+            ]
+          },
+          "then": {
+            "conclusions": [
+              {
+                "field": "legacy_policy_applies",
+                "value": true
+              }
+            ]
+          }
+        },
+        {
+          "case_id": "partial_capacity_not_legacy",
+          "label": "部分容量并网：不按原政策",
+          "when": {
+            "logic": "all",
+            "conditions": [
+              {
+                "predicate": "date_lte",
+                "field": "filing_date",
+                "value": "2025-01-23"
+              },
+              {
+                "predicate": "date_lte",
+                "field": "grid_connection_date",
+                "value": "2025-05-01"
+              },
+              {
+                "predicate": "is_false",
+                "field": "grid_connection_full_capacity"
+              }
+            ]
+          },
+          "then": {
+            "conclusions": [
+              {
+                "field": "legacy_policy_applies",
+                "value": false
+              }
+            ]
+          }
+        },
+        {
+          "case_id": "late_connection_not_legacy",
+          "label": "2025-05-01 后才并网：不按原政策",
+          "when": {
+            "logic": "all",
+            "conditions": [
+              {
+                "predicate": "date_lte",
+                "field": "filing_date",
+                "value": "2025-01-23"
+              },
+              {
+                "predicate": "date_gt",
+                "field": "grid_connection_date",
+                "value": "2025-05-01"
+              }
+            ]
+          },
+          "then": {
+            "conclusions": [
+              {
+                "field": "legacy_policy_applies",
+                "value": false
+              }
+            ]
+          }
+        },
+        {
+          "case_id": "filed_after_publication_not_legacy",
+          "label": "发布之日之后备案",
+          "when": {
+            "logic": "all",
+            "conditions": [
+              {
+                "predicate": "date_gt",
+                "field": "filing_date",
+                "value": "2025-01-23"
+              }
+            ]
+          },
+          "then": {
+            "conclusions": [
+              {
+                "field": "legacy_policy_applies",
+                "value": false
+              }
+            ]
+          }
+        }
+      ],
+      "default": {
+        "status": "insufficient",
+        "conclusions": [],
+        "reason": "备案日期、并网日期或全容量并网状态缺失，无法判定；缺失不等于“不适用原政策”。"
+      },
+      "exceptions": [
+        "Q71 明确“发布之日”为对全社会公布日期 2025-01-23（含当日），所以备案条件用 date_lte 2025-01-23，不是制发日期 2025-01-17。",
+        "Q72 明确 2025-05-01 前（含当日）并网指全容量并网；部分容量并网不能按原政策执行。",
+        "Q73 明确发布之日后做备案变更、且 2025-05-01 前并网投产的，仍按原政策；故备案变更日期 filing_change_date 不参与判定。"
+      ],
+      "source_refs": [
+        {
+          "source_id": "PV-NAT-2025-007-ATTACH",
+          "locator_id": "PV-NAT-2025-007-ATTACH#clause=第四十三条",
+          "kind": "clause",
+          "value": "第四十三条",
+          "quote": "对于本办法发布之日前已备案且于2025年5月1日前并网投产的分布式光伏发电项目",
+          "evidence_level": "normative"
+        },
+        {
+          "source_id": "PV-NAT-2025-007-ATTACH",
+          "locator_id": "PV-NAT-2025-007-ATTACH#clause=第四十三条",
+          "kind": "clause",
+          "value": "第四十三条",
+          "quote": "仍按原有政策执行",
+          "evidence_level": "normative"
+        },
+        {
+          "source_id": "PV-NAT-2025-007-ATTACH",
+          "locator_id": "PV-NAT-2025-007-ATTACH#clause=第四十三条",
+          "kind": "clause",
+          "value": "第四十三条",
+          "quote": "本办法自发布之日起施行，有效期五年",
+          "evidence_level": "normative"
+        },
+        {
+          "source_id": "PV-FAQ-20250411",
+          "locator_id": "PV-FAQ-20250411#qa=Q71",
+          "kind": "qa",
+          "value": "Q71",
+          "quote": "“发布之日”指《管理办法》对全社会公布日期即2025年1月23日",
+          "evidence_level": "official_qa"
+        },
+        {
+          "source_id": "PV-FAQ-20250411",
+          "locator_id": "PV-FAQ-20250411#qa=Q71",
+          "kind": "qa",
+          "value": "Q71",
+          "quote": "1月23日当日备案的也属于发布之日前已备案项目",
+          "evidence_level": "official_qa"
+        },
+        {
+          "source_id": "PV-FAQ-20250411",
+          "locator_id": "PV-FAQ-20250411#qa=Q72",
+          "kind": "qa",
+          "value": "Q72",
+          "quote": "2025年5月1日前（含当日）并网是指分布式光伏发电项目全容量并网",
+          "evidence_level": "official_qa"
+        },
+        {
+          "source_id": "PV-FAQ-20250411",
+          "locator_id": "PV-FAQ-20250411#qa=Q72",
+          "kind": "qa",
+          "value": "Q72",
+          "quote": "对于部分容量并网的，不能按照原政策执行",
+          "evidence_level": "official_qa"
+        },
+        {
+          "source_id": "PV-FAQ-20250411",
+          "locator_id": "PV-FAQ-20250411#qa=Q73",
+          "kind": "qa",
+          "value": "Q73",
+          "quote": "在发布之日后进行备案变更，且于2025年5月1日前并网投产的分布式光伏发电项目",
+          "evidence_level": "official_qa"
+        },
+        {
+          "source_id": "PV-EXPLAIN-20250123",
+          "locator_id": "PV-EXPLAIN-20250123#section=四(一)",
+          "kind": "section",
+          "value": "四(一)",
+          "quote": "对于本办法发布之日前已备案且于2025年5月1日前并网投产的分布式光伏发电项目",
+          "evidence_level": "official_explanation"
+        }
+      ],
+      "temporal_scope": {
+        "policy_document": "PV-NAT-2025-007-ATTACH",
+        "effective_from": "2025-01-23",
+        "legacy_cutoff": "2025-05-01"
+      },
+      "notes": [
+        "“发布之日前已备案”按 Q71 解释包含 2025-01-23 当日备案，因此条件写成 filing_date <= 2025-01-23。",
+        "本规则判“是否按原有政策执行”，不判“原有政策具体内容”；2013 年暂行办法正文未在本批语料内。",
+        "备案日在 2025-01-23 之后即不满足第四十三条“发布之日前已备案”，可直接判 legacy_policy_applies=false（对应独立复审 M-1）；1 月 23 日当日仍按 Q71 视为“发布之日前”，用 date_lte。"
+      ],
+      "open_items": [
+        "原政策（国能新能〔2013〕433号）正文未取得：需在 B 阶段补充来源，否则无法回答“按原政策到底允许什么”。",
+        "并网投产日期若只有年月，需调用方补全到日；本规则不做日期插补。"
+      ]
+    },
+    {
+      "rule_id": "O-R-004",
+      "title": "省级余电上网比例：广东设施农业 30% / 浙江不作要求",
+      "knowledge_kind": "derived",
+      "rule_status": "draft",
+      "question": "省级细则对余电上网年自发自用比例的要求：广东设施农用地上、归一般工商业的项目是否达到 30%（是否豁免）；浙江一般工商业/大型工商业项目是否作比例要求？",
+      "input_fields": [
+        "province",
+        "project_class",
+        "site_category",
+        "grid_mode",
+        "self_consumption_ratio_pct",
+        "filing_date",
+        "grid_opinion_date",
+        "construction_completion_date",
+        "policy_as_of"
+      ],
+      "cases": [
+        {
+          "case_id": "gd_policy_expired",
+          "label": "广东目标省份：policy_as_of 已超过粤能规〔2025〕2号试行期（2028-02-09）",
+          "when": {
+            "logic": "all",
+            "conditions": [
+              {
+                "predicate": "equals",
+                "field": "province",
+                "value": "guangdong"
+              },
+              {
+                "predicate": "date_gt",
+                "field": "policy_as_of",
+                "value": "2028-02-09"
+              }
+            ]
+          },
+          "then": {
+            "conclusions": [
+              {
+                "field": "provincial_ratio_requirement",
+                "value": "not_applicable"
+              }
+            ]
+          }
+        },
+        {
+          "case_id": "gd_ratio_met",
+          "label": "广东目标项目：年自发自用比例 ≥ 30%",
+          "when": {
+            "logic": "all",
+            "conditions": [
+              {
+                "predicate": "equals",
+                "field": "province",
+                "value": "guangdong"
+              },
+              {
+                "predicate": "equals",
+                "field": "project_class",
+                "value": "general_industrial_business"
+              },
+              {
+                "predicate": "equals",
+                "field": "site_category",
+                "value": "agricultural_structure"
+              },
+              {
+                "predicate": "equals",
+                "field": "grid_mode",
+                "value": "self_consumption_surplus_feed_in"
+              },
+              {
+                "predicate": "gte",
+                "field": "self_consumption_ratio_pct",
+                "value": 30
+              }
+            ]
+          },
+          "then": {
+            "conclusions": [
+              {
+                "field": "provincial_ratio_requirement",
+                "value": "met"
+              },
+              {
+                "field": "provincial_ratio_min_pct",
+                "value": 30
+              }
+            ]
+          }
+        },
+        {
+          "case_id": "gd_ratio_exempted",
+          "label": "广东目标项目：三日期满足豁免，不作比例要求（仍需主管部门确认）",
+          "when": {
+            "logic": "all",
+            "conditions": [
+              {
+                "predicate": "equals",
+                "field": "province",
+                "value": "guangdong"
+              },
+              {
+                "predicate": "equals",
+                "field": "project_class",
+                "value": "general_industrial_business"
+              },
+              {
+                "predicate": "equals",
+                "field": "site_category",
+                "value": "agricultural_structure"
+              },
+              {
+                "predicate": "equals",
+                "field": "grid_mode",
+                "value": "self_consumption_surplus_feed_in"
+              },
+              {
+                "predicate": "date_lte",
+                "field": "filing_date",
+                "value": "2025-01-23"
+              },
+              {
+                "predicate": "date_lt",
+                "field": "grid_opinion_date",
+                "value": "2025-12-31"
+              },
+              {
+                "predicate": "date_lte",
+                "field": "construction_completion_date",
+                "value": "2026-04-10"
+              }
+            ]
+          },
+          "then": {
+            "conclusions": [
+              {
+                "field": "provincial_ratio_requirement",
+                "value": "exempted"
+              },
+              {
+                "field": "provincial_ratio_min_pct",
+                "value": 30
+              }
+            ]
+          }
+        },
+        {
+          "case_id": "gd_ratio_not_met",
+          "label": "广东目标项目：年自发自用比例 < 30%",
+          "when": {
+            "logic": "all",
+            "conditions": [
+              {
+                "predicate": "equals",
+                "field": "province",
+                "value": "guangdong"
+              },
+              {
+                "predicate": "equals",
+                "field": "project_class",
+                "value": "general_industrial_business"
+              },
+              {
+                "predicate": "equals",
+                "field": "site_category",
+                "value": "agricultural_structure"
+              },
+              {
+                "predicate": "equals",
+                "field": "grid_mode",
+                "value": "self_consumption_surplus_feed_in"
+              },
+              {
+                "predicate": "lt",
+                "field": "self_consumption_ratio_pct",
+                "value": 30
+              }
+            ]
+          },
+          "then": {
+            "conclusions": [
+              {
+                "field": "provincial_ratio_requirement",
+                "value": "not_met"
+              },
+              {
+                "field": "provincial_ratio_min_pct",
+                "value": 30
+              }
+            ]
+          }
+        },
+        {
+          "case_id": "zj_no_requirement",
+          "label": "浙江目标项目：一般工商业/大型工商业余电上网，省细则明确不作比例要求",
+          "when": {
+            "logic": "all",
+            "conditions": [
+              {
+                "predicate": "equals",
+                "field": "province",
+                "value": "zhejiang"
+              },
+              {
+                "predicate": "in",
+                "field": "project_class",
+                "value": [
+                  "general_industrial_business",
+                  "large_industrial_business"
+                ]
+              },
+              {
+                "predicate": "equals",
+                "field": "grid_mode",
+                "value": "self_consumption_surplus_feed_in"
+              },
+              {
+                "predicate": "date_gte",
+                "field": "policy_as_of",
+                "value": "2026-08-03"
+              }
+            ]
+          },
+          "then": {
+            "conclusions": [
+              {
+                "field": "provincial_ratio_requirement",
+                "value": "no_requirement"
+              }
+            ]
+          }
+        },
+        {
+          "case_id": "provincial_ratio_not_applicable",
+          "label": "不属于广东/浙江目标项目（省份、类型、上网模式或时点任一不符或缺失）",
+          "when": {
+            "logic": "any",
+            "conditions": [
+              {
+                "predicate": "is_null",
+                "field": "province"
+              },
+              {
+                "predicate": "not_equals",
+                "field": "province",
+                "value": "guangdong"
+              },
+              {
+                "predicate": "is_null",
+                "field": "project_class"
+              },
+              {
+                "predicate": "not_equals",
+                "field": "project_class",
+                "value": "general_industrial_business"
+              },
+              {
+                "predicate": "is_null",
+                "field": "site_category"
+              },
+              {
+                "predicate": "not_equals",
+                "field": "site_category",
+                "value": "agricultural_structure"
+              },
+              {
+                "predicate": "is_null",
+                "field": "grid_mode"
+              },
+              {
+                "predicate": "not_equals",
+                "field": "grid_mode",
+                "value": "self_consumption_surplus_feed_in"
+              }
+            ]
+          },
+          "then": {
+            "conclusions": [
+              {
+                "field": "provincial_ratio_requirement",
+                "value": "not_applicable"
+              }
+            ]
+          }
+        }
+      ],
+      "default": {
+        "status": "insufficient",
+        "conclusions": [],
+        "reason": "广东目标项目（设施农业一般工商业、余电上网，且在粤能规〔2025〕2号试行期内）缺少年自发自用电量比例，且未提供完整豁免三日期；需补 self_consumption_ratio_pct 或 filing_date/grid_opinion_date/construction_completion_date 后再判，不能按缺失数据反推不满足。浙江项目满足省份/类型/上网模式/生效时点即直接判 no_requirement，不会落到本 default。"
+      },
+      "exceptions": [
+        "30% 只适用于设施农用地上、按广东口径归一般工商业的农业建（构）筑物项目；其他一般工商业现阶段暂不作强制比例要求（本规则判 not_applicable，不代表没有其他要求）。",
+        "浙江只对一般工商业/大型工商业的余电上网判 no_requirement；全部自发自用、以及浙江细则生效（2026-08-03）前或未提供 policy_as_of 的项目判 not_applicable，不视为“浙江免比例”的结论。",
+        "广东 policy_as_of 超过 2028-02-09（试行期满且未见续期文件）判 not_applicable：只表示本规则不再给出 30% 判定，需重新核对是否续期或出台新规。",
+        "豁免还需“经省级能源主管部门会同电网企业确认”，本规则只能判日期条件是否具备，最终以确认结果为准。",
+        "比例按年计算；本规则使用调用方提供的设计/实际年比例，不做月度折算或跨年推算。"
+      ],
+      "source_refs": [
+        {
+          "source_id": "PV-GD-2025-002",
+          "locator_id": "PV-GD-2025-002#section=二",
+          "kind": "section",
+          "value": "二",
+          "quote": "年自发自用电量占发电量的比例不低于30%",
+          "evidence_level": "normative"
+        },
+        {
+          "source_id": "PV-GD-2025-002",
+          "locator_id": "PV-GD-2025-002#section=二",
+          "kind": "section",
+          "value": "二",
+          "quote": "于本实施意见发布之日前已获得电网企业支持并网意见",
+          "evidence_level": "normative"
+        },
+        {
+          "source_id": "PV-GD-2025-002",
+          "locator_id": "PV-GD-2025-002#section=二",
+          "kind": "section",
+          "value": "二",
+          "quote": "如项目于本实施意见生效后2个月内全部建成",
+          "evidence_level": "normative"
+        },
+        {
+          "source_id": "PV-GD-2025-002",
+          "locator_id": "PV-GD-2025-002#section=二",
+          "kind": "section",
+          "value": "二",
+          "quote": "不对项目年自发自用电量比例作要求",
+          "evidence_level": "normative"
+        },
+        {
+          "source_id": "PV-GD-2025-002",
+          "locator_id": "PV-GD-2025-002#section=六",
+          "kind": "section",
+          "value": "六",
+          "quote": "本实施意见自2026年2月10日起试行，试行期2年",
+          "evidence_level": "normative"
+        },
+        {
+          "source_id": "PV-ZJ-2026-015",
+          "locator_id": "PV-ZJ-2026-015#clause=第四条",
+          "kind": "clause",
+          "value": "第四条",
+          "quote": "年自发自用电量占发电量的比例不作要求",
+          "evidence_level": "normative"
+        }
+      ],
+      "temporal_scope": {
+        "policy_document": "PV-GD-2025-002 / PV-ZJ-2026-015",
+        "effective_from": "2026-02-10",
+        "effective_to": "2030-01-16"
+      },
+      "notes": [
+        "“本实施意见自2026年2月10日起试行，试行期2年”，故 temporal_scope 到 2028-02-09。",
+        "浙江第四条对一般工商业/大型工商业余电上网明确“年自发自用电量占发电量的比例不作要求”，故判 no_requirement；与广东的 30% 是两条并列的省级口径，用同一字段避免跨规则冲突。",
+        "本规则合并两省后，temporal_scope 取并集 2026-02-10–2030-01-16；广东试行期终点（2028-02-09）由各广东 case 的 date_lte 与 gd_policy_expired 兜住，浙江生效日（2026-08-03）由 zj_no_requirement 的 date_gte 兜住。",
+        "广东把设施农用地上农业建（构）筑物（≤20kV、≤6MW）归一般工商业；该分类已在 O-R-001 增加广东分支（并要求 policy_as_of ≥ 2026-02-10），本规则依赖该分类结论。"
+      ],
+      "open_items": [
+        "浙江“上网电量原则上全部参与电力市场”未建规则：比例之外的市场化交易要求尚未形式化。",
+        "浙江设施农业 >=6MW 属集中式，O-R-001 会落 unclassified；本规则对集中式项目不适用，需集中式口径规则。",
+        "广东 2028-02-09 试行期满后是否续期/出新规未跟踪：gd_policy_expired 只判 not_applicable。",
+        "广东豁免的“经省级能源主管部门会同电网企业确认”是人工事项，未建字段。",
+        "整村开发（江苏鼓励性）与集中汇流（国家/广东接入方式）未形式化：它们是开发组织/接入方式，不是上网模式比例问题，理由见 reviews/10。"
+      ]
+    }
+  ]
+}

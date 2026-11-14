@@ -1,0 +1,30 @@
+{
+  "version": 1,
+  "tuned_at": "2026-11-12",
+  "method": "bm25_route_level_bonus",
+  "bm25": {
+    "k1": 1.2,
+    "b": 0.3
+  },
+  "level_bonus": 0.18,
+  "top_k": 5,
+  "eval": {
+    "set": "eval/retrieval/questions_v2.jsonl",
+    "scoring_questions": 36,
+    "baseline": {
+      "k1": 1.5,
+      "b": 0.75,
+      "level_bonus": 0.05,
+      "complete_at_5": "32/36",
+      "complete_at_20": "35/36",
+      "mrr": 0.6606
+    },
+    "tuned": {
+      "complete_at_5": "35/36",
+      "complete_at_20": "35/36",
+      "mrr": 0.8032
+    },
+    "known_gap": "S-Q01 分布式光伏发电的定义（第二条）仍未进 Top20；属语义缺口，不用规则硬凑"
+  },
+  "note": "ask.py / evidence_audit.py 运行时共用；改这里会同时影响问答与证据回检。"
+}

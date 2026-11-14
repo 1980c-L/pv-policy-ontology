@@ -1,0 +1,514 @@
+{
+  "schema_version": "ask/v1",
+  "results": [
+    {
+      "schema_version": "ask/v1",
+      "question": "这个项目还能按原政策吗？",
+      "scenario": "legacy",
+      "retrieval": {
+        "method": "bm25+level_bonus+route:national",
+        "params": {
+          "k1": 1.2,
+          "b": 0.3,
+          "level_bonus": 0.18
+        },
+        "corpus_units": 260,
+        "evidence": [
+          {
+            "rank": 1,
+            "locator_id": "PV-FAQ-20250411#qa=Q72",
+            "source_id": "PV-FAQ-20250411",
+            "kind": "qa",
+            "evidence_level": "official_qa",
+            "score": 1.036,
+            "quote": "对于部分容量并网的，不能按照原政策执行"
+          },
+          {
+            "rank": 2,
+            "locator_id": "PV-FAQ-20250411#qa=Q73",
+            "source_id": "PV-FAQ-20250411",
+            "kind": "qa",
+            "evidence_level": "official_qa",
+            "score": 1.0312,
+            "quote": "答：对于本办法发布之日前已备案，在发布之日后进行备案变更，且于2025 年5 月1 日前并网投产的分布式光伏发电项目，仍按原政策执行"
+          },
+          {
+            "rank": 3,
+            "locator_id": "PV-FAQ-20250411#qa=Q27",
+            "source_id": "PV-FAQ-20250411",
+            "kind": "qa",
+            "evidence_level": "official_qa",
+            "score": 0.7609,
+            "quote": "答：备案过的分布式光伏发电项目一般情况下不能随意变更，如果项目法人发生变化，项目建设地点、规模、内容发生重大变更，或者放弃项目建设的，项目投资主体应当及时告知备案机关并修改相关信息，由备案机关出具备案…"
+          },
+          {
+            "rank": 4,
+            "locator_id": "PV-EXPLAIN-20250123#section=四(一)",
+            "source_id": "PV-EXPLAIN-20250123",
+            "kind": "section",
+            "evidence_level": "official_explanation",
+            "score": 0.7077,
+            "quote": "对于本办法发布之日前已备案且于2025年5月1日前并网投产的分布式光伏发电项目，仍按原有政策执行"
+          },
+          {
+            "rank": 5,
+            "locator_id": "PV-NAT-2025-007-ATTACH#clause=第四十三条",
+            "source_id": "PV-NAT-2025-007-ATTACH",
+            "kind": "clause",
+            "evidence_level": "normative",
+            "score": 0.6684,
+            "quote": "对于本办法发布之日前已备案且于2025年5月1日前并网投产的分布式光伏发电项目，仍按原有政策执行"
+          }
+        ]
+      },
+      "assessment": {
+        "result_status": "supported",
+        "conclusions": [
+          {
+            "rule_id": "O-R-001",
+            "case_id": "natural_person_household",
+            "field": "project_class",
+            "value": "natural_person_household"
+          },
+          {
+            "rule_id": "O-R-002",
+            "case_id": "household_three_modes",
+            "field": "allowed_grid_modes",
+            "value": [
+              "full_feed_in",
+              "full_self_consumption",
+              "self_consumption_surplus_feed_in"
+            ]
+          },
+          {
+            "rule_id": "O-R-002",
+            "case_id": "household_three_modes",
+            "field": "requires_same_red_line_for_self_consumption",
+            "value": true
+          },
+          {
+            "rule_id": "O-R-003",
+            "case_id": "legacy_policy_applies",
+            "field": "legacy_policy_applies",
+            "value": true
+          }
+        ],
+        "missing_fields": [],
+        "rule_ids": [
+          "O-R-001",
+          "O-R-002",
+          "O-R-003"
+        ],
+        "source_refs": [
+          {
+            "source_id": "PV-NAT-2025-007-ATTACH",
+            "locator_id": "PV-NAT-2025-007-ATTACH#clause=第四条",
+            "kind": "clause",
+            "value": "第四条",
+            "quote": "分布式光伏发电分为自然人户用、非自然人户用、一般工商业和大型工商业四种类型",
+            "evidence_level": "normative"
+          },
+          {
+            "source_id": "PV-NAT-2025-007-ATTACH",
+            "locator_id": "PV-NAT-2025-007-ATTACH#clause=第四条",
+            "kind": "clause",
+            "value": "第四条",
+            "quote": "自然人利用自有住宅、庭院投资建设",
+            "evidence_level": "normative"
+          },
+          {
+            "source_id": "PV-NAT-2025-007-ATTACH",
+            "locator_id": "PV-NAT-2025-007-ATTACH#clause=第四条",
+            "kind": "clause",
+            "value": "第四条",
+            "quote": "与公共电网连接点电压等级不超过380伏",
+            "evidence_level": "normative"
+          },
+          {
+            "source_id": "PV-NAT-2025-007-ATTACH",
+            "locator_id": "PV-NAT-2025-007-ATTACH#clause=第四条",
+            "kind": "clause",
+            "value": "第四条",
+            "quote": "与公共电网连接点电压等级不超过10千伏（20千伏）、总装机容量不超过6兆瓦",
+            "evidence_level": "normative"
+          },
+          {
+            "source_id": "PV-NAT-2025-007-ATTACH",
+            "locator_id": "PV-NAT-2025-007-ATTACH#clause=第四条",
+            "kind": "clause",
+            "value": "第四条",
+            "quote": "总装机容量原则上不超过6兆瓦",
+            "evidence_level": "normative"
+          },
+          {
+            "source_id": "PV-NAT-2025-007-ATTACH",
+            "locator_id": "PV-NAT-2025-007-ATTACH#clause=第四条",
+            "kind": "clause",
+            "value": "第四条",
+            "quote": "接入用户侧电网或者与用户开展专线供电",
+            "evidence_level": "normative"
+          },
+          {
+            "source_id": "PV-NAT-2025-007-ATTACH",
+            "locator_id": "PV-NAT-2025-007-ATTACH#clause=第四条",
+            "kind": "clause",
+            "value": "第四条",
+            "quote": "与公共电网连接点电压等级为35千伏、总装机容量原则上不超过20兆瓦",
+            "evidence_level": "normative"
+          },
+          {
+            "source_id": "PV-NAT-2025-007-ATTACH",
+            "locator_id": "PV-NAT-2025-007-ATTACH#clause=第四条",
+            "kind": "clause",
+            "value": "第四条",
+            "quote": "与公共电网连接点电压等级为110千伏（66千伏）、总装机容量原则上不超过50兆瓦",
+            "evidence_level": "normative"
+          },
+          {
+            "source_id": "PV-NAT-2025-007-ATTACH",
+            "locator_id": "PV-NAT-2025-007-ATTACH#clause=第四条",
+            "kind": "clause",
+            "value": "第四条",
+            "quote": "大型工商业分布式光伏是指利用建筑物及其附属场所建设",
+            "evidence_level": "normative"
+          },
+          {
+            "source_id": "PV-NAT-2025-007-ATTACH",
+            "locator_id": "PV-NAT-2025-007-ATTACH#clause=第四条",
+            "kind": "clause",
+            "value": "第四条",
+            "quote": "以上条款中建筑物及其附属场所应当位于同一用地红线范围内",
+            "evidence_level": "normative"
+          },
+          {
+            "source_id": "PV-NAT-2025-007-ATTACH",
+            "locator_id": "PV-NAT-2025-007-ATTACH#clause=第十三条",
+            "kind": "clause",
+            "value": "第十三条",
+            "quote": "分布式光伏发电项目的容量为交流侧容量（即逆变器额定输出功率之和）",
+            "evidence_level": "normative"
+          },
+          {
+            "source_id": "PV-EXPLAIN-20250123",
+            "locator_id": "PV-EXPLAIN-20250123#section=三(一)",
+            "kind": "section",
+            "value": "三(一)",
+            "quote": "细分为自然人户用、非自然人户用、一般工商业、大型工商业四种类型",
+            "evidence_level": "official_explanation"
+          },
+          {
+            "source_id": "PV-FAQ-20250411",
+            "locator_id": "PV-FAQ-20250411#qa=Q6",
+            "kind": "qa",
+            "value": "Q6",
+            "quote": "该项目装机容量为8兆瓦，不属于一般工商业分布式光伏",
+            "evidence_level": "official_qa"
+          },
+          {
+            "source_id": "PV-GD-2025-002",
+            "locator_id": "PV-GD-2025-002#section=一",
+            "kind": "section",
+            "value": "一",
+            "quote": "利用设施农用地上工厂化栽培车间、工厂化养殖车间、连栋温室",
+            "evidence_level": "normative"
+          },
+          {
+            "source_id": "PV-GD-2025-002",
+            "locator_id": "PV-GD-2025-002#section=一",
+            "kind": "section",
+            "value": "一",
+            "quote": "总装机容量不超过6兆瓦的光伏发电项目",
+            "evidence_level": "normative"
+          },
+          {
+            "source_id": "PV-GD-2025-002",
+            "locator_id": "PV-GD-2025-002#section=一",
+            "kind": "section",
+            "value": "一",
+            "quote": "归于一般工商业分布式光伏发电项目管理",
+            "evidence_level": "normative"
+          },
+          {
+            "source_id": "PV-GD-2025-002",
+            "locator_id": "PV-GD-2025-002#section=一",
+            "kind": "section",
+            "value": "一",
+            "quote": "且满足年自发自用电量占发电量比例不低于30%的条件",
+            "evidence_level": "normative"
+          },
+          {
+            "source_id": "PV-ZJ-2026-015",
+            "locator_id": "PV-ZJ-2026-015#clause=第五条",
+            "kind": "clause",
+            "value": "第五条",
+            "quote": "交流侧装机容量低于6兆瓦的按照一般工商业分布式光伏项目管理",
+            "evidence_level": "normative"
+          },
+          {
+            "source_id": "PV-ZJ-2026-015",
+            "locator_id": "PV-ZJ-2026-015#clause=第三条",
+            "kind": "clause",
+            "value": "第三条",
+            "quote": "与公共电网连接点电压等级为110千伏、总装机容量原则上不超过50兆瓦",
+            "evidence_level": "normative"
+          },
+          {
+            "source_id": "PV-ZJ-2026-015",
+            "locator_id": "PV-ZJ-2026-015#clause=第四条",
+            "kind": "clause",
+            "value": "第四条",
+            "quote": "容量、电压等级超出第三条规定的",
+            "evidence_level": "normative"
+          },
+          {
+            "source_id": "PV-ZJ-2026-015",
+            "locator_id": "PV-ZJ-2026-015#clause=第四条",
+            "kind": "clause",
+            "value": "第四条",
+            "quote": "按集中式光伏电站备案和管理",
+            "evidence_level": "normative"
+          },
+          {
+            "source_id": "PV-GD-2025-002",
+            "locator_id": "PV-GD-2025-002#section=一",
+            "kind": "section",
+            "value": "一",
+            "quote": "工商业厂房由2回及以上10千伏线路供电",
+            "evidence_level": "normative"
+          },
+          {
+            "source_id": "PV-GD-2025-002",
+            "locator_id": "PV-GD-2025-002#section=一",
+            "kind": "section",
+            "value": "一",
+            "quote": "每回10千伏线路接入的光伏装机容量不超过6兆瓦",
+            "evidence_level": "normative"
+          },
+          {
+            "source_id": "PV-GD-2025-002",
+            "locator_id": "PV-GD-2025-002#section=一",
+            "kind": "section",
+            "value": "一",
+            "quote": "项目总装机容量不超过50兆瓦",
+            "evidence_level": "normative"
+          },
+          {
+            "source_id": "PV-GD-2025-002",
+            "locator_id": "PV-GD-2025-002#section=一",
+            "kind": "section",
+            "value": "一",
+            "quote": "项目采取全部自发自用模式",
+            "evidence_level": "normative"
+          },
+          {
+            "source_id": "PV-GD-2025-002",
+            "locator_id": "PV-GD-2025-002#section=一",
+            "kind": "section",
+            "value": "一",
+            "quote": "与公共电网连接点电压等级不超过工商业厂房既有供电线路电压等级",
+            "evidence_level": "normative"
+          },
+          {
+            "source_id": "PV-NAT-2025-007-ATTACH",
+            "locator_id": "PV-NAT-2025-007-ATTACH#clause=第五条",
+            "kind": "clause",
+            "value": "第五条",
+            "quote": "分布式光伏发电上网模式包括全额上网、全部自发自用、自发自用余电上网三种",
+            "evidence_level": "normative"
+          },
+          {
+            "source_id": "PV-NAT-2025-007-ATTACH",
+            "locator_id": "PV-NAT-2025-007-ATTACH#clause=第五条",
+            "kind": "clause",
+            "value": "第五条",
+            "quote": "自然人户用、非自然人户用分布式光伏可选择全额上网",
+            "evidence_level": "normative"
+          },
+          {
+            "source_id": "PV-NAT-2025-007-ATTACH",
+            "locator_id": "PV-NAT-2025-007-ATTACH#clause=第五条",
+            "kind": "clause",
+            "value": "第五条",
+            "quote": "一般工商业分布式光伏可选择全部自发自用或者自发自用余电上网模式",
+            "evidence_level": "normative"
+          },
+          {
+            "source_id": "PV-NAT-2025-007-ATTACH",
+            "locator_id": "PV-NAT-2025-007-ATTACH#clause=第五条",
+            "kind": "clause",
+            "value": "第五条",
+            "quote": "大型工商业分布式光伏原则上选择全部自发自用模式",
+            "evidence_level": "normative"
+          },
+          {
+            "source_id": "PV-NAT-2025-007-ATTACH",
+            "locator_id": "PV-NAT-2025-007-ATTACH#clause=第五条",
+            "kind": "clause",
+            "value": "第五条",
+            "quote": "大型工商业分布式光伏可采用自发自用余电上网模式参与现货市场",
+            "evidence_level": "normative"
+          },
+          {
+            "source_id": "PV-NAT-2025-007-ATTACH",
+            "locator_id": "PV-NAT-2025-007-ATTACH#clause=第五条",
+            "kind": "clause",
+            "value": "第五条",
+            "quote": "涉及自发自用的，用户和分布式光伏发电项目应位于同一用地红线范围内",
+            "evidence_level": "normative"
+          },
+          {
+            "source_id": "PV-ZJ-2026-015",
+            "locator_id": "PV-ZJ-2026-015#clause=第四条",
+            "kind": "clause",
+            "value": "第四条",
+            "quote": "大型工商业分布式光伏可选择全部自发自用或者自发自用余电上网",
+            "evidence_level": "normative"
+          },
+          {
+            "source_id": "PV-EXPLAIN-20250123",
+            "locator_id": "PV-EXPLAIN-20250123#section=三(一)",
+            "kind": "section",
+            "value": "三(一)",
+            "quote": "一般工商业可在全部自发自用和自发自用余电上网模式中二选一",
+            "evidence_level": "official_explanation"
+          },
+          {
+            "source_id": "PV-FAQ-20250411",
+            "locator_id": "PV-FAQ-20250411#qa=Q5",
+            "kind": "qa",
+            "value": "Q5",
+            "quote": "一般工商业分布式光伏与公共电网连接点电压等级不超过10千伏（20千伏）",
+            "evidence_level": "official_qa"
+          },
+          {
+            "source_id": "PV-NAT-2025-007-ATTACH",
+            "locator_id": "PV-NAT-2025-007-ATTACH#clause=第四十三条",
+            "kind": "clause",
+            "value": "第四十三条",
+            "quote": "对于本办法发布之日前已备案且于2025年5月1日前并网投产的分布式光伏发电项目",
+            "evidence_level": "normative"
+          },
+          {
+            "source_id": "PV-NAT-2025-007-ATTACH",
+            "locator_id": "PV-NAT-2025-007-ATTACH#clause=第四十三条",
+            "kind": "clause",
+            "value": "第四十三条",
+            "quote": "仍按原有政策执行",
+            "evidence_level": "normative"
+          },
+          {
+            "source_id": "PV-NAT-2025-007-ATTACH",
+            "locator_id": "PV-NAT-2025-007-ATTACH#clause=第四十三条",
+            "kind": "clause",
+            "value": "第四十三条",
+            "quote": "本办法自发布之日起施行，有效期五年",
+            "evidence_level": "normative"
+          },
+          {
+            "source_id": "PV-FAQ-20250411",
+            "locator_id": "PV-FAQ-20250411#qa=Q71",
+            "kind": "qa",
+            "value": "Q71",
+            "quote": "“发布之日”指《管理办法》对全社会公布日期即2025年1月23日",
+            "evidence_level": "official_qa"
+          },
+          {
+            "source_id": "PV-FAQ-20250411",
+            "locator_id": "PV-FAQ-20250411#qa=Q71",
+            "kind": "qa",
+            "value": "Q71",
+            "quote": "1月23日当日备案的也属于发布之日前已备案项目",
+            "evidence_level": "official_qa"
+          },
+          {
+            "source_id": "PV-FAQ-20250411",
+            "locator_id": "PV-FAQ-20250411#qa=Q72",
+            "kind": "qa",
+            "value": "Q72",
+            "quote": "2025年5月1日前（含当日）并网是指分布式光伏发电项目全容量并网",
+            "evidence_level": "official_qa"
+          },
+          {
+            "source_id": "PV-FAQ-20250411",
+            "locator_id": "PV-FAQ-20250411#qa=Q72",
+            "kind": "qa",
+            "value": "Q72",
+            "quote": "对于部分容量并网的，不能按照原政策执行",
+            "evidence_level": "official_qa"
+          },
+          {
+            "source_id": "PV-FAQ-20250411",
+            "locator_id": "PV-FAQ-20250411#qa=Q73",
+            "kind": "qa",
+            "value": "Q73",
+            "quote": "在发布之日后进行备案变更，且于2025年5月1日前并网投产的分布式光伏发电项目",
+            "evidence_level": "official_qa"
+          },
+          {
+            "source_id": "PV-EXPLAIN-20250123",
+            "locator_id": "PV-EXPLAIN-20250123#section=四(一)",
+            "kind": "section",
+            "value": "四(一)",
+            "quote": "对于本办法发布之日前已备案且于2025年5月1日前并网投产的分布式光伏发电项目",
+            "evidence_level": "official_explanation"
+          }
+        ],
+        "temporal_scope": {
+          "policy_document": "PV-NAT-2025-007-ATTACH",
+          "effective_from": "2025-01-23",
+          "effective_to": null,
+          "legacy_cutoff": "2025-05-01",
+          "policy_as_of": "2025-06-01"
+        },
+        "reasons": [
+          "O-R-004: policy_as_of=2025-06-01 不在 2026-02-10–2030-01-16"
+        ]
+      },
+      "answer": {
+        "verdict": "supported",
+        "scenario": "legacy",
+        "summary": "新老划断结论：仍可按原有政策执行（规则 O-R-003）。",
+        "points": [
+          "新老划断结论：仍可按原有政策执行（规则 O-R-003）。",
+          "边界：备案不晚于 2025-01-23（含当日），并网不晚于 2025-05-01（含当日）且须全容量并网。",
+          "最相关原文：对于部分容量并网的，不能按照原政策执行",
+          "证据（候选，供人工核对）：[1] PV-FAQ-20250411#qa=Q72（official_qa）；[2] PV-FAQ-20250411#qa=Q73（official_qa）；[3] PV-FAQ-20250411#qa=Q27（official_qa）"
+        ],
+        "missing_fields": [],
+        "source_refs": [
+          {
+            "locator_id": "PV-FAQ-20250411#qa=Q72",
+            "source_id": "PV-FAQ-20250411",
+            "evidence_level": "official_qa",
+            "quote": "对于部分容量并网的，不能按照原政策执行"
+          },
+          {
+            "locator_id": "PV-FAQ-20250411#qa=Q73",
+            "source_id": "PV-FAQ-20250411",
+            "evidence_level": "official_qa",
+            "quote": "答：对于本办法发布之日前已备案，在发布之日后进行备案变更，且于2025 年5 月1 日前并网投产的分布式光伏发电项目，仍按原政策执行"
+          },
+          {
+            "locator_id": "PV-FAQ-20250411#qa=Q27",
+            "source_id": "PV-FAQ-20250411",
+            "evidence_level": "official_qa",
+            "quote": "答：备案过的分布式光伏发电项目一般情况下不能随意变更，如果项目法人发生变化，项目建设地点、规模、内容发生重大变更，或者放弃项目建设的，项目投资主体应当及时告知备案机关并修改相关信息，由备案机关出具备案…"
+          },
+          {
+            "locator_id": "PV-EXPLAIN-20250123#section=四(一)",
+            "source_id": "PV-EXPLAIN-20250123",
+            "evidence_level": "official_explanation",
+            "quote": "对于本办法发布之日前已备案且于2025年5月1日前并网投产的分布式光伏发电项目，仍按原有政策执行"
+          },
+          {
+            "locator_id": "PV-NAT-2025-007-ATTACH#clause=第四十三条",
+            "source_id": "PV-NAT-2025-007-ATTACH",
+            "evidence_level": "normative",
+            "quote": "对于本办法发布之日前已备案且于2025年5月1日前并网投产的分布式光伏发电项目，仍按原有政策执行"
+          }
+        ]
+      },
+      "warnings": []
+    }
+  ]
+}

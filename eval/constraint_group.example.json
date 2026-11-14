@@ -1,0 +1,24 @@
+{
+  "group_id": "G-01-ancillary-same",
+  "members": [
+    {
+      "project_id": "P-01",
+      "investor_type": "non_natural_person",
+      "site_category": "industrial_commercial",
+      "connection_voltage_kv": 10,
+      "connection_type": "user_side_grid",
+      "investor_same_legal_person_as_user": true,
+      "capacity_mw": 5,
+      "capacity_basis": "ac_inverter_sum",
+      "same_red_line": true,
+      "site_owned_by_investor": true,
+      "province": "zhejiang",
+      "uses_ancillary_site": true,
+      "uses_user_substation": false,
+      "investor_id": "INV-1",
+      "phase_id": "P1",
+      "building_red_line_id": "RL-A",
+      "ancillary_site_red_line_id": "RL-A"
+    }
+  ]
+}

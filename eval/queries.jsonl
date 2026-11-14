@@ -1,0 +1,6 @@
+{"query_id": "O-Q01", "question": "一项项目分类判断需要哪些属性、依据哪些原文条件？仅凭容量能否确定？", "query_type": "class_requirements", "params": {"project_class": "large_industrial_business"}, "maps_to_competency_question": 1}
+{"query_id": "O-Q02", "question": "某类项目在给定历史政策范围内允许哪些上网模式，有何条件或例外？", "query_type": "allowed_modes", "params": {"project_class": "general_industrial_business"}, "maps_to_competency_question": 2}
+{"query_id": "O-Q03", "question": "备案、取得接入方案、并网投产等日期分别影响什么判断，不能把它们合并成同一个“项目日期”。", "query_type": "date_semantics", "params": {}, "maps_to_competency_question": 3}
+{"query_id": "O-Q04", "question": "材料缺少连接点电压、项目主体或关键日期时，哪些结论仍可给出，哪些必须保留未知？", "query_type": "missing_field_impact", "params": {"field": "connection_voltage_kv"}, "maps_to_competency_question": 4}
+{"query_id": "O-Q05", "question": "对应结论来自正文、官方解读、问答，还是多条规则的组合推导？", "query_type": "source_coverage", "params": {"owner_id": "O-R-003"}, "maps_to_competency_question": 5}
+{"query_id": "O-Q06", "question": "不同时间范围的规定应如何并存，查询如何明确指定历史时点？", "query_type": "temporal_scope", "params": {"policy_as_of": "2024-06-01"}, "maps_to_competency_question": 6}

@@ -1,0 +1,12 @@
+{"question_id": "S-Q01", "locator_ids": ["PV-NAT-2025-007-ATTACH#clause=第二条"], "reason": "第二条给出用户侧开发等定义特征", "confidence": "high"}
+{"question_id": "S-Q02", "locator_ids": ["PV-NAT-2025-007-ATTACH#clause=第四条"], "reason": "第四条列明自然人户用等四种类型", "confidence": "high"}
+{"question_id": "S-Q05", "locator_ids": ["PV-NAT-2025-007-ATTACH#clause=第四条"], "reason": "第四条列明公共机构及厂房等场所", "confidence": "high"}
+{"question_id": "S-Q08", "locator_ids": ["PV-NAT-2025-007-ATTACH#clause=第五条"], "reason": "第五条列明全额上网等三种模式", "confidence": "high"}
+{"question_id": "S-Q12", "locator_ids": ["PV-NAT-2025-007-ATTACH#clause=第五条"], "reason": "第五条允许现货地区余电上网", "confidence": "high"}
+{"question_id": "S-Q14", "locator_ids": ["PV-NAT-2025-007-ATTACH#clause=第十三条"], "reason": "第十三条规定容量按交流侧口径", "confidence": "high"}
+{"question_id": "S-Q17", "locator_ids": ["PV-NAT-2025-007-ATTACH#clause=第四十三条"], "reason": "第四十三条限定已备案且限期投产", "confidence": "high"}
+{"question_id": "S-Q19", "locator_ids": ["PV-FAQ-20250411#qa=Q72"], "reason": "问答明确指全容量并网", "confidence": "high"}
+{"question_id": "S-Q22", "locator_ids": ["PV-FAQ-20250411#qa=Q71"], "reason": "问答确认当日备案属发布之日前", "confidence": "high"}
+{"question_id": "S-Q27", "locator_ids": ["PV-NAT-2025-007-ATTACH#clause=第五条"], "reason": "第五条限定现货市场连续运行地区", "confidence": "high"}
+{"question_id": "S-Q29", "locator_ids": ["PV-NAT-2025-007-ATTACH#clause=第十三条", "PV-NAT-2025-007-ATTACH#clause=第三十一条"], "reason": "容量按交流侧计，且不得大于备案容量", "confidence": "medium"}
+{"question_id": "S-Q36", "locator_ids": ["PV-FAQ-20250411#qa=Q13"], "reason": "问答澄清该限定仅指专线供电情形", "confidence": "high"}

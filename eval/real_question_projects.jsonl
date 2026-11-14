@@ -1,0 +1,1 @@
+{"id":"RQ-03","inherit_project":true,"note":"8MW/10kV 合作社屋顶：用 real_questions 自带 project 跑回答层，断言明确判出不属于四类并点出 6MW 上限","verdict":"insufficient","must_include":["不属于四类","6 MW"]}
